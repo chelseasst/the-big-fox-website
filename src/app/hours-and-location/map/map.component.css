@@ -1,0 +1,22 @@
+.wrapper {
+  border: 1rem solid #b8e6e3;
+  position: relative;
+}
+.map {
+  height: 400px;
+  width: 100%;
+  z-index: 100;
+}
+.navigate-to {
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (min-width: 769px) {
+  .map {
+    height: 800px;
+  }
+}

@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { MenuNavService } from './menu-nav.service';
+
+@Injectable({ providedIn: 'root' })
+export class MenuNavGuard implements CanActivate {
+  constructor(private menuNavService: MenuNavService) {}
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    this.menuNavService.closeMenu();
+    return true;
+  }
+}

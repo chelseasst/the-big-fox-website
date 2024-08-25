@@ -1,0 +1,25 @@
+.button-container{
+  text-align: center;
+ 
+}
+.btn {
+  margin: 1rem;
+  padding: 0.5rem 0.9rem;
+  background-color: #c65234;
+  color: #fff;
+  font-family: "Lato";
+  text-transform: uppercase;
+  outline: 1px solid #fdfaeb;
+  outline-offset: -3px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.button-container:hover .btn{
+  outline: 1px solid #ac472d;
+  outline-offset: 3px;
+  background-color: #ac472d;
+}
+.btn[active="true"]{
+  outline: 0;
+  background-color: #ac472d;
+}

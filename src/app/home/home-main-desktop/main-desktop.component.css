@@ -1,0 +1,57 @@
+.home-section-mobile {
+  position: relative;
+}
+.images-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.9;
+}
+.images-wrapper img {
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.images-wrapper img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fdfaeb;
+  text-align: center;
+  font-size: 1.5rem;
+  outline: 1px solid #fdfaeb;
+  outline-offset: 15px;
+}
+.content-wrapper .content {
+  opacity: 0;
+  transform: scale(0.9);
+  margin: 6rem 2.5rem;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.content-wrapper .visible {
+  opacity: 1;
+  transform: scale(1);
+}
+we must select the element .content h2 {
+  font-style: italic;
+  padding-bottom: 1rem;
+}
+.content div {
+  margin-top: 2rem;
+}
+.content-drinks p::before {
+  content: "•";
+  padding-right: 10px;
+  color: #c65234;
+}

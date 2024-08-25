@@ -1,0 +1,102 @@
+#form {
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.select,
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  font-family: "Sorts Mill Goudy";
+  border: 1px solid #ddd;
+  background-color: #fdfaeb;
+  padding: 0.8rem 3rem 0.8rem 0.8rem;
+  color: #7b7676;
+  appearance: none;
+  /* removes/changes the native styling */
+  -webkit-appearance: none;
+  /* Chrome/Safari */
+  -moz-appearance: none;
+  /* FireFox */
+}
+textarea {
+  min-height: 150px;
+}
+
+.required,
+.optional {
+  font-style: italic;
+  color: #8b8585;
+}
+
+.form-uni-group span {
+  font-size: 0.8rem;
+}
+.email-checkbox-p {
+  display: inline;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  margin: 0 0 0.5rem 0.5rem;
+}
+.error {
+  color: #d9534f;
+  font-style: italic;
+  display: block;
+}
+.has-icon {
+  display: block;
+  position: relative;
+}
+.icon-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  padding-right: 1rem;
+}
+.pull-right {
+  float: right;
+}
+#date {
+  padding: 0.8rem 3rem;
+}
+.icon-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding-left: 1rem;
+}
+.label {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.bold {
+  font-weight: bold;
+}
+.form-actions,
+.form-footer {
+  text-align: center;
+}
+.group2 {
+  margin-top: 4rem;
+}
+
+@media screen and (min-width: 767px) {
+  #form {
+    padding: 0 1.9rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .form-uni-group span {
+    font-size: 1rem;
+  }
+}

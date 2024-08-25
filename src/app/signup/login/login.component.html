@@ -1,0 +1,60 @@
+<section class="login-form">
+  <p id="login-heading">Login</p>
+  <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+    <div class="form-ui">
+      <label for="email">
+        <span>Email <span class="required">- Required</span></span>
+        <ng-container *ngIf="email.touched">
+          <i class="error" *ngIf="email.errors?.['required']"
+            >Email is required</i
+          >
+          <i class="error" *ngIf="email.errors?.['email']">
+            Please, enter a valid email</i
+          >
+          <i class="error" *ngIf="email.errors?.['invalidExtension']">
+            The email must end with 'bg' or 'com' extension</i
+          >
+        </ng-container>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          ngModel
+          #email="ngModel"
+          required
+          email
+          emailValidator
+        />
+      </label>
+      <label for="password">
+        <span>Password <span class="required">- Required</span></span>
+        <ng-container *ngIf="password.touched">
+          <i class="error" *ngIf="password.errors?.['required']"
+            >Password is required</i
+          >
+          <i class="error" *ngIf="password.errors?.['passNotValid']">
+            Password must contain at least 7 characters including one capital
+            letter and two digits</i
+          >
+        </ng-container>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Password"
+          ngModel
+          #password="ngModel"
+          required
+          passCheck
+        />
+      </label>
+    </div>
+    <div class="form-actions">
+      <button class="submit-btn" [disabled]="loginForm.invalid">Send</button>
+    </div>
+    <p class="register-p">
+      Don't have an account? <a routerLink="../register">Register</a>
+    </p>
+  </form>
+</section>

@@ -1,0 +1,48 @@
+.gift-cards-container {
+  margin-bottom: 60px;
+}
+.blue-content-wrapper {
+  border: 1rem solid #b8e6e3;
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  margin-bottom: 40px;
+}
+/* SECTION 1 */
+.section-1 {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.section-1 h2 {
+  margin-bottom: 1rem;
+}
+p {
+  padding-bottom: 1rem;
+}
+li {
+  display: block;
+}
+
+.form-nav {
+  padding: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 426px) {
+  .form-nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+@media screen and (min-width:1024px){
+  .section-1 p{
+    font-size: 1.3rem;
+  }
+}

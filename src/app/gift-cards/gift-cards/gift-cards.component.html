@@ -1,0 +1,40 @@
+<div class="gift-cards-container">
+  <main>
+    <app-initial-section
+      [heading]="'Gift Cards'"
+      [url]="'../assets/gift-cards/IMG_5509.JPG'"
+    ></app-initial-section>
+
+    <div class="blue-content-wrapper">
+      <section class="section-1">
+        <h2>Gift Cards</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
+          quisquam reprehenderit accusantium itaque? Cum repudiandae iure
+          veritatis facere exercitationem voluptate libero vero non. Eum maxime
+          possimus excepturi pariatur nam dolorem?
+        </p>
+        <p>We're closed Monday, open in the mornign of Wednesday</p>
+      </section>
+    </div>
+    <section class="form-container">
+      <div class="form">
+        <!-- FORM NAV -->
+        <div class="form-nav">
+          <button
+            class="submit-btn"
+            routerLink="physical-card"
+          >Physical Card</button>
+          <button
+            class="submit-btn"
+            routerLink="digital-card"
+          >Digital Card</button>
+        </div>
+        <!-- FORM CONTENT -->
+        <div class="form-content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

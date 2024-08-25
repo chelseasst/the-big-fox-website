@@ -1,0 +1,9 @@
+<div class="drinks-container">
+  <ul class="drinks-wrapper">
+    <app-menu-item
+      *ngFor="let drink of items.drinks"
+      class="item"
+      [drink]="drink"
+    ></app-menu-item>
+  </ul>
+</div>

@@ -1,0 +1,58 @@
+<div class="menu-container">
+  <main>
+    <app-initial-section
+      [heading]="'Menu'"
+      url="'../assets/menu/IMG_5539.JPG'"
+    ></app-initial-section>
+    <!-- set background -->
+    <div class="blue-content-wrapper">
+      <section class="section-1">
+        <p class="img-wheat-container">
+          <img src="../assets/menu/grain.png" alt="" />
+        </p>
+        <p>
+          You don’t always have to order ahead. If you’re walking through the
+          oldest neighbourhood on this side of the river, you’re welcome to stop
+          in for a quick treat. We don't offer a lot of seating; but you're
+          welcome to enjoy some well-intentioned attempts at small talk with the
+          staff, and to linger at the picnic tables in the plaza across the
+          alley. We’re unpretentiously brewing coffee that was roasted here in
+          Alberta and you can sit and sip for a minute or take it to go.
+        </p>
+        <p>
+          If you're looking to place a pre-order (the best option for guaranteed
+          availability), go the
+          <a routerLink="order-online">online ordering page here.</a>
+        </p>
+        <p>
+          Here are the kinds of things you’ll find in the shop on a regular “To
+          Go” basis:
+        </p>
+      </section>
+    </div>
+
+    <!-- MENU -->
+    <div class="background-wrapper">
+      <section class="menu-nav">
+        <app-button
+          class="btn btn-drinks"
+          [navigateTo]="'/menu/menu-drinks'"
+          [text]="'Our Drinks Menu'"
+          [clicked]="isClickedD"
+          (click)="toggleClickedDrinks()"
+        ></app-button>
+        <app-button
+          class="btn btn-bakery"
+          [navigateTo]="'/menu/menu-bakery'"
+          [text]="'Our Baked Goods Menu'"
+          [clicked]="isClickedB"
+          (click)="toggleClickedBakery()"
+        ></app-button>
+      </section>
+
+      <section class="menu-body">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </main>
+</div>

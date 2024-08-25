@@ -1,0 +1,25 @@
+<div class="popup-wrapper">
+  <aside
+    class="popup-box"
+    [@popupAnimation]="isPopupOpen ? 'visible' : 'hidden'"
+  >
+    <div class="details">
+      <div class="col">
+        <img src="../assets/order-online/cookies.JPG" alt="" />
+      </div>
+      <div class="col col-2">
+        <button class="close" (click)="closePopUp()">
+          <i data-icon="font-awesome" class="fa-solid fa-x"></i>
+        </button>
+        <h2>Cookies</h2>
+        <p class="quantity">Qty: 6</p>
+        <p class="price">$16</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="submit-btn">Continue shopping</button>
+      <button class="submit-btn">Checkout</button>
+    </div>
+  </aside>
+</div>

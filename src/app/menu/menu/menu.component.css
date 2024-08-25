@@ -1,0 +1,46 @@
+a {
+  text-decoration: underline;
+}
+.menu-container {
+  margin-bottom: 40px;
+}
+.blue-content-wrapper {
+  border: 1rem solid #b8e6e3;
+  text-align: center;
+  padding: 4.6rem 0.9rem;
+}
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-top: 3rem;
+}
+.section-1 h2 {
+  margin-bottom: 1rem;
+}
+.section-1 {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.img-wheat-container img {
+  margin: 1.5rem auto;
+}
+.menu-body {
+  background-color: #fdfaeb;
+  padding: 1rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 769px) {
+  .menu-nav {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .section-1 p,
+  .section-1 a {
+    font-size: 1.3rem;
+  }
+}

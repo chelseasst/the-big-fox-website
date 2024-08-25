@@ -1,1 +1,133 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #fdfaeb;
+  height: 100%;
+  font-family: "Sorts Mill Goudy";
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #222;
+  box-sizing: border-box;
+}
+[data-icon="font-awesome"]::before {
+  font-family: "FontAwesome";
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+  background: none;
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a,
+button {
+  font-family: "Sorts Mill Goudy";
+}
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a:hover,
+button:hover,
+.site-logo,
+i {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: italic;
+}
+h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+h2 {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: italic;
+}
+.submit-btn {
+  margin: 1rem auto;
+  padding: 0.3rem 0.5rem;
+  background-color: #c65234;
+  color: #fff;
+  font-family: "Lato";
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  outline: 1px solid #fdfaeb;
+  outline-offset: -3px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  width: 100%;
+}
+.submit-btn:hover{
+  outline: 1px solid #ac472d;
+  outline-offset: 3px;
+  background-color: #ac472d;
+}
+.submit-btn:disabled{
+  background-color: rgba(196, 105, 82, 0.763);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .submit-btn{
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+  }
+}

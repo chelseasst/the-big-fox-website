@@ -1,0 +1,15 @@
+.site-location {
+  text-align: center;
+  padding: 5px 8px;
+  width: 100%;
+}
+a {
+  letter-spacing: 2.5px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 769px) {
+  a {
+    font-size: 18px;
+  }
+}

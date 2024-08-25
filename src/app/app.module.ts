@@ -3,16 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { SharedModule } from './shared/shared.module';
+import { OurStoryModule } from './our-story/our-story.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HoursAndLocationModule } from './hours-and-location/hours-and-location.module';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GiftCardsModule } from './gift-cards/gift-cards.module';
+import { FormsModule } from '@angular/forms';
+import { MenuModule } from './menu/menu.module';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
+    HomeModule,
+    SharedModule,
+    OurStoryModule,
+    HttpClientModule,
+    HoursAndLocationModule,
+    GoogleMapsModule,
+    GiftCardsModule,
+    FormsModule,
+    MenuModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideAnimations()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

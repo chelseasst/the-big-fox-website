@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=PT+Sans&family=Playfair+Display:ital@0;1&family=Sorts+Mill+Goudy:ital@0;1&display=swap");
+
+.content span,
+a {
+  font-weight: 500;
+  font-size: 18px;
+}
+.banner-giftcard {
+  display: flex;
+  max-height: 300px;
+z-index: 40;
+padding: 5px 20px 10px 20px;
+}
+a {
+  text-decoration: underline;
+}
+
+.content {
+  flex: 1;
+  text-align: center;
+}

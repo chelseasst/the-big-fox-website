@@ -1,0 +1,20 @@
+<section
+  class="section-initial"
+  [ngStyle]="{ 'background-image': 'url(' + url + ')' }"
+  [@showInitial]="pageState"
+>
+  <div class="central-items-container">
+    <div class="logo-container" *ngIf="isHome">
+      <p>
+        <img
+          class="logo-image"
+          src="../../../assets/home/download.avif"
+          alt="Image"
+        />
+      </p>
+    </div>
+    <div class="h1-container" *ngIf="!isHome">
+      <h1 class="h1">{{ heading }}</h1>
+    </div>
+  </div>
+</section>

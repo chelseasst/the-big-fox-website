@@ -1,0 +1,9 @@
+<li class="card">
+  <a [routerLink]="['product-details', item.id]" class="card-btn">
+    <div class="image-container">
+      <img [src]="item.pictures[0]" alt="Item Image" />
+    </div>
+    <h3 class="h3">{{ item.type }}</h3>
+    <p class="price">{{ item.price }}€ / {{ item.peaces }}psc</p>
+  </a>
+</li>

@@ -1,0 +1,72 @@
+.event-container {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* aware that they are collapsing on the last one, and it works for the case */
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: rgba(137, 46, 46, 0.783);
+  border-radius: 20px;
+}
+.photo {
+  flex: 1 0 50%;
+  max-width: 250px;
+  height: auto;
+  outline: 2px solid #b8e6e3;
+  outline-offset: -0.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.description {
+  flex: 1 0 50%;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  max-width: 250px;
+  background-color: #fdfaeb;
+  outline: 2px solid #b8e6e3;
+  outline-offset: -0.5rem;
+  border-radius: 5px;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+  }
+  .photo,
+  .description {
+    max-width: 350px;
+    flex: 1;
+  }
+  .description p {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .description p {
+    font-size: 1.7rem;
+  }
+  .wrapper {
+    width: 50%;
+  }
+  .photo,
+  .description {
+    max-width: 1000px;
+  }
+}

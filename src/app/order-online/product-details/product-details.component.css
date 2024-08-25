@@ -1,0 +1,132 @@
+span {
+  display: block;
+}
+.product-details-container {
+  padding: 0.9rem;
+  margin: 200px 0 100px;
+  position: relative;
+  max-width: 1460px;
+}
+.back-btn {
+  text-decoration: underline;
+}
+.back-button-container {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+.selected-image {
+  padding: 1rem;
+  border: 1px solid #b8e6e3;
+  margin-bottom: 1rem;
+}
+.option-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.option-image {
+  flex: 0 1 calc(50% - 0.5rem);
+  overflow: hidden;
+  height: 180px;
+  margin-bottom: 0.5rem;
+}
+.option-image img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+h2.type {
+  font-size: 1.8rem;
+}
+.price {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.details-header p {
+  margin-bottom: 1rem;
+}
+
+/* FORM */
+.quantity {
+  display: block;
+  margin-bottom: 1rem;
+}
+.quantity-input {
+  width: 100%;
+}
+.form-body {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.btn-left,
+.btn-right {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  background-color: #c65234;
+  opacity: 0.8;
+  width: 40px;
+}
+.btn-right {
+  right: 0;
+}
+.icon {
+  font-style: normal;
+  color: #fff;
+  font-size: 50px;
+}
+.quantity-input {
+  text-align: center;
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  background-color: #fdfaeb;
+}
+.popupShown{
+ opacity: 0.2;
+}
+
+@media screen and (min-width: 768px) {
+  .product-details-container {
+    padding: 0 3rem;
+    margin: 200px auto 100px;
+  }
+  .option-image {
+    height: 350px;
+    flex: 0 1 30%;
+  }
+  .quantity-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .details-header p {
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (min-width: 990px) {
+  .content-container {
+    display: flex;
+  }
+  .images-browser {
+    flex: 1 0 55%;
+    padding-right: 1rem;
+  }
+  .selected-image {
+    margin-bottom: 1rem;
+  }
+  .product-details {
+    padding-left: 1.8rem;
+  }
+  .option-image {
+    height: auto;
+  }
+  .details-header p {
+    font-size: 1.3rem;
+  }
+  .price {
+    font-size: 1.8rem;
+  }
+}

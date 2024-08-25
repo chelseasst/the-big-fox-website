@@ -1,0 +1,57 @@
+<app-site-location class="site-location"></app-site-location>
+<!-- THE FIXED ELEMENT LOGO, MENU ICON, LOCATION -->
+<div class="logo-menu-wrapper">
+  <div class="logo-nav-fixed">
+    <div class="logo-nav-wrapper">
+      <!-- Logo -->
+      <div class="site-logo-container">
+        <a href="/">
+          <img
+            class="site-logo"
+            src="./../../../../assets/logo/fox-logo.jpg"
+            alt="The Big Fox Logo"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- MENU -->
+  <nav class="site-nav">
+    <ul class="site-nav-menu">
+      <li><a routerLink="our-story">Our Story</a></li>
+      <li><a routerLink="menu">Menu</a></li>
+      <li><a routerLink="gift-cards">Gift Cards</a></li>
+      <li><a routerLink="hours-and-location">Hours & Location</a></li>
+      <li><a routerLink="events-and-specials">Our Events & Specials</a></li>
+      <li><a routerLink="signup">Sign Up / Login</a></li>
+      <li class="site-nav-submenu">
+        <button
+          class="submenu-button"
+          [class.isActive]="isSubMenuShown"
+          (click)="toggleSubmenu()"
+        >
+          Order Online
+          <i
+            data-icon="font-awesome"
+            class="fa-solid fa-arrow-down"
+            *ngIf="!isSubMenuShown"
+          ></i>
+          <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>
+        </button>
+        <div class="sub-menu" *ngIf="isSubMenuShown">
+          <ul>
+            <ul>
+              <li><a routerLink="order-online-store">Store</a></li>
+              <li><a routerLink="order-online-coffee">Signiture Coffee</a></li>
+              <li>
+                <a routerLink="order-online-bakery">Signiture Baked Goods</a>
+              </li>
+              <li><a routerLink="order-online-cake">The Coffee Cake</a></li>
+              <li><a routerLink="order-online-merch">Merch</a></li>
+            </ul>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

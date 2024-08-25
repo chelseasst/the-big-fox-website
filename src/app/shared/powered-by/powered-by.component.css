@@ -1,0 +1,10 @@
+.site-powered-by {
+  padding: 10px 0px;
+  text-align: center;
+}
+a {
+  letter-spacing: 2.5px;
+  font-size: 0.8rem;
+  /* 16px */
+  text-transform: uppercase;
+}

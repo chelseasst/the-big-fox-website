@@ -1,0 +1,27 @@
+.section-initial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  width: 100%;
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: 2px solid #fdfaeb;
+  outline-offset: -1.2rem;
+  opacity: 0.9;
+  /* makes it more blured and aesthetic */
+  
+}
+.central-items-container {
+  margin: 0 auto;
+  max-width: 70%;
+}
+.logo-container {
+  z-index: 10;
+  margin-top: 35px;
+}
+.h1 {
+  text-align: center;
+  color: white;
+}

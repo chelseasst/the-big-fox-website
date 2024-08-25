@@ -1,0 +1,102 @@
+.logo-nav-fixed {
+  position: sticky;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+.logo-nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  opacity: 0.8;
+}
+
+.site-logo {
+  width: 120px;
+  height: auto;
+}
+.nav-toggle-btn i {
+  background-color: #fdfaeb;
+  padding: 0.5rem;
+}
+.submenu-button {
+  padding-bottom: 10px;
+}
+.site-header-mobile {
+  width: 100%;
+  height: 100vh;
+  padding: 20px 18px 60px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  overflow-y: auto;
+  background-color: #fdfaeb;
+}
+.site-header-mobi-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  padding-top: 2rem;
+}
+.close-icon {
+  text-align: end;
+}
+.site-nav {
+  margin-bottom: 1.5rem;
+}
+.site-nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  height: 100%;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #b8e6e3;
+}
+.site-nav-menu li,
+.site-nav-menu a {
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+.site-nav-menu a,
+.site-nav-menu button {
+  font-size: 1.3rem;
+}
+
+.site-nav-menu .active {
+  color: #c05033;
+}
+.site-nav-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.site-nav-submenu ul a {
+  font-size: 0.8rem;
+}
+app-site-socials {
+  display: block;
+  width: 100%;
+}
+.isActive {
+  color: #c05033;
+}
+
+@media screen and (min-width: 769px) {
+  .site-header-mobile {
+    font-size: 20px;
+  }
+  .site-logo {
+    width: 160px;
+  }
+  .logo-nav-wrapper i::before {
+    font-size: 35px;
+  }
+}
