@@ -18,11 +18,11 @@ export class OrderOnlineService {
   closePopup() {
     this.popupOpenStateSubject.next(false);
   }
-  addItemToCart(quantity:string) {
+  addItemToCart(quantity: string) {
     this.openPopup();
     //do the rest
   }
-  isPopUpOpen(){
-    return this.isPopupOpen$;
-  }
+  // isPopUpOpen() {
+  //   return this.isPopupOpen$;
+  // }
 }

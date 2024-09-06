@@ -67,7 +67,11 @@
           />
         </label>
         <!-- RECIPIENTS EMAIL -->
-        <label for="recipient-email" class="label">
+        <label
+          for="recipient-email"
+          class="label"
+          *ngIf="!digitalForm.get('emailCheckbox')?.value"
+        >
           <span class="bold"
             >Recipient's Email <span class="required"> - Required </span></span
           >
@@ -134,6 +138,7 @@
             name="email-checkbox"
             formControlName="emailCheckbox"
           />
+          <!-- checked -> value = true; unchecked -> value = false; -->
           <p class="email-checkbox-p">
             Email the gift to me so I can print it and give it in-person.
           </p>

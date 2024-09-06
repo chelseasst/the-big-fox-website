@@ -30,7 +30,6 @@ export class MapComponent implements AfterViewInit {
       //ROADMAP
       mapId: '45dae20e6f6ad0eb',
       styles: mapStyles,
-      
     });
 
     const marker = new AdvancedMarkerElement({

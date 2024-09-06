@@ -1,46 +1,61 @@
 <!-- THE FIXED ELEMENT LOGO, MENU ICON, LOCATION -->
-<div class="logo-nav-fixed" *ngIf="isShown === 'up'">
-  <div class="logo-nav-wrapper">
-    <!-- Logo -->
-    <div class="site-logo-container">
-      <a href="/">
-        <img
-          class="site-logo"
-          src="./../../../../assets/logo/fox-logo.jpg"
-          alt="The Big Fox Logo"
-        />
-      </a>
+<div class="header-container">
+  <!-- LOGO -->
+  <div class="logo-nav-fixed">
+    <div class="logo-nav-wrapper">
+      <!-- Logo -->
+      <div class="site-logo-container">
+        <a href="/">
+          <img
+            class="site-logo"
+            src="./../../../../assets/logo/fox-logo.jpg"
+            alt="The Big Fox Logo"
+          />
+        </a>
+      </div>
     </div>
-    <!-- Menu button -->
-    <button class="nav-toggle-btn">
+  </div>
+  <!-- SITE LOCATION -->
+  <app-site-location class="site-location"></app-site-location>
+  <!-- MENU BUTTONS -->
+  <div class="buttons-wrapper">
+    <button class="nav-toggle-btn open-btn" *ngIf="menuState == 'up'">
       <i
         data-icon="font-awesome"
         class="fa-solid fa-bars"
         (click)="toggleMainMenuDown()"
       ></i>
     </button>
+    <button
+      class="nav-toggle-btn close-btn"
+      *ngIf="menuState == 'down'"
+    >
+      <i
+        data-icon="font-awesome"
+        class="fa-solid fa-x"
+        (click)="toggleMainMenuUp()"
+      ></i>
+    </button>
   </div>
 </div>
-<app-site-location class="site-location"></app-site-location>
 
 <!-- THE MENU -->
-<div class="site-header-mobile" [@slideDownUp]="isShown">
+<div class="site-header-mobile" [@slideDownUp]="menuState">
   <!-- DropDown Navigation -->
-  <div class="close-icon">
-    <i
-      data-icon="font-awesome"
-      class="fa-solid fa-x"
-      (click)="toggleMainMenuUp()"
-    ></i>
-  </div>
   <div class="site-header-mobi-panel">
     <nav class="site-nav">
       <ul class="site-nav-menu">
-        <li><a routerLink="our-story">Our Story</a></li>
-        <li><a routerLink="menu">Menu</a></li>
-        <li><a routerLink="gift-cards">Gift Cards</a></li>
-        <li class="site-nav-submenu">
-          <a class="submenu-button isActive" (click)="toggleSubMenu()">
+        <li>
+          <a routerLink="our-story" routerLinkActive="activeLink">Our Story</a>
+        </li>
+        <li><a routerLink="menu" routerLinkActive="activeLink">Menu</a></li>
+        <li>
+          <a routerLink="gift-cards" routerLinkActive="activeLink"
+            >Gift Cards</a
+          >
+        </li>
+        <li class="site-nav-submenu" routerLinkActive="activeLink">
+          <a class="submenu-btn" [ngClass]="{'submenu-btn-active' :  isSubMenuShown } " (click)="toggleSubMenu()">
             Order Online
             <i
               data-icon="font-awesome"
@@ -51,24 +66,54 @@
           </a>
           <div class="sub-menu" *ngIf="isSubMenuShown">
             <ul>
-              <li><a routerLink="order-online-store">Store</a></li>
               <li>
-                <a routerLink="order-online-store">Signiture Coffee</a>
+                <a routerLink="order-online-store" routerLinkActive="activeLink"
+                  >Store</a
+                >
               </li>
               <li>
-                <a routerLink="order-online-bakery">Signiture Baked Goods</a>
+                <a routerLink="order-online-store" routerLinkActive="activeLink"
+                  >Signiture Coffee</a
+                >
               </li>
-              <li><a routerLink="order-online-cake">The Coffee Cake</a></li>
-              <li><a routerLink="order-online-merch">Merch</a></li>
+              <li>
+                <a
+                  routerLink="order-online-bakery"
+                  routerLinkActive="activeLink"
+                  >Signiture Baked Goods</a
+                >
+              </li>
+              <li>
+                <a routerLink="order-online-cake" routerLinkActive="activeLink"
+                  >The Coffee Cake</a
+                >
+              </li>
+              <li>
+                <a routerLink="order-online-merch" routerLinkActive="activeLink"
+                  >Merch</a
+                >
+              </li>
             </ul>
           </div>
         </li>
-        <li><a routerLink="hours-and-location">Hours & Location</a></li>
-        <li><a routerLink="events-and-specials">Our Events & Specials</a></li>
-        <li><a routerLink="signup">Sign Up / Login</a></li>
+        <li>
+          <a routerLink="hours-and-location" routerLinkActive="activeLink"
+            >Hours & Location</a
+          >
+        </li>
+        <li>
+          <a routerLink="events-and-specials" routerLinkActive="activeLink"
+            >Our Events & Specials</a
+          >
+        </li>
+        <li>
+          <a routerLink="signup" routerLinkActive="activeLink"
+            >Sign Up / Login</a
+          >
+        </li>
       </ul>
     </nav>
-    <app-site-socials></app-site-socials>
+    <app-site-socials class="socials"></app-site-socials>
     <app-site-location></app-site-location>
     <app-powered-by></app-powered-by>
   </div>

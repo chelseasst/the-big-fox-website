@@ -1,7 +1,7 @@
 .event-container {
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   /* aware that they are collapsing on the last one, and it works for the case */
 }
 .wrapper {
@@ -12,6 +12,7 @@
   margin: 0 auto;
   padding: 1rem;
   background-color: rgba(137, 46, 46, 0.783);
+  box-shadow: 0px 0px 20px 3px rgb(160 91 86);
   border-radius: 20px;
 }
 .photo {

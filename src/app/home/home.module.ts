@@ -5,10 +5,11 @@ import { MainMobileComponent } from './home-main-mobile/main-mobile.component';
 import { MainDesktopComponent } from './home-main-desktop/main-desktop.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [HomeComponent, MainDesktopComponent, MainMobileComponent],
-  imports: [HomeRoutingModule, SharedModule, CoreModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, CoreModule],
   exports: [HomeComponent],
   providers: [],
 })

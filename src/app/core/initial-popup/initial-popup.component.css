@@ -1,0 +1,188 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+.popup-container {
+  background-color: #000000d2;
+  width: 100%;
+  padding: 0 6px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+.popup-content-wrapper {
+  height: 100%;
+  max-width: 640px;
+  background-color: #fdfaeb;
+  margin: 2rem auto;
+  /* change */
+  padding: 2.5rem 0.8rem;
+  position: relative;
+}
+.close-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.close-icon i {
+  transition: color 0.1s ease-in;
+}
+.close-icon i:hover {
+  color: #c05033;
+}
+/* DEVICE */
+.device-container {
+  position: relative;
+  width: 250px;
+  height: 470px;
+  margin: 0 auto;
+  border: 0.8rem solid black;
+  background-color: black;
+  border-radius: 40px;
+}
+.device-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: calc(1.3rem + 51px);
+  height: 100%;
+  background-color: white;
+  border-radius: 29px;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+.device-content-pad {
+  padding-bottom: 1.3rem;
+}
+.black-box {
+  position: absolute;
+  top: 0;
+  /* the width - the width of the box / 2 */
+  margin-left: 2rem; 
+  margin-right: 2rem;
+  background-color: black;
+  height: 20px;
+  width: 150px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.circle-camera {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(61, 57, 57, 0.723);
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  border-radius: 50%;
+}
+
+.last-message {
+  text-decoration: underline;
+  animation: bounce 0.8s ease-in-out;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.friend-text-div {
+  display: flex;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 10rem;
+}
+.text {
+  /* change */
+  font-size: 0.8rem;
+}
+
+img {
+  height: 1.8rem;
+  align-self: flex-end;
+}
+/* typing */
+.typing {
+  display: flex;
+  position: absolute;
+  bottom: 1.3rem;
+  left: 0;
+  margin-left: 0.5rem;
+}
+.typing-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.2rem;
+  border: 1px solid rgb(225, 221, 221);
+  background: white;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 0.7rem;
+  /* height: fit-content; */
+  width: fit-content;
+  padding: 0rem 1rem;
+  margin: 0.12rem 0.5rem;
+  max-height: 32px;
+}
+
+.typing-container i {
+  font-size: 0.3rem;
+}
+/* FRIEND TEXT */
+.friend-text {
+  background: white;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  margin: 0.12rem 0.5rem;
+}
+.friend-text p {
+  color: black;
+}
+/* MY TEXT */
+.my-text-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+.my-text-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.my-text {
+  background: rgb(238, 238, 238);
+  color: black;
+  border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem 0.5rem;
+  margin: 0.12rem 0.5rem;
+}
+
+.my-text-container > div:first-child {
+  border-radius: 0.5rem 1rem 0.2rem 0.5rem;
+}
+.my-text-container > div:last-child {
+  border-radius: 0.5rem 0.2rem 1rem 0.5rem;
+}
+.friend-text-container > div:first-child {
+  border-radius: 1rem 0.5rem 0.2rem 0.5rem;
+}
+.friend-text-container > div:last-child {
+  border-radius: 0.5rem 0.2rem 0.5rem 1rem;
+}

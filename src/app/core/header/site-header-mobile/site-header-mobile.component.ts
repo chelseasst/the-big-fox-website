@@ -28,19 +28,36 @@ import { MenuNavService } from './menu-nav.service';
           visibility: 'hidden',
         })
       ),
-      transition('down <=> up', [animate('1s ease-in-out')]),
+      transition('down <=> up', [animate('0.5s ease-out')]),
       //the seconds that the sliding will last
     ]),
+    // trigger('btnVisibleState', [
+    //   state(
+    //     'hidden',
+    //     style({
+    //       opacity: 0,
+    //       backgroundColor: 'transparent',
+    //     })
+    //   ),
+    //   state(
+    //     'visible',
+    //     style({
+    //       opacity: 1,
+    //       color: '#c65234',
+    //     })
+    //   ),
+    //   transition('hidden <=> visible', [animate('1s ease')])
+    // ]),
   ],
 })
 export class SiteHeaderMobileComponent implements OnInit {
-  isShown: string = 'up';
+  menuState: string = 'up';
   isSubMenuShown: boolean = false;
   constructor(private menuNavService: MenuNavService) {}
 
   ngOnInit(): void {
     this.menuNavService.menuStateObs$.subscribe((state) => {
-      this.isShown = state;
+      this.menuState = state;
     });
   }
   toggleMainMenuDown() {

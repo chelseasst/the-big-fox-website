@@ -40,12 +40,6 @@ a {
   text-align: center;
 }
 
-/* MAP */
-.mapContainer {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
 @media screen and (min-width: 769px) {
   .quote-section {
     margin: 0rem 10rem;

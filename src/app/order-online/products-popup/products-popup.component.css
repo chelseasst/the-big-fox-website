@@ -17,7 +17,18 @@
   max-width: 260px;
   max-height: 90vh;
   padding: 1.5rem;
+  animation: popup 1s ease-in-out forwards;
 }
+
+@keyframes popup {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .submit-btn {
   margin: 5px;
 }
@@ -33,9 +44,6 @@
 .col-2 {
   text-align: center;
 }
-/* .col-2 * {
-  margin-bottom: 1rem;
-} */
 .actions {
   display: flex;
   flex-direction: column;
@@ -45,6 +53,7 @@
   top: -1.5rem;
   right: -1rem;
 }
+
 @media screen and (min-width: 768px) {
   .details {
     flex-direction: row;

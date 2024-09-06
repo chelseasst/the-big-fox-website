@@ -34,20 +34,20 @@
     <!-- MENU -->
     <div class="background-wrapper">
       <section class="menu-nav">
-        <app-button
-          class="btn btn-drinks"
-          [navigateTo]="'/menu/menu-drinks'"
-          [text]="'Our Drinks Menu'"
-          [clicked]="isClickedD"
-          (click)="toggleClickedDrinks()"
-        ></app-button>
-        <app-button
-          class="btn btn-bakery"
-          [navigateTo]="'/menu/menu-bakery'"
-          [text]="'Our Baked Goods Menu'"
-          [clicked]="isClickedB"
-          (click)="toggleClickedBakery()"
-        ></app-button>
+        <button
+          class="submit-btn btn-drinks"
+          routerLink="/menu/menu-drinks"
+          routerLinkActive="activeButton"
+        >
+          Drinks Menu
+        </button>
+        <button
+          class="submit-btn btn-bakery"
+          routerLink="/menu/menu-bakery"
+          routerLinkActive="activeButton"
+        >
+          Baked Goods Menu
+        </button>
       </section>
 
       <section class="menu-body">

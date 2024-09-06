@@ -7,10 +7,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HeaderComponent {
   isDesktop: boolean = false;
-  constructor(private breakPointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
-    this.breakPointObserver
+    this.breakpointObserver
       .observe(['(max-width: 1000px)']) //condition
       .subscribe((result) => {
         // { matches: false, breakpoints:{ (max-width: 1000px) : false} }

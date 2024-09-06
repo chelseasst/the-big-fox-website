@@ -1,6 +1,13 @@
-<app-header></app-header>
-<router-outlet class="router-outlet"></router-outlet>
-<app-footer></app-footer>
+<app-initial-popup
+  *ngIf="showInitialPopup"
+  (close)="closePopup()"
+></app-initial-popup>
+
+<div class="popup-background" [ngClass]="{ popupShown: showInitialPopup }">
+  <app-header></app-header>
+  <router-outlet class="router-outlet"></router-outlet>
+  <app-footer></app-footer>
+</div>
 <!-- <app-footer></app-footer> -->
 
 <!-- <app-footer></app-footer> -->

@@ -14,6 +14,7 @@ import { GiftCardsModule } from './gift-cards/gift-cards.module';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from './menu/menu.module';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

@@ -12,8 +12,9 @@
       </p>
     </section>
 
-    <!-- MOBILE -->
-    <!-- <home-main-mobile></home-main-mobile> -->
-    <home-main-desktop></home-main-desktop>
+    <home-main-desktop *ngIf="isDesktop; else mobile"></home-main-desktop>
+    <ng-template #mobile>
+      <home-main-mobile></home-main-mobile>
+    </ng-template>
   </main>
 </div>

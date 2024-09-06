@@ -1,3 +1,6 @@
+p{
+  font-size: 1.3rem;
+}
 .home-section-mobile {
   position: relative;
 }
@@ -43,7 +46,7 @@
   opacity: 1;
   transform: scale(1);
 }
-we must select the element .content h2 {
+.content h2 {
   font-style: italic;
   padding-bottom: 1rem;
 }

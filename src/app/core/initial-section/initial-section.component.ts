@@ -41,4 +41,5 @@ export class InitialSectionComponent implements OnInit {
       this.pageState = 'visible';
     }, 100);
   }
+  
 }

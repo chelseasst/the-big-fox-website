@@ -2,7 +2,6 @@
   margin-top: 200px;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin-bottom: 60px;
 
 }
 .signup-intro {
@@ -16,9 +15,11 @@
 .signup-intro p {
   text-align: center;
 }
+
 @media screen and (min-width: 1440px) {
   .signup-intro,
   .signup-nav {
-    margin: 0 600px;
+    margin-left:  600px;
+    margin-right: 600px;
   }
 }

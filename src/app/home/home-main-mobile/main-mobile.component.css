@@ -7,7 +7,7 @@
 }
 .images-wrapper img {
   flex: 1;
-  max-height: 150px;
+  max-height: 180px;
   width: 100%;
   object-fit: cover;
   /* the image covers the container without stretching  */
@@ -17,7 +17,6 @@
   margin-bottom: 30px;
 }
 .content {
-  height: 100vh;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;

@@ -1,3 +1,9 @@
+/* MAP */
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
 .wrapper {
   border: 1rem solid #b8e6e3;
   position: relative;
@@ -5,7 +11,7 @@
 .map {
   height: 400px;
   width: 100%;
-  z-index: 100;
+  z-index: 40;
 }
 .navigate-to {
   width: 100%;

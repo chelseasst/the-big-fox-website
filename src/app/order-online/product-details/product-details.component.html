@@ -1,7 +1,4 @@
-<div
-  class="product-details-container"
-  [ngClass]="{ popupShown: isPopupOpen }"
->
+<div class="product-details-container" [ngClass]="{ popupShown: isPopupOpen }">
   <main>
     <div class="back-button-container">
       <p>
@@ -74,7 +71,13 @@
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="submit-btn" (click)="addToCart(quantityInput.value)">Add to cart</button>
+              <button
+                type="button"
+                class="submit-btn"
+                (click)="addToCart(quantityInput.value)"
+              >
+                Add to cart
+              </button>
             </div>
           </form>
         </div>

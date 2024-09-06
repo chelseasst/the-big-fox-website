@@ -1,12 +1,9 @@
 <app-banner-giftcard></app-banner-giftcard>
 
-<site-header-desktop
-  class="desktop"
-  *ngIf="isDesktop; else mobile"
-></site-header-desktop>
+<site-header-desktop *ngIf="isDesktop; else mobile"></site-header-desktop>
 
 <ng-template #mobile>
-  <site-header-mobile class="mobile"></site-header-mobile>
+  <site-header-mobile></site-header-mobile>
 </ng-template>
 
 <!-- unnecessary DOM rendering -->

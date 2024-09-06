@@ -20,15 +20,13 @@ import { Subscribable, Subscription } from 'rxjs';
         style({
           opacity: 0,
           transform: 'scale(0.7)',
-          'transform-origin': 'center center',
         })
       ),
       state(
         'visible',
         style({
           opacity: 1,
-          ttransform: 'scale(1)',
-          'transform-origin': 'center center',
+          transform: 'scale(1)',
         })
       ),
       transition('hidden <=> visible', [animate('1s ease-in-out')]),
@@ -40,18 +38,18 @@ export class ProductsPopupComponent implements OnInit, OnDestroy {
   subsc!: Subscription;
   constructor(private popupService: OrderOnlineService) {}
 
-  closePopUp() {
+  closePopUpAction() {
     this.isPopupOpen = false;
+    //for this component - so the animation has time to happen,
+    // before the parent removes the component
     setTimeout(() => {
       this.popupService.closePopup();
-    }, 400);
+    }, 400); //for the parent component
   }
   ngOnInit(): void {
-    this.subsc = this.popupService.isPopupOpen$.subscribe((isOpen) => {
-      setTimeout(() => {
+      this.subsc = this.popupService.isPopupOpen$.subscribe((isOpen) => {
         this.isPopupOpen = isOpen;
-      }, 100);
-    });
+      });
   }
   ngOnDestroy() {
     this.subsc.unsubscribe();

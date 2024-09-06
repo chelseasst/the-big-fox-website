@@ -13,10 +13,14 @@
 .desktop-footer {
   display: none;
 }
-.content-wrapper {
+.desktop-footer-wrapper {
   position: fixed;
   right: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
   bottom: 0;
   z-index: 200;
   width: 100%;
@@ -35,26 +39,17 @@
 }
 .navigation-wrapper {
   background-color: #fdfaeb;
-  padding-left: 1rem;
+  padding: 0.7rem;
 }
 .email-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 1em 0em;
+  gap: 1rem;
 }
-
-@media screen and (min-width: 769px) {
-  .content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-top: 1rem;
-  }
-  .email-wrapper {
-    flex-direction: row;
-    justify-content: center;
-  }
+.submit-btn {
+  margin: 0;
 }
 @media screen and (min-width: 1000px) {
   .mobile-footer {

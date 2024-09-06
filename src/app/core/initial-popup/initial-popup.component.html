@@ -1,0 +1,64 @@
+<div class="popup-container">
+  <div>
+    <div class="popup-content-wrapper">
+      <div class="close-icon">
+        <button class="close-btn" (click)="closePopup()">
+          <i data-icon="font-awesome" class="fa-solid fa-x"></i>
+        </button>
+      </div>
+      <div class="device-container">
+        <div
+          class="device-content"
+          [ngClass]="{ 'device-content-pad': !isTyping }"
+        >
+          <div class="black-box">
+            <div class="circle-camera"></div>
+          </div>
+          <div class="messages-container">
+            <ng-container *ngFor="let message of chat1; let i = index">
+              <div
+                [ngClass]="{
+                  'friend-text-div': message.sender == 'friend',
+                  'my-text-div': message.sender == 'me',
+                  'last-message': i == 4
+                }"
+                [@messageAnimation]
+              >
+                <img
+                  src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                  *ngIf="message.sender === 'friend'"
+                />
+                <div
+                  [ngClass]="{
+                    'friend-text': message.sender == 'friend',
+                    'my-text': message.sender == 'me'
+                  }"
+                >
+                  <p class="text">{{ message.text }}</p>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="typing" *ngIf="isTyping" [@messageAnimationTyping]>
+          <img
+            src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+          />
+          <div class="typing-container">
+            <span class="dot-1" [@typingState]="typingState[0]"
+              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
+            ></span>
+            <span class="dot-2" [@typingState]="typingState[1]"
+              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
+            ></span>
+            <span class="dot-3" [@typingState]="typingState[2]"
+              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-content"></div>
+    </div>
+  </div>
+</div>

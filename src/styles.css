@@ -109,13 +109,15 @@ h6 {
   letter-spacing: 1px;
   width: 100%;
 }
-.submit-btn:hover{
+.submit-btn:hover {
   outline: 1px solid #ac472d;
   outline-offset: 3px;
   background-color: #ac472d;
 }
-.submit-btn:disabled{
-  background-color: rgba(196, 105, 82, 0.763);
+
+.activeButton {
+  outline: 0;
+  background-color: #ac472d;
 }
 @media screen and (min-width: 768px) {
   h1 {
@@ -126,7 +128,7 @@ h6 {
   }
 }
 @media screen and (min-width: 1000px) {
-  .submit-btn{
+  .submit-btn {
     padding: 0.5rem 0.9rem;
     font-size: 1rem;
   }
