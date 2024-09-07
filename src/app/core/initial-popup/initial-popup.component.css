@@ -1,7 +1,17 @@
 :host {
   display: block;
+  position: fixed;
+  z-index: 1000;
   width: 100%;
   height: 100vh;
+}
+img {
+  height: 1.8rem;
+  align-self: flex-end;
+}
+p,
+i {
+  font-size: 0.8rem;
 }
 .popup-container {
   background-color: #000000d2;
@@ -27,11 +37,13 @@
   top: 1rem;
 }
 .close-icon i {
+  font-size: 1rem;
   transition: color 0.1s ease-in;
 }
 .close-icon i:hover {
   color: #c05033;
 }
+
 /* DEVICE */
 .device-container {
   position: relative;
@@ -47,7 +59,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: calc(1.3rem + 51px);
+  /* if typing */
+  padding-bottom: calc(1rem + 51px);
   height: 100%;
   background-color: white;
   border-radius: 29px;
@@ -55,13 +68,13 @@
   font-family: "Montserrat", sans-serif;
 }
 .device-content-pad {
-  padding-bottom: 1.3rem;
+  padding-bottom: 1rem;
 }
 .black-box {
   position: absolute;
   top: 0;
   /* the width - the width of the box / 2 */
-  margin-left: 2rem; 
+  margin-left: 2rem;
   margin-right: 2rem;
   background-color: black;
   height: 20px;
@@ -69,21 +82,70 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
 .circle-camera {
-  width: 12px;
-  height: 12px;
+  width: 0.7rem;
+  height: 0.7rem;
   background-color: rgba(61, 57, 57, 0.723);
   position: absolute;
-  top: 3px;
-  left: 7px;
+  top: 0.1rem;
+  left: 0.5rem;
   border-radius: 50%;
+}
+
+/* TYPING */
+.typing {
+  display: flex;
+  position: absolute;
+  bottom: 1.3rem;
+  left: 0;
+  margin-left: 0.5rem;
+}
+.typing-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.2rem;
+  border: 1px solid rgb(225, 221, 221);
+  background: white;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 0.7rem;
+  width: fit-content;
+  padding: 0rem 1rem;
+  margin: 0.12rem 0.5rem;
+  max-height: 32px;
+}
+
+.typing-container i {
+  font-size: 0.3rem;
+}
+
+/* FRIEND TEXT */
+.friend-text-div {
+  display: flex;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 10rem;
+}
+.friend-text {
+  background: white;
+  border: 1px solid rgb(225, 221, 221);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  margin: 0.12rem 0.5rem;
 }
 
 .last-message {
   text-decoration: underline;
   animation: bounce 0.8s ease-in-out;
 }
+.last-message .text {
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+.last-message .text:hover {
+  color: rgb(112, 104, 104);
+  cursor: pointer;
+}
+
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -102,58 +164,6 @@
   }
 }
 
-.friend-text-div {
-  display: flex;
-  margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
-  max-width: 10rem;
-}
-.text {
-  /* change */
-  font-size: 0.8rem;
-}
-
-img {
-  height: 1.8rem;
-  align-self: flex-end;
-}
-/* typing */
-.typing {
-  display: flex;
-  position: absolute;
-  bottom: 1.3rem;
-  left: 0;
-  margin-left: 0.5rem;
-}
-.typing-container {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.2rem;
-  border: 1px solid rgb(225, 221, 221);
-  background: white;
-  border: 1px solid rgb(225, 221, 221);
-  border-radius: 0.7rem;
-  /* height: fit-content; */
-  width: fit-content;
-  padding: 0rem 1rem;
-  margin: 0.12rem 0.5rem;
-  max-height: 32px;
-}
-
-.typing-container i {
-  font-size: 0.3rem;
-}
-/* FRIEND TEXT */
-.friend-text {
-  background: white;
-  border: 1px solid rgb(225, 221, 221);
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.8rem;
-  margin: 0.12rem 0.5rem;
-}
-.friend-text p {
-  color: black;
-}
 /* MY TEXT */
 .my-text-div {
   display: flex;
@@ -185,4 +195,72 @@ img {
 }
 .friend-text-container > div:last-child {
   border-radius: 0.5rem 0.2rem 0.5rem 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .device-container {
+    width: 250px;
+    height: 500px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .popup-content-wrapper {
+    max-width: 800px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .popup-content-wrapper {
+    max-width: 950px;
+  }
+  .device-container {
+    width: 400px;
+    height: 750px;
+    border: 1.3rem solid black;
+    border-radius: 50px;
+  }
+  .device-content {
+    /* if typing */
+    padding-bottom: calc(1.3rem + 51px);
+    border-radius: 35px;
+  }
+  .device-content-pad {
+    padding-bottom: 1.3rem;
+  }
+
+  .black-box {
+    /* the width - the width of the box / 2 */
+    margin-left: 4.8rem;
+    margin-right: 4.8rem;
+    height: 30px;
+    width: 180px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  p {
+    font-size: 1.3rem;
+  }
+  img {
+    height: 2.5rem;
+  }
+  .typing-container i {
+    font-size: 0.7rem;
+  }
+  .friend-text-div {
+    display: flex;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    max-width: 15rem;
+  }
+  .typing-container {
+    padding: 0rem 1.3rem;
+    margin: 0.2rem 0.5rem;
+    max-height: 72px;
+  }
+  .friend-text,
+  .my-text {
+    padding: 0.7rem 0.9rem;
+  }
+  .close-icon i {
+    font-size: 2rem;
+  }
 }

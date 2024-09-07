@@ -1,6 +1,6 @@
 <div class="popup-container">
   <div>
-    <div class="popup-content-wrapper">
+    <div class="popup-content-wrapper" [@initialPopupState]="pageState">
       <div class="close-icon">
         <button class="close-btn" (click)="closePopup()">
           <i data-icon="font-awesome" class="fa-solid fa-x"></i>
@@ -34,7 +34,18 @@
                     'my-text': message.sender == 'me'
                   }"
                 >
-                  <p class="text">{{ message.text }}</p>
+                  <p class="text" *ngIf="i !== 4; else lastMessage">
+                    {{ message.text }}
+                  </p>
+                  <ng-template #lastMessage>
+                    <p
+                      class="text"
+                      routerLink="events-and-specials"
+                      (click)="closePopup()"
+                    >
+                      {{ message.text }}
+                    </p>
+                  </ng-template>
                 </div>
               </div>
             </ng-container>

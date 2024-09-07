@@ -1,3 +1,4 @@
-.popupShown{
-    opacity: 0.3;
+.popupShown {
+  opacity: 1;
+  overflow: hidden;
 }

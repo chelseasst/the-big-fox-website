@@ -21,6 +21,23 @@ import { ChatMessage } from 'src/app/types/chat';
   templateUrl: './initial-popup.component.html',
   styleUrls: ['./initial-popup.component.css'],
   animations: [
+    trigger('initialPopupState', [
+      state(
+        'hidden',
+        style({
+          transform: 'scale(0.2)',
+          opacity: 0,
+        })
+      ),
+      state(
+        'visible',
+        style({
+          transform: 'scale(1)',
+          opacity: 1,
+        })
+      ),
+      transition('hidden <=> visible', [animate('0.5s ease-in')]),
+    ]),
     trigger('typingState', [
       state('up', style({ 'margin-bottom': '7px' })),
       state('down', style({ 'margin-bottom': '0' })),
@@ -29,18 +46,25 @@ import { ChatMessage } from 'src/app/types/chat';
     trigger('messageAnimation', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(-100%)' }),
-        animate('0.3s ease-in', style({ opacity: 1, transform: 'translateX(0)' })),
+        animate(
+          '0.3s ease-in',
+          style({ opacity: 1, transform: 'translateX(0)' })
+        ),
       ]),
     ]),
     trigger('messageAnimationTyping', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(-23px)' }),
-        animate('0.3s ease-in', style({ opacity: 1, transform: 'translateX(0)' })),
+        animate(
+          '0.3s ease-in',
+          style({ opacity: 1, transform: 'translateX(0)' })
+        ),
       ]),
     ]),
   ],
 })
-export class InitialPopupComponent implements AfterViewInit {
+export class InitialPopupComponent implements OnInit, AfterViewInit {
+  pageState: 'visible' | 'hidden' = 'hidden';
   isTyping: boolean = true;
   typingState: ('up' | 'down')[] = ['down', 'down', 'down'];
   @Output() close = new EventEmitter<void>();
@@ -71,12 +95,6 @@ export class InitialPopupComponent implements AfterViewInit {
       sender: 'me',
       type: 'text',
     },
-    // {
-    //   id: '5',
-    //   text: 'Be there for sure !',
-    //   sender: 'me',
-    //   type: 'text',
-    // },
     {
       id: '6',
       text: 'thebigfox.com/events-and-specials',
@@ -84,12 +102,22 @@ export class InitialPopupComponent implements AfterViewInit {
       type: 'text',
     },
   ];
+  ngOnInit() {
+    setTimeout(() => {
+      this.pageState = 'visible';
+    }, 500);
+  }
   ngAfterViewInit(): void {
-    this.typingSimulation(); //takes 1200s
-    this.displayMessages();
+    setTimeout(() => {
+      this.typingSimulation(); //takes 1200s
+      this.displayMessages();
+    }, 500);
   }
   closePopup() {
-    this.close.emit();
+    this.pageState = 'hidden';
+    setTimeout(() => {
+      this.close.emit();
+    }, 500);
   }
   displayMessages() {
     let index = 0;
@@ -130,13 +158,13 @@ export class InitialPopupComponent implements AfterViewInit {
         );
         currentIndex++;
         if (currentIndex > 2) {
-          //we reached the last dot
+          //we've reached the last dot
           currentIndex = 0; //and we start again, until iteration N2 completes
         }
       } else {
         clearInterval(savedInterval);
         this.typingState = ['down', 'down', 'down'];
       }
-    }, 150); //less that the animation , so the dot moves before the other is home, making it more like insta
+    }, 150); //less than the animation, so the dot moves before the other is home;
   }
 }

@@ -26,10 +26,7 @@
         (click)="toggleMainMenuDown()"
       ></i>
     </button>
-    <button
-      class="nav-toggle-btn close-btn"
-      *ngIf="menuState == 'down'"
-    >
+    <button class="nav-toggle-btn close-btn" *ngIf="menuState == 'down'">
       <i
         data-icon="font-awesome"
         class="fa-solid fa-x"
@@ -55,7 +52,11 @@
           >
         </li>
         <li class="site-nav-submenu" routerLinkActive="activeLink">
-          <a class="submenu-btn" [ngClass]="{'submenu-btn-active' :  isSubMenuShown } " (click)="toggleSubMenu()">
+          <a
+            class="submenu-btn"
+            [ngClass]="{ 'submenu-btn-active': isSubMenuShown }"
+            (click)="toggleSubMenu()"
+          >
             Order Online
             <i
               data-icon="font-awesome"

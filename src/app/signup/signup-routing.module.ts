@@ -4,9 +4,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'signup', pathMatch: 'full' },
   {
-    path: 'signup',
+    path: '',
     component: SignupComponent,
     children: [
       { path: 'login', component: LoginComponent },
