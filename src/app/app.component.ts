@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { OrderOnlineService } from './order-online/order-online.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   showInitialPopup: boolean = false;
-  constructor(private renderer: Renderer2) {}
+  isCartVisible$ = this.orderOnlineService.isCartVisible$;
+  constructor(private renderer: Renderer2, private orderOnlineService: OrderOnlineService) { }
   ngOnInit(): void {
     const hasVisited = sessionStorage.getItem('hasVisited');
     if (!hasVisited) {
@@ -18,7 +20,6 @@ export class AppComponent implements OnInit {
   }
   togglePopup() {
     if (this.showInitialPopup) {
-      console.log('class added');
       this.renderer.addClass(document.body, 'no-scroll');
     } else {
       this.renderer.removeClass(document.body, 'no-scroll');
@@ -26,7 +27,6 @@ export class AppComponent implements OnInit {
   }
   closePopup() {
     this.showInitialPopup = false;
-
     this.togglePopup();
   }
 }

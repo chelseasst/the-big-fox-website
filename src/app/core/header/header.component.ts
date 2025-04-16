@@ -7,15 +7,15 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HeaderComponent {
   isDesktop: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(max-width: 1000px)']) //condition
+      .observe(['(max-width: 999px)'])
       .subscribe((result) => {
-        // { matches: false, breakpoints:{ (max-width: 1000px) : false} }
         this.isDesktop = !result.matches;
-        //if the condition matches => true
+        //returns true if matching the condition
+        //return false if not matching the condition -> desktop
       });
   }
 }

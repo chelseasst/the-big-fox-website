@@ -5,12 +5,8 @@
     <div class="logo-nav-wrapper">
       <!-- Logo -->
       <div class="site-logo-container">
-        <a href="/">
-          <img
-            class="site-logo"
-            src="./../../../../assets/logo/fox-logo.jpg"
-            alt="The Big Fox Logo"
-          />
+        <a routerLink="/home">
+          <img class="site-logo" src="./../../../../assets/logo/fox-logo.jpg" alt="The Big Fox Logo" />
         </a>
       </div>
     </div>
@@ -26,67 +22,41 @@
         <a routerLink="gift-cards" routerLinkActive="activeLink">Gift Cards</a>
       </li>
       <li>
-        <a routerLink="hours-and-location" routerLinkActive="activeLink"
-          >Hours & Location</a
-        >
-      </li>
-      <li>
-        <a routerLink="events-and-specials" routerLinkActive="activeLink"
-          >Our Events & Specials</a
-        >
-      </li>
-      <li>
-        <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
+        <a routerLink="hours-and-location" routerLinkActive="activeLink">Hours & Location</a>
       </li>
       <li class="site-nav-submenu">
-        <a
-          class="submenu-button"
-          [class.isActive]="isSubMenuShown"
-          (click)="toggleSubmenu()"
-        >
+        <a class="submenu-button" [class.isActive]="isSubMenuShown" (click)="toggleSubmenu()">
           Order Online
-          <i
-            data-icon="font-awesome"
-            class="fa-solid fa-arrow-down"
-            *ngIf="!isSubMenuShown"
-          ></i>
+          <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>
           <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>
         </a>
         <div class="sub-menu" *ngIf="isSubMenuShown">
           <ul>
             <ul>
               <li>
-                <a routerLink="order-online-store" routerLinkActive="activeLink"
-                  >Store</a
-                >
+                <a routerLink="order-online/store" routerLinkActive="activeLink">Store</a>
               </li>
               <li>
-                <a
-                  routerLink="order-online-coffee"
-                  routerLinkActive="activeLink"
-                  >Signiture Coffee</a
-                >
+                <a routerLink="order-online/coffee" routerLinkActive="activeLink">Signiture Coffee</a>
               </li>
               <li>
-                <a
-                  routerLink="order-online-bakery"
-                  routerLinkActive="activeLink"
-                  >Signiture Baked Goods</a
-                >
+                <a routerLink="order-online/bakery" routerLinkActive="activeLink">Signiture Baked Goods</a>
               </li>
               <li>
-                <a routerLink="order-online-cake" routerLinkActive="activeLink"
-                  >The Coffee Cake</a
-                >
+                <a routerLink="order-online/cakes" routerLinkActive="activeLink">The Coffee Cake</a>
               </li>
               <li>
-                <a routerLink="order-online-merch" routerLinkActive="activeLink"
-                  >Merch</a
-                >
+                <a routerLink="order-online/merch" routerLinkActive="activeLink">Merch</a>
               </li>
             </ul>
           </ul>
         </div>
+      </li>
+      <li>
+        <a routerLink="events-and-specials" routerLinkActive="activeLink">Our Events & Specials</a>
+      </li>
+      <li>
+        <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
       </li>
     </ul>
   </nav>

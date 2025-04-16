@@ -22,7 +22,6 @@ export class EmailValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     const isValid =
       control.value?.endsWith('.com') || control.value?.endsWith('.bg');
-    console.log(isValid);
     if (!isValid) {
       return {
         invalidExtension: true,

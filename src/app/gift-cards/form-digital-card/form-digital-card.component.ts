@@ -33,7 +33,6 @@ export class FormDigitalCardComponent {
   }
   checkError(controlName: string, errorType: string): boolean {
     const control = this.digitalForm.get(controlName);
-    console.log(errorType, control, control?.errors);
     return control?.errors?.[errorType];
   }
 }

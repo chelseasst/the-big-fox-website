@@ -2,13 +2,14 @@
   padding: 10px 0px;
   text-align: center;
 }
+
 a {
   letter-spacing: 2.5px;
-  font-size: 0.8rem;
-  /* 16px */
+  font-size: 0.6rem;
   text-transform: uppercase;
   transition: color 0.1s ease-in;
 }
-a:hover{
+
+a:hover {
   color: #c05033;
 }

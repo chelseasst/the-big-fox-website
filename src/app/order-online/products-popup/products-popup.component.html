@@ -5,21 +5,21 @@
   >
     <div class="details">
       <div class="col">
-        <img src="../assets/order-online/cookies.JPG" alt="" />
+        <img src="{{item.images[0]}}" alt="" />
       </div>
       <div class="col col-2">
-        <button class="close" (click)="closePopUpAction()">
+        <button class="close" (click)="closePopup()">
           <i data-icon="font-awesome" class="fa-solid fa-x"></i>
         </button>
         <h2>Cookies</h2>
-        <p class="quantity">Qty: 6</p>
+        <p class="quantity">Items: {{quantity}}</p>
         <p class="price">$16</p>
       </div>
     </div>
 
     <div class="actions">
-      <button class="submit-btn">Continue shopping</button>
-      <button class="submit-btn">Checkout</button>
+      <button class="submit-btn" (click)="closePopup()">Continue shopping</button>
+      <a class="submit-btn" routerLink="/checkout">Checkout</a>
     </div>
   </aside>
 </div>

@@ -1,10 +1,10 @@
-<div class="banner-giftcard">
+<div class="banner-giftcard" *ngIf="bannerShowed">
   <div class="content">
     <strong>
       <span>Looking for a <a routerLink="gift-cards">Gift Card</a>?</span>
     </strong>
   </div>
-  <button class="close">
+  <button class="close" (click)="closeBanner()">
     <i data-icon="font-awesome" class="fa-solid fa-xmark"></i>
   </button>
 </div>

@@ -1,18 +1,23 @@
 .site-socials {
   width: 100%;
 }
+
 .site-socials ul {
   display: flex;
   justify-content: center;
   gap: 1em;
 }
-i {
+
+i::before {
   font-size: 20px;
   color: white;
-  background-color: #222;
-  padding: 6px;
-  transition: background-color 0.2s ease-in;
 }
-i:hover {
+
+.bl-box {
+  background-color: black;
+  padding: 4px;
+}
+
+.bl-box:hover {
   background-color: #c65234;
 }

@@ -10,9 +10,11 @@
   outline: 1px solid #fff;
   outline-offset: -3px;
 }
+
 .desktop-footer {
   display: none;
 }
+
 .desktop-footer-wrapper {
   position: fixed;
   right: 0;
@@ -20,11 +22,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
   bottom: 0;
   z-index: 200;
   width: 100%;
 }
+
 .mobile-footer a {
   font-family: "Lato";
   font-size: 14px;
@@ -33,14 +35,17 @@
   text-transform: uppercase;
   color: #fff;
 }
+
 .socials-wrapper {
   background-color: #fdfaeb;
-  padding: 1rem;
+  padding: 0.73rem;
 }
+
 .navigation-wrapper {
   background-color: #fdfaeb;
-  padding: 0.7rem;
+  padding: 0.45rem;
 }
+
 .email-wrapper {
   display: flex;
   flex-direction: row;
@@ -48,13 +53,16 @@
   align-items: center;
   gap: 1rem;
 }
+
 .submit-btn {
   margin: 0;
 }
+
 @media screen and (min-width: 1000px) {
   .mobile-footer {
     display: none;
   }
+
   .desktop-footer {
     display: block;
   }

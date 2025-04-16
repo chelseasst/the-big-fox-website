@@ -1,7 +1,7 @@
 <li class="card">
-  <a [routerLink]="['product-details', item.id]" class="card-btn">
+  <a [routerLink]="[item.link]" class="card-btn">
     <div class="image-container">
-      <img [src]="item.pictures[0]" alt="Item Image" />
+      <img [src]="item.images[0]" alt="Item Image" />
     </div>
     <h3 class="h3">{{ item.type }}</h3>
     <p class="price">{{ item.price }}€ / {{ item.peaces }}psc</p>

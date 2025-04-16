@@ -1,10 +1,7 @@
-<app-banner-giftcard></app-banner-giftcard>
+<app-banner-giftcard #giftCard></app-banner-giftcard>
 
-<site-header-desktop *ngIf="isDesktop; else mobile"></site-header-desktop>
+<site-header-desktop *ngIf="isDesktop; else mobile" [giftBannerShowed]="giftCard.showBanner" ></site-header-desktop>
 
 <ng-template #mobile>
-  <site-header-mobile></site-header-mobile>
+  <site-header-mobile [giftBannerShowed]="giftCard.showBanner"></site-header-mobile>
 </ng-template>
-
-<!-- unnecessary DOM rendering -->
-<!-- both components are included in the DOM -->

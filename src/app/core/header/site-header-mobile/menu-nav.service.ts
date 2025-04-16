@@ -8,12 +8,12 @@ export class MenuNavService {
   private menuStateSubject = new BehaviorSubject<string>('up');
   menuStateObs$ = this.menuStateSubject.asObservable();
 
-  constructor() {}
+  constructor() { }
 
-  openMenu(){
+  openMenu() {
     this.menuStateSubject.next('down');
   }
-  closeMenu(){
+  closeMenu() {
     this.menuStateSubject.next('up');
   }
 }

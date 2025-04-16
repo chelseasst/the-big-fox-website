@@ -1,0 +1,34 @@
+<div class="checkout-section">
+    <main>
+        <h1>Your Order</h1>
+        <p class="itm-count">{{itemsCount$ | async}} Items</p>
+        <div class="checkout-content">
+            <!-- Item card -->
+            <div class="item-box" *ngFor="let item of cartItems$ | async">
+                <div class="img-con">
+                    <img src="{{item.images[0]}}" alt="Product Image">
+                </div>
+                <div class="cont-con">
+                    <div class="type-rem">
+                        <p class="desc">{{item.type}}</p>
+                        <div class="rem-ico">
+                            <!-- TODO add a real icon -->
+                            <span (click)="deleteItem(item.id)">X</span>
+                        </div>
+                    </div>
+                    <!-- TODO add {{item.color}} -->
+                    <p class="spec">Brown</p>
+                    <div class="numeric">
+                        <div class="quantity-con">
+                            <button class="itm" (click)="decrement(item.id)">-</button>
+                            <label class="itm" for="">{{item.quantity}}</label>
+                            <button class="itm" (click)="increment(item.id)">+</button>
+                        </div>
+                        <p class="price">EUR {{item.price * item.quantity}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>

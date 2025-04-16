@@ -1,0 +1,160 @@
+.menu-container {
+    margin-bottom: 40px;
+}
+
+.cards-wrapper {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.card {
+    padding: 1rem 0.1rem;
+    flex: 0 1 50%;
+}
+
+.img-coll {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.img-c {
+    max-height: 500px;
+    width: 100%;
+    position: relative;
+    opacity: 0.8;
+}
+
+.capt {
+    position: absolute;
+    color: white;
+    z-index: 10;
+}
+
+.capt1 {
+    right: 10px;
+    top: 50%;
+}
+
+.capt2 {
+    left: 10px;
+    top: 50%;
+}
+
+/* Quote */
+.quote-wr {
+    width: 100%;
+    background: rgb(238, 174, 205);
+    background: radial-gradient(circle, rgba(238, 174, 205, 0.4640449929971989) 0%, rgba(236, 209, 181, 1) 39%, rgba(236, 208, 179, 1) 43%, rgba(233, 193, 148, 1) 100%);
+    text-align: center;
+}
+
+blockquote {
+    padding: 4rem 2rem;
+}
+
+blockquote p,
+strong,
+cite {
+    color: #fdfaeb;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+blockquote p::before,
+blockquote p::after {
+    content: "“";
+    font-family: Georgia;
+    font-size: 3rem;
+    position: absolute;
+    opacity: 0.5;
+}
+
+blockquote p::before {
+    content: "“";
+    margin: -1.5rem 0 0 -1.5rem;
+}
+
+blockquote p::after {
+    content: "”";
+    margin: -1rem -4rem 0 0;
+}
+
+blockquote cite {
+    font-size: 1rem;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.card-2 {
+    padding: 0 1rem;
+    flex: 1;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .card-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .products-section {
+        padding: 0 0.5rem;
+    }
+
+    .cards-wrapper {
+        margin-top: 1rem;
+    }
+
+    .card {
+        flex: 0 1 33%;
+        padding: 1rem 0.5rem;
+    }
+
+    .img-c {
+        max-height: 520px;
+    }
+
+    blockquote {
+        padding: 7rem 2rem;
+    }
+
+    blockquote p,
+    strong,
+    cite {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .card {
+        flex: 0 1 25%;
+    }
+
+    .img-coll {
+        flex-direction: row;
+    }
+
+    .img-c {
+        max-height: 480px;
+    }
+
+    .capt {
+        font-size: 2rem;
+    }
+
+    .capt1 {
+        left: 58px;
+        top: 20px;
+    }
+}

@@ -8,6 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Subscribable, Subscription } from 'rxjs';
+import { orderItems } from 'src/app/types/order-online';
 
 @Component({
   selector: 'app-products-popup',
@@ -34,22 +35,23 @@ import { Subscribable, Subscription } from 'rxjs';
   ],
 })
 export class ProductsPopupComponent implements OnInit, OnDestroy {
+  @Input('item') item!: orderItems;
+  @Input('quantity') quantity!: number;
   isPopupOpen: boolean = false;
   subsc!: Subscription;
-  constructor(private popupService: OrderOnlineService) {}
-
-  closePopUpAction() {
+  constructor(private orderOnlineService: OrderOnlineService) { }
+  ngOnInit(): void {
+    this.subsc = this.orderOnlineService.isPopupOpen$.subscribe((isOpen) => {
+      this.isPopupOpen = isOpen;
+    });
+  }
+  closePopup() {
     this.isPopupOpen = false;
     //for this component - so the animation has time to happen,
     // before the parent removes the component
     setTimeout(() => {
-      this.popupService.closePopup();
+      this.orderOnlineService.closePopup();
     }, 400); //for the parent component
-  }
-  ngOnInit(): void {
-      this.subsc = this.popupService.isPopupOpen$.subscribe((isOpen) => {
-        this.isPopupOpen = isOpen;
-      });
   }
   ngOnDestroy() {
     this.subsc.unsubscribe();

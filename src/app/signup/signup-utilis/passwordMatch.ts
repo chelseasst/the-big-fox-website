@@ -7,7 +7,6 @@ export function passwordsMatchValidator(
   return function (control) {
     const pass = control.get(passControlName);
     const rePass = control.get(rePassControlName);
-    console.log(pass?.value, rePass?.value)
     if (pass?.value !== rePass?.value) {
       return { notMatching: true };
     }

@@ -1,24 +1,50 @@
 .signup-container {
-  margin-top: 200px;
+  margin-top: 50px;
+  margin-bottom: 40px;
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 .signup-intro {
-  padding-top: 5rem;
   padding-bottom: 3rem;
 }
+
 .h1 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
+
 .signup-intro p {
   text-align: center;
 }
 
+.signup-nav {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
 @media screen and (min-width: 1440px) {
+
   .signup-intro,
   .signup-nav {
     margin-left: 600px;
     margin-right: 600px;
+  }
+
+  .signup-container {
+    margin-top: 200px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+
+  .signup-intro,
+  .signup-nav {
+    margin-left: 600px;
+    margin-right: 600px;
+  }
+
+  .signup-container {
+    margin-top: 200px;
   }
 }

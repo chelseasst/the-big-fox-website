@@ -1,53 +1,32 @@
-<div class="product-details-container" [ngClass]="{ popupShown: isPopupOpen }">
+<div class="product-details-container" [ngClass]="{ popupShown: isPopupOpen$ | async }">
   <main>
     <div class="back-button-container">
       <p>
-        <a class="back-btn" routerLink="order-online/store">Back to Store</a>
+        <a class="back-btn" routerLink="/order-online/store">Back to Store</a>
       </p>
     </div>
     <div class="content-container">
       <section class="images-browser">
         <div class="selected-image">
-          <img src="../assets/order-online/sandwiches.JPG" alt="" />
+          <img src="{{itemDetails.images[0]}}" alt="" />
         </div>
 
         <div class="option-images">
-          <div class="option-image">
-            <img src="../assets/order-online/sandwiches.JPG" alt="" />
-          </div>
-          <div class="option-image">
-            <img src="../assets/order-online/merch.JPG" alt="" />
-          </div>
-
-          <div class="option-image">
-            <img src="../assets/order-online/cookies.JPG" alt="" />
-          </div>
-
-          <div class="option-image">
-            <img src="../assets/order-online/IMG_1116.JPG" alt="" />
+          <div class="option-image" *ngFor="let image of itemDetails.images">
+            <img src="{{image}}" alt="Product Image" />
           </div>
         </div>
       </section>
 
       <section class="product-details">
         <div class="details-header">
-          <h2 class="type">Cookies Picnic Box</h2>
-          <span class="price">15€</span>
+          <h2 class="type">{{itemDetails.type}}</h2>
+          <span class="price">{{itemDetails.price}}€</span>
           <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tenetur
-            est facere iusto nihil, similique quia repellendus vitae inventore,
-            deserunt hic? Quas ea earum eaque, ab quae dolores laudantium
-            laboriosam!
+            {{itemDetails.description}}
           </p>
           <p class="excessive-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-            saepe alias, facilis quae veniam harum cumque quasi quia fugiat sit
-            optio voluptatum dolorum ullam fuga quos odit deleniti molestias
-            facere? Asperiores, reprehenderit. Lorem ipsum dolor sit amet
-            consectetur, adipisicing elit. Saepe, a aspernatur. Facere
-            doloremque quod aliquam a voluptate commodi, quam aliquid distinctio
-            voluptates eos et saepe provident minima officiis molestias
-            veritatis?
+            {{itemDetails.excessivedescription}}
           </p>
         </div>
         <div class="add-product-form">
@@ -58,24 +37,18 @@
                 <span class="increment btn-left" (click)="decrement()">
                   <i class="icon">-</i>
                 </span>
-                <input
-                  type="text"
-                  class="quantity-input"
-                  inputmode="numeric"
-                  #quantityInput
-                  [value]="quantityValue"
-                />
+                <input type="text" class="quantity-input" inputmode="numeric" min="1" max="5" #quantityInput readonly
+                  [value]="quantityValue" />
                 <span class="decrement btn-right" (click)="increment()">
                   <i class="icon">+</i>
                 </span>
               </div>
             </div>
+            <div class="quanRange" *ngIf="showQuantRange">
+              <p class="red">The available quantities range between 1 and 5. Thank you :) !</p>
+            </div>
             <div class="form-actions">
-              <button
-                type="button"
-                class="submit-btn"
-                (click)="addToCart(quantityInput.value)"
-              >
+              <button type="button" class="submit-btn" (click)="addToCart(itemDetails, quantityInput.value)">
                 Add to cart
               </button>
             </div>
@@ -86,6 +59,6 @@
   </main>
 </div>
 
-<ng-container *ngIf="isPopupOpen">
-  <app-products-popup class="product-popup"></app-products-popup>
+<ng-container *ngIf="isPopupOpen$ | async">
+  <app-products-popup class="product-popup" [item]="itemDetails" [quantity]="quantityValue"></app-products-popup>
 </ng-container>

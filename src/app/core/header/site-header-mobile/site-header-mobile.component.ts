@@ -5,7 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Renderer2 } from '@angular/core';
 import { MenuNavService } from './menu-nav.service';
 
 @Component({
@@ -53,11 +53,24 @@ import { MenuNavService } from './menu-nav.service';
 export class SiteHeaderMobileComponent implements OnInit {
   menuState: string = 'up';
   isSubMenuShown: boolean = false;
-  constructor(private menuNavService: MenuNavService) {}
+  @Input() giftBannerShowed!: EventEmitter<boolean>;
+
+  constructor(private menuNavService: MenuNavService, private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
     this.menuNavService.menuStateObs$.subscribe((state) => {
       this.menuState = state;
+    });
+    this.giftBannerShowed.subscribe((isShowed) => {
+      const logoNavElement = this.el.nativeElement.querySelector('.logo-nav-fixed');
+      const buttonElement = this.el.nativeElement.querySelector('.buttons-wrapper');
+      if (!isShowed) {
+        this.renderer.addClass(logoNavElement, 'banner-removed-logo');
+        this.renderer.addClass(buttonElement, 'banner-removed-button');
+      } else {
+        this.renderer.removeClass(logoNavElement, 'banner-removed-logo');
+        this.renderer.removeClass(buttonElement, 'banner-removed-button');
+      }
     });
   }
   toggleMainMenuDown() {

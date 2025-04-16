@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [MenuNavGuard],
   },
   {
-    path: 'order-online-store',
+    path: 'order-online',
     loadChildren: () =>
       import('./order-online/order-online.module').then(
         (m) => m.OrderOnlineModule
@@ -53,15 +53,23 @@ const routes: Routes = [
     canActivate: [MenuNavGuard],
   },
   {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./shared/shared.module').then(
+        (m) => m.SharedModule
+      ),
+  },
+  {
     path: 'signup',
     loadChildren: () =>
       import('./signup/signup.module').then((m) => m.SignupModule),
     canActivate: [MenuNavGuard],
   },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -9,64 +9,97 @@
   opacity: 0.9;
   z-index: 50;
 }
+
+.banner-removed {
+  top: 65px;
+}
+
 .site-logo {
   width: 130px;
   height: auto;
 }
 
+/* nav bar */
+.site-nav .site-nav-menu a {
+  font-size: 0.8rem;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* link hovered or linked clicked */
+.site-nav .site-nav-menu a:hover,
+.site-nav .site-nav-menu .activeLink {
+  color: #b8e6e3;
+  font-size: 0.9rem;
+}
+
+/* nav bar when scrolled */
+.scrolled {
+  background-color: rgba(253, 250, 235, 0.9);
+}
+
+/* link color when scrolled */
+.scrolled .site-nav-menu a {
+  color: black;
+}
+
+/* the ul */
 .site-nav-menu {
   display: flex;
   gap: 1em;
-  background-color: rgba(253, 250, 235, 0.9);
 }
+
+/* the ul, when scrolled */
 .site-nav-menu {
   padding: 0.3rem 1.6rem;
-  border-radius: 5px;
 }
-.site-nav-submenu{
+
+.site-nav-submenu {
   position: relative;
 }
+
 .sub-menu {
   position: absolute;
   top: 1.8rem;
   left: 0;
-  padding: 0.5rem 0.3rem;
-  border-radius: 5px;
-  background-color: rgba(253, 250, 235, 0.9);
-}
-.site-nav-menu a {
-  color: #222;
-  font-size: 0.8rem;
-  transition: color 0.1s ease-in, font-size 0.2s ease-in;
-}
-.site-nav-menu a:hover {
-  color: #b8e6e3;
-  font-size: 0.9rem;
-}
-.site-nav-submenu button.isActive,
-.site-nav-submenu button.isActive i {
-  color: #c05033;
-}
-.site-nav-menu .activeLink{
-  color: #b8e6e3;
+  padding: 0.5rem 0.2rem;
+  text-transform: uppercase;
+  border-radius: 2px;
+  background-color: rgba(106, 58, 51, 0.9);
 }
 
-@media screen and (min-width:1130px){
-  .logo-menu-wrapper{
+.sub-menu a {
+  white-space: nowrap;
+  font-size: 0.5rem;
+}
+
+@media screen and (min-width:1130px) {
+  .logo-menu-wrapper {
     flex-direction: row;
     justify-content: space-between;
+    align-items: st;
   }
-  .site-logo{
+
+  .site-logo {
     width: 160px;
   }
 
 }
 
-@media screen and (min-width:1300px){
-  .site-nav-menu a{
-  font-size: 1.2rem;
-}
-.site-nav-menu a:hover{
-  font-size: 1.3rem;
-}
+@media screen and (min-width:1300px) {
+  .site-nav-menu a {
+    font-size: 0.9rem;
+  }
+
+  .site-nav-menu a:hover {
+    font-size: 1rem;
+  }
+
+  .sub-menu a {
+    font-size: 0.6rem;
+  }
+
+  .sub-menu a:hover {
+    font-size: 0.7rem;
+  }
 }

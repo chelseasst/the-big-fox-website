@@ -5,33 +5,23 @@
     <div class="logo-nav-wrapper">
       <!-- Logo -->
       <div class="site-logo-container">
-        <a href="/">
-          <img
-            class="site-logo"
-            src="./../../../../assets/logo/fox-logo.jpg"
-            alt="The Big Fox Logo"
-          />
+        <a routerLink="/home">
+          <img class="site-logo" src="./../../../../assets/logo/fox-logo.jpg" alt="The Big Fox Logo" />
         </a>
       </div>
     </div>
   </div>
   <!-- SITE LOCATION -->
-  <app-site-location class="site-location"></app-site-location>
+  <div class="site-location-wrapper">
+    <app-site-location></app-site-location>
+  </div>
   <!-- MENU BUTTONS -->
   <div class="buttons-wrapper">
     <button class="nav-toggle-btn open-btn" *ngIf="menuState == 'up'">
-      <i
-        data-icon="font-awesome"
-        class="fa-solid fa-bars"
-        (click)="toggleMainMenuDown()"
-      ></i>
+      <i data-icon="font-awesome" class="fa-solid fa-bars" (click)="toggleMainMenuDown()"></i>
     </button>
     <button class="nav-toggle-btn close-btn" *ngIf="menuState == 'down'">
-      <i
-        data-icon="font-awesome"
-        class="fa-solid fa-x"
-        (click)="toggleMainMenuUp()"
-      ></i>
+      <i data-icon="font-awesome" class="fa-solid fa-x" (click)="toggleMainMenuUp()"></i>
     </button>
   </div>
 </div>
@@ -47,70 +37,42 @@
         </li>
         <li><a routerLink="menu" routerLinkActive="activeLink">Menu</a></li>
         <li>
-          <a routerLink="gift-cards" routerLinkActive="activeLink"
-            >Gift Cards</a
-          >
+          <a routerLink="gift-cards" routerLinkActive="activeLink">Gift Cards</a>
         </li>
         <li class="site-nav-submenu" routerLinkActive="activeLink">
-          <a
-            class="submenu-btn"
-            [ngClass]="{ 'submenu-btn-active': isSubMenuShown }"
-            (click)="toggleSubMenu()"
-          >
+          <a class="submenu-btn" [ngClass]="{ 'submenu-btn-active': isSubMenuShown }" (click)="toggleSubMenu()">
             Order Online
-            <i
-              data-icon="font-awesome"
-              class="fa-solid fa-arrow-down"
-              *ngIf="!isSubMenuShown"
-            ></i>
+            <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>
             <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>
           </a>
           <div class="sub-menu" *ngIf="isSubMenuShown">
             <ul>
               <li>
-                <a routerLink="order-online-store" routerLinkActive="activeLink"
-                  >Store</a
-                >
+                <a routerLink="order-online/store" routerLinkActive="activeLink">Store</a>
               </li>
               <li>
-                <a routerLink="order-online-store" routerLinkActive="activeLink"
-                  >Signiture Coffee</a
-                >
+                <a routerLink="order-online/coffee" routerLinkActive="activeLink">Signiture Coffee</a>
               </li>
               <li>
-                <a
-                  routerLink="order-online-bakery"
-                  routerLinkActive="activeLink"
-                  >Signiture Baked Goods</a
-                >
+                <a routerLink="order-online/bakery" routerLinkActive="activeLink">Signiture Baked Goods</a>
               </li>
               <li>
-                <a routerLink="order-online-cake" routerLinkActive="activeLink"
-                  >The Coffee Cake</a
-                >
+                <a routerLink="order-online/cakes" routerLinkActive="activeLink">The Coffee Cake</a>
               </li>
               <li>
-                <a routerLink="order-online-merch" routerLinkActive="activeLink"
-                  >Merch</a
-                >
+                <a routerLink="order-online/merch" routerLinkActive="activeLink">Merch</a>
               </li>
             </ul>
           </div>
         </li>
         <li>
-          <a routerLink="hours-and-location" routerLinkActive="activeLink"
-            >Hours & Location</a
-          >
+          <a routerLink="hours-and-location" routerLinkActive="activeLink">Hours & Location</a>
         </li>
         <li>
-          <a routerLink="events-and-specials" routerLinkActive="activeLink"
-            >Our Events & Specials</a
-          >
+          <a routerLink="events-and-specials" routerLinkActive="activeLink">Our Events & Specials</a>
         </li>
         <li>
-          <a routerLink="signup" routerLinkActive="activeLink"
-            >Sign Up / Login</a
-          >
+          <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
         </li>
       </ul>
     </nav>

@@ -1,10 +1,7 @@
 <div class="menu-container">
   <main>
-    <app-initial-section
-      [heading]="'Limited - Time Offers'"
-      url="'../assets/order-online/IMG_1116.JPG'"
-    ></app-initial-section>
-    <!-- set background -->
+    <app-initial-section [heading]="'Limited - Time Offers'"
+      url="'../assets/order-online/IMG_1116.JPG'"></app-initial-section>
     <div class="blue-content-wrapper">
       <section class="section-1">
         <p class="img-cafe-container">
@@ -23,13 +20,9 @@
       </section>
     </div>
     <section class="cards-container">
-      <!-- set *ngFor and loop through the items from the database -->
+      <!-- TODO set *ngFor and loop through the items from the database -->
       <ul class="card-list">
-        <app-item-list
-          class="card"
-          *ngFor="let item of items"
-          [item]="item"
-        ></app-item-list>
+        <app-item-list class="card" *ngFor="let item of items" [item]="item"></app-item-list>
       </ul>
     </section>
   </main>

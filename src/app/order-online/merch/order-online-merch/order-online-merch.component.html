@@ -1,0 +1,43 @@
+<div class="menu-container">
+  <main>
+    <app-initial-section *ngIf="isDesktop; else mobile" [heading]="'Merch'"
+      url="'../assets/order-online/merch/merch-desktop.jpeg'"></app-initial-section>
+    <ng-template #mobile>
+      <app-initial-section [heading]="'Merch'"
+        url="'../assets/order-online/merch/merch-mobile.jpeg'"></app-initial-section>
+    </ng-template>
+    <section class="products-section">
+      <ul class="cards-wrapper">
+        <app-product-card class="card" [images]="['t-black-simple.JPG', 't-black-model.JPG']"
+          [capt]="'Our Fox - relaxed Tee-Shirt'" [price]="'25'"></app-product-card>
+        <app-product-card class="card" [images]="['cup-black.JPG', 'cup-white.JPG']"></app-product-card>
+        <app-product-card class="card" [images]="['tote-blue.JPG']"></app-product-card>
+        <app-product-card class="card" [images]="['tote-red.JPG']"></app-product-card>
+        <app-product-card class="card" [images]="['tote-sand.JPG']"></app-product-card>
+        <app-product-card class="card" [images]="['t-white-simple.JPG', 't-white-model.JPG']"></app-product-card>
+      </ul>
+      <ul class="card-list">
+        <app-item-list class="card-2" *ngFor="let item of items" [item]="item"></app-item-list>
+      </ul>
+    </section>
+    <section class="img-coll">
+      <div class="img-c">
+        <img src="../assets/order-online/merch/interior.JPG" alt="Interior">
+        <p class="capt capt1">Coffee break</p>
+      </div>
+      <div class="img-c">
+        <img src="../assets/order-online/merch/exterior.JPG" alt="">
+        <p class="capt capt2">Dive into the atmospere</p>
+      </div>
+    </section>
+    <section class="quote-wr">
+      <blockquote>
+        <p><strong>If this is coffee,</strong> please bring me some tea; <strong>but if this is tea,</strong> please
+          bring me some coffee.</p>
+        <cite>Abraham Lincoln</cite>
+      </blockquote>
+    </section>
+  </main>
+</div>
+<!-- The content inside the ng-template is not compiled or
+inserted into the DOM unless explicitly rendered -->
