@@ -1,28 +1,27 @@
 <div class="card">
-    <div class="image-slider">
-        <div class="slider-wrapper">
-            <img *ngFor="let image of images" class="slider-image" [src]="'../assets/order-online/merch/'+image"
-                alt="product-item">
+    <div class="image-slider" [routerLink]="item.link">
+        <div class="slider-wrapper" #sliderWrapper>
+            <img *ngFor="let image of item.images" class="slider-image" [src]="image" alt="product-item">
         </div>
         <div class="sizes-wrapper">
-            <button id="s" (click)="addToCart('S')">S</button>
-            <button id="m" (click)="addToCart('M')">M</button>
-            <button id="l" (click)="addToCart('L')">L</button>
+            <button id="s" (click)="addToCart(item.id)">S</button>
+            <button id="m" (click)="addToCart(item.id)">M</button>
+            <button id="l" (click)="addToCart(item.id)">L</button>
         </div>
-        <button class="slider-btn prev-btn desktop-only">&lt;</button>
-        <button class="slider-btn next-btn desktop-only">&gt;</button>
-        <div class="slider-indicators mobile-only">
+        <button class="slider-btn prev-btn desktop-only" (click)="prevImg(); $event.stopPropagation()">&lt;</button>
+        <button class="slider-btn next-btn desktop-only" (click)="nextImg(); $event.stopPropagation()">&gt;</button>
+        <!-- <div class="slider-indicators mobile-only">
             <span class="indicator active"></span>
             <span class="indicator"></span>
-        </div>
+        </div> -->
     </div>
     <div class="content">
         <div class="desc-box">
-            <h2>Our Fox - relaxed Tee-Shirt</h2>
+            <h2>{{item.title}}</h2>
             <p class="price">25 €
             <p>
         </div>
-        <a href="addToCart/:id" class="addCart">
+        <a (click)="addToCart(item.id)" class="addCart">
             <img src="../assets/order-online/add-to-cart.png" alt="Add To Cart">
         </a>
     </div>

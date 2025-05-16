@@ -7,6 +7,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HeaderComponent {
   isDesktop: boolean = false;
+  giftBannerVisible: boolean = true;
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
@@ -14,8 +15,9 @@ export class HeaderComponent {
       .observe(['(max-width: 999px)'])
       .subscribe((result) => {
         this.isDesktop = !result.matches;
-        //returns true if matching the condition
-        //return false if not matching the condition -> desktop
       });
+  }
+  updateGiftBanner(value: boolean) {
+    this.giftBannerVisible = value;
   }
 }

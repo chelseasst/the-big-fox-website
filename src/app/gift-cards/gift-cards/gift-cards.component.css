@@ -2,7 +2,7 @@
   margin-bottom: 60px;
 }
 .blue-content-wrapper {
-  border: 1rem solid #b8e6e3;
+  border: 1rem solid var(--accent-color);
   text-align: center;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -34,7 +34,6 @@ li {
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
-
 @media screen and (min-width: 426px) {
   .form-nav {
     flex-direction: row;

@@ -1,44 +1,53 @@
 #form {
   max-width: 640px;
-  padding-left: 0.9rem;
-  padding-right: 0.9rem;
+  padding: 0 0.9rem;
   margin-left: auto;
   margin-right: auto;
 }
+
 .form-header {
   text-align: center;
   margin-bottom: 2rem;
 }
-input,
+
+.input,
 select,
 textarea {
   display: block;
   width: 100%;
   font-family: "Sorts Mill Goudy";
   border: 1px solid #ddd;
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
   padding: 0.8rem 3rem 0.8rem 0.8rem;
   color: #7b7676;
   appearance: none;
-  /* removes/changes the native styling */
   -webkit-appearance: none;
-  /* Chrome/Safari */
   -moz-appearance: none;
-  /* FireFox */
 }
+
+
 textarea {
   min-height: 150px;
 }
+
+label {
+  margin-top: 1.5rem;
+  display: block;
+}
+
+
+input::placeholder {
+  color: #8b8585;
+}
+
 .required,
 .optional {
   font-style: italic;
   color: #8b8585;
 }
+
 .form-uni-group span {
   font-size: 0.8rem
-}
-.bold{
-  font-weight: bold;
 }
 
 .error {
@@ -46,19 +55,13 @@ textarea {
   font-style: italic;
   display: block;
 }
-.label {
-  display: block;
-  margin-bottom: 1.5rem;
-}
-
-input::placeholder {
-  color: #8b8585;
-}
 
 .has-icon {
   display: block;
   position: relative;
 }
+
+
 .icon-right {
   position: absolute;
   top: 50%;
@@ -66,7 +69,74 @@ input::placeholder {
   transform: translateY(-50%);
   padding-right: 1rem;
 }
-.form-actions, .form-footer {
+
+.form-actions,
+.form-footer {
   text-align: center;
 }
 
+
+/* Designs */
+.cards-design-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.design-img-wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.design label {
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.radio-input {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: 0.5rem;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.1rem solid #ddd;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.radio-input:hover {
+  border: 0.12rem solid var(--secondary-color);
+}
+
+.radio-input:checked {
+  box-shadow: 0 0 0 1px var(--secondary-color);
+  background-color: var(--secondary-color);
+  border: 0.2rem solid var(--primary-color);
+}
+
+@media screen and (min-width: 768px) {
+  #form {
+    padding: 0 1.9rem;
+  }
+
+  .cards-design-wrap {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .design {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form-uni-group span {
+    font-size: 1rem;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="product-details-container" [ngClass]="{ popupShown: isPopupOpen$ | async }">
+<div class="product-details-container">
   <main>
     <div class="back-button-container">
       <p>
@@ -8,11 +8,11 @@
     <div class="content-container">
       <section class="images-browser">
         <div class="selected-image">
-          <img src="{{itemDetails.images[0]}}" alt="" />
+          <img src="{{itemDetails.images[imgId]}}" alt="" />
         </div>
 
         <div class="option-images">
-          <div class="option-image" *ngFor="let image of itemDetails.images">
+          <div (click)="changeImg(id)" class="option-image" *ngFor="let image of itemDetails.images; let id = index">
             <img src="{{image}}" alt="Product Image" />
           </div>
         </div>
@@ -20,13 +20,13 @@
 
       <section class="product-details">
         <div class="details-header">
-          <h2 class="type">{{itemDetails.type}}</h2>
+          <h2 class="type">{{itemDetails.title}}</h2>
           <span class="price">{{itemDetails.price}}€</span>
           <p class="description">
             {{itemDetails.description}}
           </p>
           <p class="excessive-description">
-            {{itemDetails.excessivedescription}}
+            {{itemDetails.excessiveDescription}}
           </p>
         </div>
         <div class="add-product-form">
@@ -48,7 +48,7 @@
               <p class="red">The available quantities range between 1 and 5. Thank you :) !</p>
             </div>
             <div class="form-actions">
-              <button type="button" class="submit-btn" (click)="addToCart(itemDetails, quantityInput.value)">
+              <button type="button" class="submit-btn" (click)="addToCart(quantityInput.value)">
                 Add to cart
               </button>
             </div>
@@ -58,7 +58,7 @@
     </div>
   </main>
 </div>
-
+<!-- 
 <ng-container *ngIf="isPopupOpen$ | async">
   <app-products-popup class="product-popup" [item]="itemDetails" [quantity]="quantityValue"></app-products-popup>
-</ng-container>
+</ng-container> -->

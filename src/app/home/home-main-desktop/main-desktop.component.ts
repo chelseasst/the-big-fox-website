@@ -13,7 +13,7 @@ import {
 })
 export class MainDesktopComponent implements AfterViewInit {
   @ViewChildren('fadeImg') fadeImgs!: QueryList<ElementRef>;
-  @ViewChildren('contentContainer') contentContainer!: QueryList<ElementRef>;
+  @ViewChildren('contentCont') contentCont!: QueryList<ElementRef>;
 
   constructor() {}
   ngAfterViewInit() {
@@ -30,7 +30,7 @@ export class MainDesktopComponent implements AfterViewInit {
     this.fadeImgs.forEach((el) => {
       observer.observe(el.nativeElement);
     });
-    this.contentContainer.forEach((el) => {
+    this.contentCont.forEach((el) => {
       observer.observe(el.nativeElement);
     });
   }

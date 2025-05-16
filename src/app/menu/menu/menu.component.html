@@ -1,9 +1,6 @@
 <div class="menu-container">
   <main>
-    <app-initial-section
-      [heading]="'Menu'"
-      url="'../assets/menu/IMG_5539.JPG'"
-    ></app-initial-section>
+    <app-initial-section [heading]="'Menu'" url="'../assets/menu/IMG_5539.JPG'"></app-initial-section>
     <!-- set background -->
     <div class="blue-content-wrapper">
       <section class="section-1">
@@ -34,18 +31,10 @@
     <!-- MENU -->
     <div class="background-wrapper">
       <section class="menu-nav">
-        <button
-          class="submit-btn btn-drinks"
-          routerLink="/menu/menu-drinks"
-          routerLinkActive="activeButton"
-        >
+        <button class="submit-btn btn-drinks" routerLink="menu-drinks" routerLinkActive="activeButton">
           Drinks Menu
         </button>
-        <button
-          class="submit-btn btn-bakery"
-          routerLink="/menu/menu-bakery"
-          routerLinkActive="activeButton"
-        >
+        <button class="submit-btn btn-bakery" routerLink="menu-bakery" routerLinkActive="activeButton">
           Baked Goods Menu
         </button>
       </section>
@@ -54,5 +43,22 @@
         <router-outlet></router-outlet>
       </section>
     </div>
+    <section class="dynamic-coff-sect">
+      <div class="left-cont">
+        <p id="time-p">Your time is precious</p>
+        <h2 class="h2" appAnimateOnScroll>Choose Quality</h2>
+        <p>Make friendships last, by spending time with your friends in our cozy atmosphere.</p>
+        <button class="submit-btn" id="explore-more" [routerLink]="'/order-online'">
+          Explore more
+        </button>
+      </div>
+      <div class="right-cont">
+        <div class="coffee-img-cont" appAnimateOnScroll></div>
+        <div class="caffeine-quote">
+          <p>Caffeine</p>
+          <p>Caffeine</p>
+        </div>
+      </div>
+    </section>
   </main>
 </div>

@@ -1,73 +1,155 @@
-.event-container {
-  width: 100%;
+.card-container {
+  width: 260px;
+  height: 400px;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  /* aware that they are collapsing on the last one, and it works for the case */
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-  margin: 0 auto;
-  padding: 1rem;
+  perspective: 1000px;
   background-color: rgba(137, 46, 46, 0.783);
   box-shadow: 0px 0px 20px 3px rgb(160 91 86);
   border-radius: 20px;
 }
-.photo {
-  flex: 1 0 50%;
-  max-width: 250px;
-  height: auto;
-  outline: 2px solid #b8e6e3;
-  outline-offset: -0.5rem;
-  border-radius: 5px;
-  overflow: hidden;
+
+.flip-card {
+  width: inherit;
+  height: inherit;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 1s .1s;
+  /* Controls how and when the animation happens when a CSS property changes. */
 }
-.description {
-  flex: 1 0 50%;
+
+.card-container:hover .flip-card {
+  transform: rotateY(180deg);
+}
+
+
+.card-touched {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  overflow: hidden;
+  backface-visibility: hidden;
   font-family: "Bebas Neue", sans-serif;
   text-align: center;
+}
+
+.card-front {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
-  max-width: 250px;
-  background-color: #fdfaeb;
-  outline: 2px solid #b8e6e3;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow: auto;
+}
+
+.card-back p {
+  color: rgba(255, 255, 255, 0.815);
+  text-transform: uppercase;
+}
+
+.front-photo {
+  outline: 2px solid var(--accent-color);
   outline-offset: -0.5rem;
   border-radius: 5px;
-}
-img {
-  object-fit: cover;
-  width: 100%;
+  overflow: hidden;
   height: 100%;
+  width: 100%;
+}
+
+img {
+  object-fit: contain;
+  overflow: hidden;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-  .wrapper {
+  .card-container {
+    width: 300px;
+    height: 550px;
+  }
+
+  .card-front p,
+  .card-back p {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    width: 700px;
+    height: 390px;
+    border-radius: 40px;
+  }
+
+  .card-front {
+    display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: space-evenly;
+    gap: 1rem;
+    border-radius: 40px;
   }
-  .photo,
-  .description {
-    max-width: 350px;
-    flex: 1;
+
+  .front-photo,
+  .front-text {
+    flex: 1 1 50%;
   }
-  .description p {
+}
+
+
+@media screen and (min-width: 1440px) {
+  .card-container {
+    width: 700px;
+    height: 390px;
+    border-radius: 40px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 1.5rem;
+  }
+
+  .card-front {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border-radius: 40px;
+  }
+
+  .card-front p,
+  .card-back p {
     font-size: 1.5rem;
   }
 }
-@media screen and (min-width: 1025px) {
-  .description p {
-    font-size: 1.7rem;
+
+
+@media screen and (min-width: 1940px) {
+  .card-container {
+    width: 1040px;
+    height: 590px;
+    border-radius: 40px;
   }
-  .wrapper {
-    width: 50%;
-  }
-  .photo,
-  .description {
-    max-width: 1000px;
+
+  .card-front p,
+  .card-back p {
+    font-size: 2rem;
   }
 }

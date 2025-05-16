@@ -1,7 +1,7 @@
 <!-- THE FIXED ELEMENT LOGO, MENU ICON, LOCATION -->
 <div class="header-container">
   <!-- LOGO -->
-  <div class="logo-nav-fixed">
+  <div class="fixed-logo">
     <div class="logo-nav-wrapper">
       <!-- Logo -->
       <div class="site-logo-container">
@@ -16,7 +16,7 @@
     <app-site-location></app-site-location>
   </div>
   <!-- MENU BUTTONS -->
-  <div class="buttons-wrapper">
+  <div class="fixed-nav">
     <button class="nav-toggle-btn open-btn" *ngIf="menuState == 'up'">
       <i data-icon="font-awesome" class="fa-solid fa-bars" (click)="toggleMainMenuDown()"></i>
     </button>
@@ -39,7 +39,7 @@
         <li>
           <a routerLink="gift-cards" routerLinkActive="activeLink">Gift Cards</a>
         </li>
-        <li class="site-nav-submenu" routerLinkActive="activeLink">
+        <li class="site-nav-submenu">
           <a class="submenu-btn" [ngClass]="{ 'submenu-btn-active': isSubMenuShown }" (click)="toggleSubMenu()">
             Order Online
             <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>

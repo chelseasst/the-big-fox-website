@@ -7,7 +7,7 @@
       <img #fadeImg src="../../../assets/home/IMG_1120.JPG" alt="" />
     </div>
     <div class="content-wrapper">
-      <div #contentContainer class="content">
+      <div #contentCont class="content">
         <h2>Coffee Club</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
@@ -16,7 +16,9 @@
           officia soluta quam?
         </p>
         <div>
-          <app-button text="Join the club"></app-button>
+          <button class="submit-btn" [routerLink]="'/signup'">
+            Join the club
+          </button>
         </div>
       </div>
     </div>
@@ -32,7 +34,7 @@
       <img #fadeImg src="../../../assets/home/drinks/image-4.JPG" alt="" />
     </div>
     <div class="content-wrapper">
-      <div #contentContainer class="content content-drinks">
+      <div #contentCont class="content content-drinks">
         <h2>Your Favourites</h2>
         <p>Soft Cappucino prepared by our friendly barista.</p>
         <p>Iced matcha for your hot girl walk, or daily refreshment.</p>
@@ -44,10 +46,9 @@
           All time favourite Iced Latte, you can hear the ice cubs trumbling.
         </p>
         <div>
-          <app-button
-            [navigateTo]="'/menu'"
-            [text]="'Other cool things'"
-          ></app-button>
+          <button class="submit-btn" [routerLink]="'/menu'">
+            Other cool things
+          </button>
         </div>
       </div>
     </div>

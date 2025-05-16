@@ -7,14 +7,9 @@ import { FormDigitalCardComponent } from './form-digital-card/form-digital-card.
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'gift-cards',
-  },
-  {
-    path: 'gift-cards',
     component: GiftCardsComponent,
     children: [
-      { path: '', pathMatch: 'full', component: FormDigitalCardComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'digital-card'  },
       { path: 'physical-card', component: FormPhysicalCardComponent },
       { path: 'digital-card', component: FormDigitalCardComponent },
     ],

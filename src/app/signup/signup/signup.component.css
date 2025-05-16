@@ -1,17 +1,57 @@
 .signup-container {
-  margin-top: 50px;
-  margin-bottom: 40px;
+  position: relative;
+  margin-top: 70px;
+  margin-bottom: 60px;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 .signup-intro {
   padding-bottom: 3rem;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.beans-back {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-image: url('/assets/signup/beans.png');
+  background-size: cover;
 }
 
 .h1 {
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.h1.animated {
+  transform: translateX(90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
+.h1.animated.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.expl {
+  background-color: #fdfaebbc;
+}
+
+.expl.animated {
+  transform: translateX(-90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
+.expl.animated.visible {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .signup-intro p {
@@ -23,28 +63,12 @@
   max-width: 300px;
 }
 
-@media screen and (min-width: 1440px) {
-
-  .signup-intro,
-  .signup-nav {
-    margin-left: 600px;
-    margin-right: 600px;
-  }
-
-  .signup-container {
-    margin-top: 200px;
-  }
+.submit-btn {
+  margin-top: 1rem;
 }
 
-@media screen and (min-width: 1440px) {
-
-  .signup-intro,
-  .signup-nav {
-    margin-left: 600px;
-    margin-right: 600px;
-  }
-
+@media screen and (min-width: 1000px) {
   .signup-container {
-    margin-top: 200px;
+    margin-top: 220px;
   }
 }

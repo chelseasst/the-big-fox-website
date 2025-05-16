@@ -53,7 +53,7 @@ import { MenuNavService } from './menu-nav.service';
 export class SiteHeaderMobileComponent implements OnInit {
   menuState: string = 'up';
   isSubMenuShown: boolean = false;
-  @Input() giftBannerShowed!: EventEmitter<boolean>;
+  @Input() giftBannerShowed!: boolean;
 
   constructor(private menuNavService: MenuNavService, private renderer: Renderer2, private el: ElementRef) { }
 
@@ -61,17 +61,9 @@ export class SiteHeaderMobileComponent implements OnInit {
     this.menuNavService.menuStateObs$.subscribe((state) => {
       this.menuState = state;
     });
-    this.giftBannerShowed.subscribe((isShowed) => {
-      const logoNavElement = this.el.nativeElement.querySelector('.logo-nav-fixed');
-      const buttonElement = this.el.nativeElement.querySelector('.buttons-wrapper');
-      if (!isShowed) {
-        this.renderer.addClass(logoNavElement, 'banner-removed-logo');
-        this.renderer.addClass(buttonElement, 'banner-removed-button');
-      } else {
-        this.renderer.removeClass(logoNavElement, 'banner-removed-logo');
-        this.renderer.removeClass(buttonElement, 'banner-removed-button');
-      }
-    });
+  }
+  ngOnChanges() {
+    this.updateBanner(this.giftBannerShowed);
   }
   toggleMainMenuDown() {
     setTimeout(() => {
@@ -87,5 +79,16 @@ export class SiteHeaderMobileComponent implements OnInit {
   }
   toggleSubMenu() {
     this.isSubMenuShown = !this.isSubMenuShown;
+  }
+  updateBanner(isShowed: boolean) {
+    const navEl = this.el.nativeElement.querySelector('.fixed-nav');
+    const logoEl = this.el.nativeElement.querySelector('.fixed-logo');
+    if (!isShowed) {
+      this.renderer.addClass(navEl, 'banner-removed-nav');
+      this.renderer.addClass(logoEl, 'banner-removed-logo');
+    } else {
+      this.renderer.removeClass(navEl, 'banner-removed-nav');
+      this.renderer.removeClass(logoEl, 'banner-removed-logo');
+    }
   }
 }

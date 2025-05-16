@@ -1,35 +1,38 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
 import { MenuNavService } from '../site-header-mobile/menu-nav.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+
 
 @Component({
   selector: 'site-header-desktop',
   templateUrl: 'site-header-desktop.component.html',
   styleUrls: ['site-header-desktop.component.css'],
 })
-export class SiteHeaderDesktopComponent implements OnInit {
+export class SiteHeaderDesktopComponent implements AfterViewInit {
   isSubMenuShown: boolean = false;
-  @Input() giftBannerShowed!: EventEmitter<boolean>;
-  constructor(private renderer: Renderer2, private el: ElementRef, private menuNavService: MenuNavService) { }
-  ngOnInit(): void {
+  @Input() giftBannerShowed!: boolean;
+  @ViewChild('nav') nav!: ElementRef;
+  constructor(private renderer: Renderer2, private el: ElementRef, private menuNavService: MenuNavService, private router: Router) { }
+  ngAfterViewInit(): void {
+    //header color change - signup&details -> black
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.updateHeaderColor(event.urlAfterRedirects);
+      }
+    });
     this.menuNavService.menuStateObs$.subscribe((state) => {
       this.isSubMenuShown = state === 'down' ? true : false;
     });
-    this.giftBannerShowed.subscribe((isShowed) => {
-      const logoMenuElement = this.el.nativeElement.querySelector('.logo-menu-wrapper');
-      if (!isShowed) {
-        this.renderer.addClass(logoMenuElement, 'banner-removed');
-      } else {
-        this.renderer.removeClass(logoMenuElement, 'banner-removed');
-      }
-    });
+  }
+  ngOnChanges() {
+    this.updateBanner(this.giftBannerShowed);
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const header = this.el.nativeElement.querySelector('.site-nav');
-    if (window.scrollY > 70) { // Adjust this threshold if needed
-      this.renderer.addClass(header, 'scrolled');
+    if (window.scrollY > 70) {
+      this.renderer.addClass(this.nav.nativeElement, 'scrolled');
     } else {
-      this.renderer.removeClass(header, 'scrolled');
+      this.renderer.removeClass(this.nav.nativeElement, 'scrolled');
     }
   }
   toggleSubmenu() {
@@ -37,6 +40,29 @@ export class SiteHeaderDesktopComponent implements OnInit {
       this.menuNavService.closeMenu();
     } else {
       this.menuNavService.openMenu();
+    }
+  }
+  // TODO understand why is that needed 
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.updateHeaderColor(this.router.url);  // Reapply the header color logic on window resize
+  }
+  updateHeaderColor(url: string) {
+    if (url.includes('signup') || url.includes('details')) {
+      this.renderer.addClass(this.nav.nativeElement, 'black-header');
+    } else {
+      this.renderer.removeClass(this.nav.nativeElement, 'black-header');
+    }
+  }
+  updateBanner(isShowed: boolean) {
+    const navEl = this.el.nativeElement.querySelector('.fixed-nav');
+    const logoEl = this.el.nativeElement.querySelector('.fixed-logo');
+    if (!isShowed) {
+      this.renderer.addClass(navEl, 'banner-removed-nav');
+      this.renderer.addClass(logoEl, 'banner-removed-logo');
+    } else {
+      this.renderer.removeClass(navEl, 'banner-removed-nav');
+      this.renderer.removeClass(logoEl, 'banner-removed-logo');
     }
   }
 }

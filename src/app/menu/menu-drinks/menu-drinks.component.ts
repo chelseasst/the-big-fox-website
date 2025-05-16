@@ -7,7 +7,7 @@ import { ItemsDrinks } from 'src/app/types/drinks';
   styleUrls: ['./menu-drinks.component.css'],
 })
 export class MenuDrinksComponent {
-  //{drinks : [{},{}, {}], bakery: [{},{},{}]}
+  
   items: ItemsDrinks = {
     drinks: [
       {

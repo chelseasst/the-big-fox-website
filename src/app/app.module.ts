@@ -13,16 +13,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { GiftCardsModule } from './gift-cards/gift-cards.module';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from './menu/menu.module';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HomeModule,
     SharedModule,
+    HomeModule,
     OurStoryModule,
     HttpClientModule,
     HoursAndLocationModule,
@@ -30,10 +29,9 @@ import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-br
     GiftCardsModule,
     FormsModule,
     MenuModule,
-    BrowserModule,
     BrowserAnimationsModule,
   ],
-  providers: [provideAnimations()],
+  // providers: [provideAnimations()],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

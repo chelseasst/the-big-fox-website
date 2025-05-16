@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { OrderOnlineService } from '../order-online.service';
+import { OrderOnlineService } from '../../order-online/order-online.service';
 import {
   animate,
   state,
@@ -7,8 +7,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Subscribable, Subscription } from 'rxjs';
-import { orderItems } from 'src/app/types/order-online';
+import { Subscription } from 'rxjs';
+import { itemDetails } from 'src/app/types/itemDetails';
+import { basketItem } from 'src/app/types/basketItem';
 
 @Component({
   selector: 'app-products-popup',
@@ -35,13 +36,19 @@ import { orderItems } from 'src/app/types/order-online';
   ],
 })
 export class ProductsPopupComponent implements OnInit, OnDestroy {
-  @Input('item') item!: orderItems;
-  @Input('quantity') quantity!: number;
   isPopupOpen: boolean = false;
   subsc!: Subscription;
+  currItem!: basketItem;
+
+  
   constructor(private orderOnlineService: OrderOnlineService) { }
+
   ngOnInit(): void {
-    this.subsc = this.orderOnlineService.isPopupOpen$.subscribe((isOpen) => {
+    this.orderOnlineService.currItem$.subscribe((item) => {
+      console.log(item);
+       this.currItem = item;
+    })
+    this.subsc = this.orderOnlineService.isCartPopupOpen$.subscribe((isOpen) => {
       this.isPopupOpen = isOpen;
     });
   }

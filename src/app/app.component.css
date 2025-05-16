@@ -2,3 +2,7 @@
   opacity: 1;
   overflow: hidden;
 }
+
+.cartPopupShown .popup-background {
+  opacity: 0.2;
+}

@@ -1,6 +1,10 @@
-@media screen and (min-width:769px){
-    .bakery-wrapper{
-        display: flex;
-        flex-wrap: wrap;
+.bakery-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+  }
+  @media screen and (min-width: 768px) {
+    .bakery-wrapper {
+      justify-content: space-around;
     }
-}
+  }

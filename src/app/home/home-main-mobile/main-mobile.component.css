@@ -1,62 +1,68 @@
 .section-images {
   display: block;
 }
+
 .images-wrapper {
   display: flex;
   flex-direction: column;
+  opacity: 0.9;
 }
+
 .images-wrapper img {
   flex: 1;
   max-height: 180px;
   width: 100%;
   object-fit: cover;
   /* the image covers the container without stretching  */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
 }
-.button {
-  display: block;
-  margin-bottom: 30px;
+
+.images-wrapper img.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
+
 .content {
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  outline: 1px solid #b8e6e3;
+  outline: 1px solid var(--accent-color);
   outline-offset: -1rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
+
+.content.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .content h2 {
   font-style: italic;
   font-size: 1.5em;
   font-weight: 300;
   padding-bottom: 30px;
 }
+
 .content p {
   line-height: 1.8em;
   text-align: center;
   padding: 10px;
 }
 
-/* DRINKS */
-
-.images-wrapper-drinks {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100vh;
-}
-.images-wrapper-drinks img {
-  height: 50%;
-  width: 50%;
-  object-fit: cover;
-}
-.content-drinks {
-  padding-bottom: 20px;
-}
 .content-drinks p::before {
   content: "•";
   padding-right: 10px;
-  color: #c65234;
+  color: var(--secondary-color);
+}
+
+.submit-btn {
+  max-width: 300px;
 }
 
 @media screen and (min-width: 426px) {

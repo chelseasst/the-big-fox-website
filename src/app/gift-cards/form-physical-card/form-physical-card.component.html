@@ -1,269 +1,150 @@
 <section class="physical-card-container">
-  <form
-    #physicalForm="ngForm"
-    (ngSubmit)="formSubmitHandler(physicalForm)"
-    action=""
-    id="form"
-  >
+  <form #physicalForm="ngForm" (ngSubmit)="addToCart(physicalForm)" id="form">
     <!-- FORM HEADER -->
     <div class="form-header">
       <h2>Physical Gift Cards</h2>
     </div>
-
+    <div class="cards-design-wrap">
+      <div class="design" *ngFor="let design of cardDesigns">
+        <label for="design"> {{design.title}}</label>
+        <div class="design-img-wrap">
+          <img [src]="design.images[0]" alt="Card Design">
+          <img [src]="design.images[1]" alt="Card Design">
+        </div>
+        <i class="error" *ngIf="cardDesign.errors?.['required']">
+          Please, select a design
+        </i>
+        <input class="radio-input" type="radio" name="design" [value]="design.title" ngModel #cardDesign="ngModel"
+          required>
+      </div>
+    </div>
     <!-- FORM GROUPS -->
     <div class="form-uni-group">
       <!-- GROUP ONE -->
       <div class="group">
         <!-- RECIPIENTS COUNTRY -->
-        <label for="recipient-country" class="label">
-          <span class="bold"
-            >Country <span class="required"> - Required</span></span
-          >
-          <ng-container *ngIf="countrySelect.touched">
-            <i class="error" *ngIf="countrySelect.errors?.['required']">
-              Please, enter a valid country
-            </i>
-          </ng-container>
-          <div class="form-control has-icon">
-            <select
-              #selectElCountry
-              name="recipient-country"
-              id="recipient-country"
-              ngModel
-              #countrySelect="ngModel"
-              required
-            >
-              <option value="" disabled selected>Country</option>
-              <option value="US">US</option>
-              <option value="Australia">Australia</option>
-              <option value="France">France</option>
-              <option value="Italy">Italy</option>
-            </select>
-            <span class="icon-right" (click)="toggleSelect(selectElCountry)">
-              <i
-                data-icon="font-awesome"
-                class="fa-thin fa-chevron-down"
-                style="color: #cfd4de"
-              ></i>
-            </span>
-          </div>
+        <label for="country">
+          <span>Country <span class="required"> - Required</span></span>
         </label>
+        <ng-container *ngIf="countrySelect.touched">
+          <i class="error" *ngIf="countrySelect.errors?.['required']">
+            Please, enter a valid country
+          </i>
+        </ng-container>
+        <div class="form-control has-icon">
+          <select name="country" id="recipient-country" #selectElCountry ngModel #countrySelect="ngModel" required>
+            <option value="" disabled selected>Country</option>
+            <option value="US">US</option>
+            <option value="Australia">Australia</option>
+            <option value="France">France</option>
+            <option value="Italy">Italy</option>
+          </select>
+          <span class="icon-right" (click)="toggleSelect(selectElCountry)">
+            <i data-icon="font-awesome" class="fa-thin fa-chevron-down" style="color: #cfd4de"></i>
+          </span>
+        </div>
         <!-- AMOUNT -->
-        <label for="recipient-amount" class="label">
-          <span class="bold"
-            >Select Amount <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="amountSelect.touched">
-            <i class="country error" *ngIf="amountSelect.errors?.['required']">
-              Please, enter a valid select amount
-            </i>
-          </ng-container>
-          <div class="form-control has-icon">
-            <select
-              name="recipient-amount"
-              id="recipient-amount"
-              #selectElAmount
-              ngModel
-              #amountSelect="ngModel"
-              required
-            >
-              <option value="" disabled selected>Select Amount</option>
-              <option value="15">$15</option>
-              <option value="25">$25</option>
-              <option value="50">$50</option>
-              <option value="80">$80</option>
-              <option value="100">$100</option>
-            </select>
-            <span class="icon-right" (click)="toggleSelect(selectElAmount)">
-              <i
-                data-icon="font-awesome"
-                class="fa-thin fa-chevron-down"
-                style="color: #cfd4de"
-              ></i>
-            </span>
-          </div>
+        <label for="amount">
+          <span>Select Amount <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="amountSelect.touched">
+          <i class="country error" *ngIf="amountSelect.errors?.['required']">
+            Please, enter a valid select amount
+          </i>
+        </ng-container>
+        <div class="form-control has-icon">
+          <select name="amount" id="recipient-amount" #selectElAmount ngModel #amountSelect="ngModel" required>
+            <option value="" disabled selected>Select Amount</option>
+            <option value="15">$15</option>
+            <option value="25">$25</option>
+            <option value="50">$50</option>
+            <option value="80">$80</option>
+            <option value="100">$100</option>
+          </select>
+          <span class="icon-right" (click)="toggleSelect(selectElAmount)">
+            <i data-icon="font-awesome" class="fa-thin fa-chevron-down" style="color: #cfd4de"></i>
+          </span>
+        </div>
         <!-- RECIPIENTS NAME  -->
-        <label for="recipient-name" class="label">
-          <span
-            >Recipient's Name <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="recipNameInput.touched">
-            <i class="error" *ngIf="recipNameInput.errors?.['required']"
-              >Recipient's name is required</i
-            >
-            <i class="error" *ngIf="recipNameInput.errors?.['minlength']"
-              >Recipient's Name must be at least 4 characters long</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            name="recipient-name"
-            id="recipient-name"
-            placeholder="Recipient's Name"
-            ngModel
-            #recipNameInput="ngModel"
-            required
-            minlength="4"
-          />
+        <label for="recipName">
+          <span>Recipient's Name <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="recipNameInput.touched">
+          <i class="error" *ngIf="recipNameInput.errors?.['required']">Recipient's name is required</i>
+          <i class="error" *ngIf="recipNameInput.errors?.['minlength']">Recipient's Name must be at least 4 characters
+            long</i>
+        </ng-container>
+        <input class="input" type="text" name="recipName" id="recipient-name" placeholder="Recipient's Name" ngModel
+          #recipNameInput="ngModel" required minlength="4" />
+        <!-- YOUR EMAIL -->
+        <label for="yourEmail">
+          <span>Your Email <span class="required"> - Required </span></span>
+        </label>
+        <ng-container *ngIf="yourEmail.touched">
+          <i class="error" *ngIf="yourEmail.errors?.['required']">Your Email is required</i>
+          <i class="error" *ngIf="yourEmail.errors?.['email']">
+            Please, enter a valid email
+          </i>
+        </ng-container>
+        <input class="input" type="text" name="yourEmail" id="your-email" placeholder="Your Email" #yourEmail="ngModel"
+          ngModel required email />
         <!-- RECIPIENTS ADDRESS  -->
-        <label for="recipient-address" class="label">
-          <span class="bold"
-            >Recipient's Address
-            <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="recipAddressInput.touched">
-            <i class="error" *ngIf="recipAddressInput.errors?.['required']"
-              >Please, enter a valid recipient's address</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            name="recipient-address"
-            id="recipient-address"
-            placeholder="Recipient's Address"
-            ngModel
-            #recipAddressInput="ngModel"
-            required
-          />
+        <label for="recipAdress">
+          <span>Recipient's Address/Office Address
+            <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="recipAddress.touched">
+          <i class="error" *ngIf="recipAddress.errors?.['required']">Please, enter a valid recipient's address</i>
+        </ng-container>
+        <input class="input" type="text" name="recipAdress" id="recipient-address"
+          placeholder="Recipient's Address/Office Address" ngModel #recipAddress="ngModel" required />
         <!-- RECIPIENTS ADDRESS 2  -->
-        <label for="recipient-address-2" class="label">
-          <span class="bold"
-            >Recipient's Address 2
-            <span class="optional"> - Optional </span></span
-          >
-          <input
-            type="text"
-            name="recipient-address-2"
-            id="recipient-address-2"
-            placeholder="Recipient's Address 2"
-            ngModel
-            recipAddress2Input="ngModel"
-          />
+        <label for="recipAdress2">
+          <span>Recipient's Address 2
+            <span class="optional"> - Optional </span></span>
         </label>
+        <input class="input" type="text" name="recipAdress2" id="recipient-address-2"
+          placeholder="Recipient's Address 2" ngModel #recipAddress2="ngModel" />
         <!-- CITY -->
-        <label for="recipient-city" class="label">
-          <span class="bold"
-            >City <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="cityInput.touched">
-            <i class="error" *ngIf="cityInput.errors?.['required']"
-              >Please, enter a valid city</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            name="recipient-city"
-            id="recipient-city"
-            placeholder="Recipient's City"
-            ngModel
-            #cityInput="ngModel"
-            required
-          />
+        <label for="city">
+          <span>City <span class="required"> - Required </span></span>
         </label>
-        <!-- STATE/PROVINCE  -->
-        <label for="recipient-state-province" class="label">
-          <span class="bold"
-            >State/Province <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="stateSelect.touched">
-            <i class="error" *ngIf="stateSelect.errors?.['required']"
-              >Please, enter a valid state/province</i
-            >
-          </ng-container>
-          <div class="form-control has-icon">
-            <select
-              #stateProvince
-              name="recipient-state-province"
-              id="recipient-state-province"
-              ngModel
-              #stateSelect="ngModel"
-              required
-            >
-              <option selected disabled value="">State/Province</option>
-              <option value="AL">Alabama</option>
-              <option value="NY">New York</option>
-              <option value="PA">Paris</option>
-              <option value="RO">Rome</option>
-              <option value="NI">Nice</option>
-            </select>
-            <span class="icon-right" (click)="toggleSelect(stateProvince)">
-              <i
-                data-icon="font-awesome"
-                class="fa-thin fa-chevron-down"
-                style="color: #cfd4de"
-              ></i>
-            </span>
-          </div>
-        </label>
+        <ng-container *ngIf="cityInput.touched">
+          <i class="error" *ngIf="cityInput.errors?.['required']">Please, enter a valid city</i>
+        </ng-container>
+        <input class="input" type="text" name="city" id="recipient-city" placeholder="Recipient's City" ngModel
+          #cityInput="ngModel" required />
         <!-- POSTAL CODE -->
-        <label for="recipient-zip" class="label">
-          <span class="bold"
-            >Zip/Postal Code <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="postalCodeInput.touched">
-            <i class="error" *ngIf="postalCodeInput.errors?.['required']"
-              >Please, enter a valid zip/postal code</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            name="recipient-zip"
-            id="recipient-zip"
-            placeholder="Zip/Postal Code"
-            ngModel
-            #postalCodeInput="ngModel"
-            required
-          />
+        <label for="zipCode">
+          <span>Zip/Postal Code <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="postalCodeInput.touched">
+          <i class="error" *ngIf="postalCodeInput.errors?.['required']">Please, enter a valid zip/postal code</i>
+        </ng-container>
+        <input class="input" type="text" name="zipCode" id="recipient-zip" placeholder="Zip/Postal Code" ngModel
+          #postalCodeInput="ngModel" required />
       </div>
 
-      <!-- GROUPT TWO -->
       <div class="group">
         <!-- YOUR NAME -->
-        <label for="your-name" class="label">
-          <span class="bold"
-            >Your Name <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="yourNameInput.touched">
-            <i class="error" *ngIf="yourNameInput.errors?.['required']"
-              >Your Name is required</i
-            >
-            <i class="error" *ngIf="yourNameInput.errors?.['minlength']"
-              >Your Name must be at least 4 characters long</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            name="your-name"
-            id="your-name"
-            placeholder="Your Name"
-            ngModel
-            #yourNameInput="ngModel"
-            required
-            minlength="4"
-          />
+        <label for="senderName">
+          <span>Your Name <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="yourNameInput.touched">
+          <i class="error" *ngIf="yourNameInput.errors?.['required']">Your Name is required</i>
+          <i class="error" *ngIf="yourNameInput.errors?.['minlength']">Your Name must be at least 4 characters long</i>
+        </ng-container>
+        <input class="input" type="text" name="senderName" id="your-name" placeholder="Your Name" ngModel
+          #yourNameInput="ngModel" required minlength="4" />
         <!-- YOUR MESSAGE -->
-        <label for="your-mess" class="label-2">
-          <span class="bold"
-            >Your Message <span class="optional"> - Optional </span></span
-          >
-          <textarea
-            type="text"
-            name="your-mess"
-            id="your-mess"
-            placeholder="Your Message"
-            maxlength="250"
-            ngModel
-            yourMessTextArea="ngModel"
-          ></textarea>
-          <div class="count-container">
-            <span>0/250</span>
-          </div>
+        <label for="message">
+          <span>Your Message <span class="optional"> - Optional </span></span>
         </label>
+        <textarea type="text" name="message" id="your-mess" placeholder="Your Message" maxlength="250" ngModel
+          yourMessTextArea="ngModel"></textarea>
+        <div class="count-container">
+          <span>0/250</span>
+        </div>
       </div>
     </div>
 
@@ -274,7 +155,6 @@
       </button>
       <br />
     </div>
-
     <!-- FORM FOOTER -->
     <div class="form-footer">
       <p>

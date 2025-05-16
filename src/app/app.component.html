@@ -1,8 +1,9 @@
-<app-initial-popup *ngIf="showInitialPopup" (close)="closePopup()"></app-initial-popup>
-
-<div class="popup-background" [ngClass]="{ popupShown: showInitialPopup }">
+<div class="popup-background" [ngClass]="{ popupShown: showInitPopup }" [ngClass]="{ cartPopupShown: isCartPopupOpen$ | async }">
   <app-shopping-cart *ngIf="isCartVisible$ | async"></app-shopping-cart>
   <app-header></app-header>
   <router-outlet class="router-outlet"></router-outlet>
   <app-footer></app-footer>
+  <ng-container *ngIf="isCartPopupOpen$ | async">
+    <app-products-popup class="product-popup"></app-products-popup>
+  </ng-container>
 </div>

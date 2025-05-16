@@ -141,7 +141,6 @@ export class InitialPopupComponent implements OnInit, AfterViewInit {
   }
   typingSimulation() {
     //1200s needed 150s waiting + 3x
-    const dotCount = 3;
     let currentIndex = 0;
     let iteration = 0;
     const savedInterval = setInterval(() => {

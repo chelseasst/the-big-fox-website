@@ -1,14 +1,17 @@
 a {
   text-decoration: underline;
 }
+
 .menu-container {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
+
 .blue-content-wrapper {
-  border: 1rem solid #b8e6e3;
+  border: 1rem solid var(--accent-color);
   text-align: center;
   padding: 4.6rem 0.9rem;
 }
+
 .menu-nav {
   display: flex;
   flex-direction: column;
@@ -18,35 +21,199 @@ a {
   margin-bottom: 2rem;
   padding: 3rem 0rem;
 }
-.submit-btn{
+
+.submit-btn {
   width: 60%;
 }
+
 .section-1 h2 {
   margin-bottom: 1rem;
 }
+
 .section-1 {
   margin: 0 auto;
   max-width: 800px;
 }
+
 .img-wheat-container img {
   margin: 1.5rem auto;
 }
+
 .menu-body {
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
   padding: 1rem;
   max-width: 1160px;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 769px) {
-  .menu-nav {
-    flex-direction: row;
-    padding: 3rem ;
+.dynamic-coff-sect {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0px;
+  background-color: var(--darker-color);
+}
+
+.left-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.left-cont .h2,
+.left-cont p {
+  font-family: "Playfair Display", serif;
+  color: white;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.h2.animated {
+  transform: translateX(90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
+.h2.animated.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#time-p {
+  color: var(--accent-color);
+  font-style: italic;
+  font-family: "Sorts Mill Goudy";
+}
+
+.right-cont {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.caffeine-quote {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  letter-spacing: 10px;
+  z-index: -5;
+}
+
+.caffeine-quote p {
+  font-size: 6rem;
+}
+
+.coffee-img-cont {
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 300px;
+  height: 100%;
+  background-image: url('/assets/menu/cappuccino.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  scale: 0.8;
+  transition: all 1.2s ease-out, opacity 0.8s ease-out;
+}
+
+.coffee-img-cont.visible {
+  scale: 1;
+  left: -80px;
+  opacity: 1;
+}
+
+.coffee-img-cont:hover {
+  animation: rotateCircle 4s infinite linear;
+}
+
+#explore-more {
+  width: fit-content;
+  display: block;
+  margin-top: 1rem;
+}
+
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
-@media screen and (min-width: 1024px) {
+
+@media screen and (min-width: 768px) {
+  .menu-nav {
+    flex-direction: row;
+    padding: 3rem;
+  }
+
+  .dynamic-coff-sect {
+    flex-direction: row;
+  }
+
+  .left-cont {
+    flex: 0 0 45%;
+    align-items: start;
+    text-align: start;
+    justify-content: center;
+    gap: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .caffeine-quote p {
+    font-size: 12rem;
+  }
+
+  .caffeine-quote {
+    left: 0;
+  }
+
+  .coffee-img-cont.visible {
+    left: 30px;
+    top: 0;
+    width: 500px;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+
+
+  .coffee-img-cont {
+    top: 0;
+    left: 500px;
+  }
+
+  .coffee-img-cont.visible {
+    left: 200px;
+  }
+
   .section-1 p,
   .section-1 a {
+    font-size: 1.3rem;
+  }
+
+  .dynamic-coff-sect {
+    height: 630px;
+    /* decrease here */
+  }
+
+  .h2 {
+    font-size: 3.5rem;
+  }
+
+  .left-cont {
+    padding-left: 3rem;
+  }
+
+  .left-cont p {
     font-size: 1.3rem;
   }
 }

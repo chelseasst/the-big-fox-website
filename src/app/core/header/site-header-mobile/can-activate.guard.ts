@@ -10,7 +10,7 @@ import { MenuNavService } from './menu-nav.service';
 
 @Injectable({ providedIn: 'root' })
 export class MenuNavGuard implements CanActivate {
-  constructor(private menuNavService: MenuNavService) {}
+  constructor(private menuNavService: MenuNavService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -19,6 +19,7 @@ export class MenuNavGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log('Route', route)
     this.menuNavService.closeMenu();
     return true;
   }

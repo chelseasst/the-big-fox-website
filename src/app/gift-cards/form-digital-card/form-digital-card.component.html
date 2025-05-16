@@ -1,222 +1,115 @@
 <section class="digital-card-container">
-  <form id="form" [formGroup]="digitalForm" (ngSubmit)="onSubmit()">
+  <form id="form" #digitalForm="ngForm" (ngSubmit)="addToCart(digitalForm)">
     <div class="form-header">
       <h2>Digital Gift Cards</h2>
     </div>
-
+    <div class="cards-design-wrap">
+      <div class="design" *ngFor="let design of cardDesigns">
+        <label for="design"> {{design.title}}</label>
+        <div class="design-img-wrap">
+          <img [src]="design.images[0]" alt="Card Design">
+          <img [src]="design.images[1]" alt="Card Design">
+        </div>
+        <i class="error" *ngIf="cardDesign.errors?.['required']">
+          Please, select a design
+        </i>
+        <input class="radio-input" type="radio" name="design" [value]="design.title" ngModel #cardDesign="ngModel"
+          required>
+      </div>
+    </div>
     <div class="form-uni-group">
       <!-- GROUP ONE -->
       <div class="group">
         <!-- AMOUNT -->
-        <label for="amount" class="label">
-          <span class="bold"
-            >Select Amount <span class="required"> - Required</span></span
-          >
-          <ng-container *ngIf="digitalForm.get('amountSelect')?.touched">
-            <i class="error" *ngIf="checkError('amountSelect', 'required')">
-              Please, select a valid amount
-            </i>
-          </ng-container>
-          <div class="has-icon">
-            <select
-              class="select"
-              name="amount"
-              id="amount"
-              #selectAmount
-              formControlName="amountSelect"
-            >
-              <option value="" disabled selected>Select Amount</option>
-              <option value="15">$15</option>
-              <option value="25">$25</option>
-              <option value="50">$50</option>
-              <option value="80">$80</option>
-              <option value="100">$100</option>
-            </select>
+        <label for="amount">
+          <span>Select Amount <span class="required"> - Required</span></span>
+        </label>
+        <ng-container *ngIf="amountSelect.touched">
+          <i class="error" *ngIf="amountSelect.errors?.['required']">
+            Please, select a valid amount
+          </i>
+        </ng-container>
+        <div class="has-icon">
+          <select name="amount" id="amount" #selectAmount ngModel #amountSelect="ngModel" required>
+            <option value="" disabled selected>Select Amount</option>
+            <option value="15">$15</option>
+            <option value="25">$25</option>
+            <option value="50">$50</option>
+            <option value="80">$80</option>
+            <option value="100">$100</option>
+          </select>
 
-            <span class="icon-right" (click)="toggleSelect(selectAmount)">
-              <i
-                data-icon="font-awesome"
-                class="fa-thin fa-chevron-down"
-                style="color: #cfd4de"
-              ></i>
-            </span>
-          </div>
-        </label>
+          <span class="icon-right" (click)="toggleSelect(selectAmount)">
+            <i data-icon="font-awesome" class="fa-thin fa-chevron-down" style="color: #cfd4de"></i>
+          </span>
+        </div>
         <!-- RECIPIENTS NAME -->
-        <label for="recipient-name" class="label">
-          <span class="bold"
-            >Recipient's Name <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="digitalForm.get('recipientName')?.touched">
-            <i
-              class="name error"
-              *ngIf="checkError('recipientName', 'required')"
-              >Recipient Name is required</i
-            >
-            <i class="error" *ngIf="checkError('recipientName', 'minlength')"
-              >Recipient's Name must be at least 4 characters long</i
-            >
-          </ng-container>
-          <input
-            class="input"
-            type="text"
-            name="recipient-name"
-            id="recipient-name"
-            placeholder="Recipient's Name"
-            formControlName="recipientName"
-          />
+        <label for="recipName">
+          <span>Recipient's Name <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="recipNameInput.touched">
+          <i class="name error" *ngIf="recipNameInput.errors?.['required']">Recipient Name is required</i>
+          <i class="error" *ngIf="recipNameInput.errors?.['minlength']">Recipient's Name must be at least 4 characters
+            long</i>
+        </ng-container>
+        <input class="input" type="text" name="recipName" id="recipient-name" placeholder="Recipient's Name"
+          #recipNameInput="ngModel" ngModel required minlength="4" />
         <!-- RECIPIENTS EMAIL -->
-        <label
-          for="recipient-email"
-          class="label"
-          *ngIf="!digitalForm.get('emailCheckbox')?.value"
-        >
-          <span class="bold"
-            >Recipient's Email <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="digitalForm.get('recipientEmail')?.touched">
-            <i class="error" *ngIf="checkError('recipientEmail', 'required')"
-              >Recipient's Email is required</i
-            >
-            <i class="error" *ngIf="checkError('recipientEmail', 'email')">
+        <label for="recipEmail" *ngIf="!isChecked">
+          <span>Recipient's Email <span class="required"> - Required </span></span>
+          <ng-container *ngIf="recipEmail.touched">
+            <i class="error" *ngIf="recipEmail.errors?.['required']">Recipient's Email is required</i>
+            <i class="error" *ngIf="recipEmail.errors?.['email']">
               Please, enter a valid email
             </i>
-            <i
-              class="error"
-              *ngIf="checkError('recipientEmail', 'invalidExtension')"
-            >
-              The email must end with 'bg' or 'com' extension</i
-            >
           </ng-container>
-          <input
-            class="input"
-            type="text"
-            name="recipient-email"
-            id="recipient-email"
-            placeholder="Recipient's Email"
-            formControlName="recipientEmail"
-          />
+          <input class="input" type="text" name="recipEmail" id="recipient-email" placeholder="Recipient's Email"
+            ngModel #recipEmail="ngModel" required email />
         </label>
-        <!-- DATE -->
-        <label for="date" class="label">
-          <span class="bold"
-            >Date of Delivery <span class="required"> - Optional </span></span
-          >
-          <div class="has-icon">
-            <span class="icon-left">
-              <i class="fa-solid fa-calendar-days" style="color: #d3d5d9"></i>
-            </span>
-            <input
-              class="input"
-              type="date"
-              name="date"
-              id="date"
-              #dateEl
-              pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-              formControlName="dateInput"
-            />
-            <span class="icon-right" (click)="toggleSelect(dateEl)">
-              <i
-                data-icon="font-awesome"
-                class="fa-thin fa-chevron-down"
-                style="color: #cfd4de"
-              ></i>
-            </span>
-          </div>
+        <!-- EMAIL CHECKBOX -->
+        <label for="emailCheckbox">
         </label>
-        <!-- EMAIL NOTIFICATIONS -->
-        <!-- IF CHECKED - EMAIL IS REMOVED -->
-
-        <!-- add ng if to the email above -->
-        <label for="email-checkbox" class="label">
-          <!-- email field will be removed if checked  -->
-          <input
-            class="input-checkbox"
-            type="checkbox"
-            id="email-checkbox"
-            name="email-checkbox"
-            formControlName="emailCheckbox"
-          />
-          <!-- checked -> value = true; unchecked -> value = false; -->
-          <p class="email-checkbox-p">
-            Email the gift to me so I can print it and give it in-person.
-          </p>
-        </label>
+        <input class="input-checkbox" type="checkbox" id="email-checkbox" name="emailCheckbox" ngModel
+          [(ngModel)]="isChecked">
+        <p class="email-checkbox">
+          Email the gift to me so I can print it and give it in-person.
+        </p>
       </div>
       <!-- GROUP TWO -->
       <div class="group2">
         <!-- YOUR NAME -->
-        <label for="your-name" class="label">
-          <span class="bold"
-            >Your Name <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="digitalForm.get('yourNameInput')?.touched">
-            <i class="error" *ngIf="checkError('yourNameInput', 'required')"
-              >Your Name is required</i
-            >
-            <i class="error" *ngIf="checkError('yourNameInput', 'minlength')"
-              >Your Name must be at least 4 characters long</i
-            >
-          </ng-container>
-          <input
-            class="input"
-            type="text"
-            name="your-name"
-            id="your-name"
-            placeholder="Your Name"
-            formControlName="yourNameInput"
-          />
+        <label for="your-name">
+          <span>Your Name <span class="required"> - Required </span></span>
         </label>
-
+        <ng-container *ngIf="yourName.touched">
+          <i class="error" *ngIf="yourName.errors?.['required']">Your Name is required</i>
+          <i class="error" *ngIf="yourName.errors?.['minlength']">Your Name must be at least 2 characters
+            long</i>
+        </ng-container>
+        <input class="input" type="text" name="your-name" id="your-name" placeholder="Your Name" #yourName="ngModel"
+          ngModel minlength="2" />
         <!-- YOUR EMAIL -->
-        <label for="your-email" class="label">
-          <span class="bold"
-            >Your Email <span class="required"> - Required </span></span
-          >
-          <ng-container *ngIf="digitalForm.get('yourEmailInput')?.touched">
-            <i class="error" *ngIf="checkError('yourEmailInput', 'required')"
-              >Recipient's Email is required</i
-            >
-            <i class="error" *ngIf="checkError('yourEmailInput', 'email')">
-              Please, enter a valid email
-            </i>
-            <i
-              class="error"
-              *ngIf="checkError('yourEmailInput', 'invalidExtension')"
-            >
-              Your Email must end with 'bg' or 'com' extension</i
-            >
-          </ng-container>
-          <input
-            class="input"
-            class="input"
-            type="text"
-            name="your-email"
-            id="your-email"
-            placeholder="Your Email"
-            formControlName="yourEmailInput"
-          />
+        <label for="yourEmail">
+          <span>Your Email <span class="required"> - Required </span></span>
         </label>
+        <ng-container *ngIf="yourEmail.touched">
+          <i class="error" *ngIf="yourEmail.errors?.['required']"> Email is required</i>
+          <i class="error" *ngIf="yourEmail.errors?.['email']">
+            Please, enter a valid email
+          </i>
+        </ng-container>
+        <input class="input" type="text" name="yourEmail" id="your-email" placeholder="Your Email" #yourEmail="ngModel"
+          ngModel required email />
 
         <!-- YOUR MESSAGE -->
-        <label for="your-mess" class="label">
-          <span class="bold"
-            >Your Message <span class="optional"> - Optional </span></span
-          >
-          <textarea
-            class="textarea"
-            type="text"
-            name="your-mess"
-            id="your-mess"
-            placeholder="Your Message"
-            maxlength="250"
-            formControlName="yourMessageTextA"
-          ></textarea>
-          <div class="count-container">
-            <span class="pull-right">0/250</span>
-          </div>
+        <label for="yourMess">
+          <span>Your Message <span class="optional"> - Optional </span></span>
         </label>
+        <textarea type="text" name="yourMess" id="your-mess" placeholder="Your Message" maxlength="250"
+          #yourMess="ngModel" ngModel></textarea>
+        <div class="count-container">
+          <span class="pull-right">0/250</span>
+        </div>
       </div>
     </div>
 

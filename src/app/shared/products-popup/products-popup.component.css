@@ -13,7 +13,7 @@
 }
 
 .popup-box {
-  background-color: #fdfaeb;
+  background-color:var(--primary-color);
   max-width: 260px;
   max-height: 90vh;
   padding: 1.5rem;

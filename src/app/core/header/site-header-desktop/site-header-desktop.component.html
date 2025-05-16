@@ -1,7 +1,7 @@
 <app-site-location class="site-location"></app-site-location>
 <!-- THE FIXED ELEMENT LOGO, MENU ICON, LOCATION -->
 <div class="logo-menu-wrapper">
-  <div class="logo-nav-fixed">
+  <div class="fixed-logo">
     <div class="logo-nav-wrapper">
       <!-- Logo -->
       <div class="site-logo-container">
@@ -12,8 +12,8 @@
     </div>
   </div>
   <!-- MENU -->
-  <nav class="site-nav">
-    <ul class="site-nav-menu">
+  <nav class="site-nav fixed-nav">
+    <ul #nav class="site-nav-menu">
       <li>
         <a routerLink="our-story" routerLinkActive="activeLink">Our Story</a>
       </li>
@@ -25,7 +25,8 @@
         <a routerLink="hours-and-location" routerLinkActive="activeLink">Hours & Location</a>
       </li>
       <li class="site-nav-submenu">
-        <a class="submenu-button" [class.isActive]="isSubMenuShown" (click)="toggleSubmenu()">
+        <a class="submenu-button" routerLink="order-online" routerLinkActive="activeLink"
+          (click)="toggleSubmenu()">
           Order Online
           <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>
           <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>

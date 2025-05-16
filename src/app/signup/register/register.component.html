@@ -1,121 +1,73 @@
 <section class="register-form">
   <p id="register-heading">Register</p>
-  <form class="form" [formGroup]="registerForm" (ngSubmit)="registerHandler()">
+  <form class="form" #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
     <div class="form-ui">
-      <label for="first-name">
-        <span>First Name <span class="required">- Required</span></span>
-        <ng-container *ngIf="registerForm.get('firstName')?.touched">
-          <i class="error" *ngIf="checkError('firstName', 'required')"
-            >First Name is required</i
-          >
-          <i class="error" *ngIf="checkError('firstName', 'minlength')">
-            First Name must be at least 4 characters long
-          </i>
-        </ng-container>
-        <input
-          type="text"
-          id="first-name"
-          name="first-name"
-          placeholder="First Name"
-          formControlName="firstName"
-        />
+      <!-- FIRST NAME -->
+      <label for="firstName">First Name
+        <span class="required">- Required</span>
       </label>
-
-      <label for="last-name">
-        <span>Last Name <span class="required">- Required</span></span>
-        <ng-container *ngIf="registerForm.get('lastName')?.touched">
-          <i class="error" *ngIf="checkError('lastName', 'required')"
-            >Last Name is required</i
-          >
-          <i class="error" *ngIf="checkError('lastName', 'minlength')">
-            Last Name must be at least 4 characters long
-          </i>
-        </ng-container>
-        <input
-          type="text"
-          id="last-name"
-          name="last-name"
-          placeholder="Last Name"
-          formControlName="lastName"
-        />
+      <ng-container *ngIf="firstName.touched">
+        <i class="error" *ngIf="firstName.errors?.['required']">First Name is required</i>
+        <i class="error" *ngIf="firstName.errors?.['minlength']">
+          First Name must be at least 4 characters long
+        </i>
+      </ng-container>
+      <input type="text" id="first-name" name="firstName" placeholder="First Name" ngModel #firstName="ngModel" required
+        minlength="2" />
+      <!-- LAST NAME -->
+      <label for="lastName">Last Name
+        <span class="required">- Required</span>
       </label>
-      <label for="email">
-        <span>Email <span class="required">- Required</span></span>
-        <ng-container *ngIf="registerForm.get('email')?.touched">
-          <i class="error" *ngIf="checkError('email', 'required')"
-            >Email is required</i
-          >
-          <i class="error" *ngIf="checkError('email', 'email')">
-            Please, enter a valid email
-          </i>
-          <i
-            class="country error"
-            *ngIf="checkError('email', 'invalidExtension')"
-          >
-            The email must end with 'bg' or 'com' extension</i
-          >
-        </ng-container>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Email"
-          formControlName="email"
-        />
+      <ng-container *ngIf="lastName.touched">
+        <i class="error" *ngIf="lastName.errors?.['required']">Last Name is required</i>
+        <i class="error" *ngIf="lastName.errors?.['minlength']">
+          Last Name must be at least 4 characters long
+        </i>
+      </ng-container>
+      <input type="text" id="last-name" name="lastName" placeholder="Last Name" ngModel #lastName="ngModel" required
+        minlength="2" />
+      <!-- EMAIL -->
+      <label for="email">Email
+        <span class="required">- Required</span>
       </label>
-      <div class="passwords-group" formGroupName="passGroup">
-        <label for="password">
-          <span>Password <span class="required">- Required</span></span>
-          <ng-container *ngIf="registerForm.get('passGroup.password')?.touched">
-            <i
-              class="error"
-              *ngIf="checkError('passGroup.password', 'required')"
-              >Password is required</i
-            >
-            <i
-              class="error"
-              *ngIf="checkError('passGroup.password', 'passNotValid')"
-            >
-              Password must contain at least 7 characters including one capital
-              letter and two digits
-            </i>
-          </ng-container>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Password"
-            formControlName="password"
-          />
+      <ng-container *ngIf="email.touched">
+        <i class="error" *ngIf="email.errors?.['required']">Email is required</i>
+        <i class="error" *ngIf="email.errors?.['email']">
+          Please, enter a valid email
+        </i>
+        <i class="error" *ngIf="email.errors?.['invalidExtension']">
+          The email must end with 'bg' or 'com' extension</i>
+      </ng-container>
+      <input type="text" id="email" name="email" placeholder="Email" ngModel #email="ngModel" required email />
+      <div class="passwords-group">
+        <!-- PASSWORD -->
+        <label for="password">Password
+          <span class="required">- Required</span>
         </label>
-        <label for="rep-password">
-          <span>Repeat Password <span class="required">- Required</span></span>
-          <ng-container
-            *ngIf="registerForm.get('passGroup.rePassword')?.touched"
-          >
-            <i
-              class="error"
-              *ngIf="checkError('passGroup.rePassword', 'required')"
-              >Repeat Password is required</i
-            >
-            <i
-              class="error"
-              *ngIf="checkError('passGroup.rePassword', 'passNotValid')"
-            >
-              Please, enter a valid Repeat Password
-            </i>
-            <i class="error" *ngIf="checkError('passGroup', 'notMatching')"
-              >Passwords not matching</i
-            >
-          </ng-container>
-          <input
-            type="text"
-            id="rep-password"
-            name="rep-password"
-            placeholder="Repeat Password"
-            formControlName="rePassword"
-          />
+        <ng-container *ngIf="password.touched">
+          <i class="error" *ngIf="password.errors?.['required']">Password is required</i>
+          <i class="error" *ngIf="password.errors?.['minlength']">
+            Password must contain at least 8 characters
+          </i>
+          <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one Uppercase
+            letter</i>
+        </ng-container>
+        <input type="text" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
+          minlength="8" required appPassword />
+        <!-- RE PASSWORD -->
+        <label for="rePassword">Repeat Password
+          <span class="required">- Required</span>
         </label>
+        <ng-container *ngIf="rePassword.touched">
+          <i class="error" *ngIf="rePassword.errors?.['required']">Repeat Password is required</i>
+          <i class=" error" *ngIf="rePassword.errors?.['appPassword']">
+            Repeat password must contain at least one Uppercase
+            letter
+          </i>
+          <i class="error" *ngIf="rePassword.errors?.['appPassMatching']">Passwords not matching</i>
+        </ng-container>
+        <input type="text" id="rep-password" name="rePassword" placeholder="Repeat Password" ngModel
+          #rePassword="ngModel" required minlength appPassword appPassMatching />
       </div>
     </div>
     <div class="form-actions">
@@ -123,7 +75,6 @@
     </div>
     <p class="login-p">
       Already have an account? <a routerLink="../login">Login</a>
-      <!-- going one route up with '../login' -->
     </p>
   </form>
 </section>

@@ -1,16 +1,8 @@
-<section
-  class="section-initial"
-  [ngStyle]="{ 'background-image': 'url(' + url + ')' }"
-  [@showInitial]="pageState"
->
+<section class="section-initial" [ngStyle]="{ 'background-image': 'url(' + url + ')' }" [@showInitial]="pageState">
   <div class="central-items-container">
     <div class="logo-container" *ngIf="isHome">
       <p>
-        <img
-          class="logo-image"
-          src="../../../assets/home/download.avif"
-          alt="Image"
-        />
+        <img class="logo-image" src="../../../assets/home/download.avif" alt="Image" />
       </p>
     </div>
     <div class="h1-container" *ngIf="!isHome">

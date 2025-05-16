@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-event',
@@ -6,9 +6,16 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./event.component.css'],
 })
 export class EventComponent {
-  @Input('url') url: string = '';
-  @Input('title') title: string = '';
-  @Input('eventDate') eventDate: string = '';
-  @Input('days') days: string = '';
-  @Input('time') time: string = '';
+  @Input('eventData') eventData!: any;
+  constructor(private render: Renderer2) { }
+  toggleFlip(event: TouchEvent) {
+    const target = event.target;
+    if (target) {
+      if (event.type === 'touchstart') {
+        this.render.addClass(target, 'card-touched');
+      } else if (event.type === 'touchend') {
+        this.render.removeClass(target, 'card-touched');
+      }
+    }
+  }
 }

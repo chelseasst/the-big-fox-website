@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { checkoutItem } from '../types/checkout';
-import { orderItems } from '../types/order-online';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { basketItem } from '../types/basketItem';
+import { itemDetails } from '../types/itemDetails';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class OrderOnlineService {
   readonly MIN_VALUE: number = 1;
   readonly MAX_VALUE: number = 5;
   private popupOpenStateSubject = new BehaviorSubject<boolean>(false);
-  isPopupOpen$ = this.popupOpenStateSubject.asObservable();
+  isCartPopupOpen$ = this.popupOpenStateSubject.asObservable();
 
   private itemsCountSubject = new BehaviorSubject<number>(0);
   itemsCount$ = this.itemsCountSubject.asObservable();
@@ -18,8 +18,11 @@ export class OrderOnlineService {
   private isCartVisibleSubject = new BehaviorSubject<boolean>(false);
   isCartVisible$ = this.isCartVisibleSubject.asObservable();
 
-  private cartItemsSubject = new BehaviorSubject<checkoutItem[]>([]);
+  private cartItemsSubject = new BehaviorSubject<basketItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
+
+  private currItemSubject = new ReplaySubject<basketItem>();
+  currItem$ = this.currItemSubject.asObservable();
 
   openPopup() {
     this.popupOpenStateSubject.next(true);
@@ -27,7 +30,8 @@ export class OrderOnlineService {
   closePopup() {
     this.popupOpenStateSubject.next(false);
   }
-  addItemToCart(product: orderItems, quantity: string) {
+  addItemToCart(product: basketItem, quantity: string) {
+    this.currItemSubject.next(product);
     this.openPopup();
     const currentCount = this.itemsCountSubject.value;
     this.isCartVisibleSubject.next(true);
@@ -38,14 +42,7 @@ export class OrderOnlineService {
     if (existingItem) {
       existingItem.quantity += parseInt(quantity);
     } else {
-      currCart.push({
-        id: product.id,
-        quantity: parseInt(quantity),
-        type: product.type,
-        images: product.images,
-        price: product.price,
-        color: product.color
-      });
+      currCart.push(product);
     }
     this.cartItemsSubject.next(currCart);
   }
@@ -85,5 +82,25 @@ export class OrderOnlineService {
       currCart.splice(itemIndex, 1);
       this.cartItemsSubject.next(currCart);
     }
+  }
+  fetchStoreItems(){
+
+  }
+  fetchMerchItems(){
+
+  }
+  getItemById(id:string):itemDetails{
+    return  {
+      id: '1',
+      title: 'Picnic Cookies Box',
+      description: 'Set of 6 Chocolate Chips Cookies',
+      excessiveDescription:
+        'Our signiture cookies ar emade in the early hours of the morning, when our baker is still asleep, but knowing he makes the best cookies in town, he is waking up early every morning to prepare the ingredients and mix this portion of sweet magic. In the cookies is inserted the best Belgium milk chocolate, not toocrispy, also but not melting, I told you - magic.',
+      ingredients: 'favour, sugar, Belgium milk chocolate, heat',
+      price: 15,
+      pieces: 6,
+      link: '',
+      images: ['../assets/order-online/cookies.JPG', '../assets/order-online/cookies.JPG', '../assets/order-online/cookies.JPG'],
+    };
   }
 }

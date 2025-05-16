@@ -5,7 +5,7 @@ import { MenuDrinksComponent } from './menu-drinks/menu-drinks.component';
 import { MenuBakeryComponent } from './menu-bakery/menu-bakery.component';
 
 const routes: Routes = [
-  //Nested Routing
+
   {
     path: '',
     component: MenuComponent,

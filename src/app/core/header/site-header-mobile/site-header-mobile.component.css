@@ -1,4 +1,4 @@
-.logo-nav-fixed {
+.fixed-logo {
   position: fixed;
   top: 42px;
   left: 19px;
@@ -7,8 +7,23 @@
   z-index: 100;
 }
 
+.fixed-nav {
+  position: fixed;
+  top: 80px;
+  right: 21px;
+  z-index: 160;
+  background-color: var(--primary-color);
+  opacity: 0.8;
+  padding: 5px 9px;
+}
+
 .banner-removed-logo {
-  top: 8px;
+  top: 0;
+}
+
+
+.banner-removed-nav {
+  top: 40px;
 }
 
 .site-logo {
@@ -16,27 +31,16 @@
   height: auto;
 }
 
-.buttons-wrapper {
-  position: fixed;
-  top: 80px;
-  right: 21px;
-  z-index: 160;
-  background-color: #fdfaeb;
-  opacity: 0.8;
-  padding: 5px 9px;
-}
+
 
 .nav-toggle-btn i {
   font-size: 1.6rem;
   transition: color 0.1s ease-in;
 }
 
-.banner-removed-button {
-  top: 40px;
-}
 
 .site-location-wrapper {
-  margin-top: 120px;
+  margin-top: 105px;
 }
 
 .site-header-mobile {
@@ -50,7 +54,7 @@
   bottom: 0;
   z-index: 150;
   overflow: scroll;
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
 }
 
 .site-header-mobi-panel {
@@ -74,7 +78,7 @@
   align-items: center;
   gap: 1.5em;
   padding-bottom: 35px;
-  border-bottom: 1px solid #b8e6e3;
+  border-bottom: 1px solid var(--accent-color);
 }
 
 .site-nav-menu a {
@@ -134,12 +138,8 @@ i:hover,
     font-size: 20px;
   }
 
-  .site-logo {
-    width: 160px;
-  }
-
   .site-location-wrapper {
-    margin-top: 145px;
+    margin-top: 120px;
   }
 
   .nav-toggle-btn i {

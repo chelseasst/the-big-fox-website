@@ -1,12 +1,12 @@
 .site-location {
   text-align: center;
-  padding: 5px 8px;
+  padding: 0px 8px;
   width: 100%;
 }
 
 a {
   letter-spacing: 2.5px;
-  font-size: 14.4px;
+  font-size: 12px;
   text-transform: uppercase;
   transition: color 0.1s ease-in;
 }
@@ -17,12 +17,12 @@ a:hover {
 
 @media screen and (min-width: 769px) {
   a {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   a {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

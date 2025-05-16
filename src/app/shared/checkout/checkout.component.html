@@ -6,18 +6,25 @@
             <!-- Item card -->
             <div class="item-box" *ngFor="let item of cartItems$ | async">
                 <div class="img-con">
-                    <img src="{{item.images[0]}}" alt="Product Image">
+                    <img [src]="item.images?.[0]" alt="Product Image">
                 </div>
                 <div class="cont-con">
                     <div class="type-rem">
-                        <p class="desc">{{item.type}}</p>
+                        <p class="desc">{{item.title}}</p>
                         <div class="rem-ico">
                             <!-- TODO add a real icon -->
                             <span (click)="deleteItem(item.id)">X</span>
                         </div>
                     </div>
                     <!-- TODO add {{item.color}} -->
-                    <p class="spec">Brown</p>
+                    <p class="spec">
+                        <ng-container *ngIf="item.color; else showPieces">
+                            {{ item.color }}
+                        </ng-container>
+                        <ng-template #showPieces>
+                            {{ item.pieces != null ? item.pieces * item.quantity : '' }}psc
+                        </ng-template>
+                    </p>
                     <div class="numeric">
                         <div class="quantity-con">
                             <button class="itm" (click)="decrement(item.id)">-</button>

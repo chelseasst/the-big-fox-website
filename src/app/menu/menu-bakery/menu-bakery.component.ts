@@ -14,6 +14,16 @@ export class MenuBakeryComponent {
         description: 'The best in town',
         price: 3.5,
       },
+      {
+        title: 'Croissant',
+        description: 'Butter',
+        price: 3,
+      },
+      {
+        title: 'Chocolate Croissant',
+        description: 'Nutella',
+        price: 4,
+      }
     ],
   };
 }

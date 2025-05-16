@@ -7,7 +7,6 @@ import { OrderOnlineCakesComponent } from './order-online-cakes/order-online-cak
 import { OrderOnlineMerchComponent } from './merch/order-online-merch/order-online-merch.component';
 import { OrderOnlineBakeryComponent } from './order-online-bakery/order-online-bakery.component';
 import { MenuNavGuard } from '../core/header/site-header-mobile/can-activate.guard';
-
 const routes: Routes = [
   {
     path: '',
@@ -16,32 +15,33 @@ const routes: Routes = [
   },
   {
     path: 'store',
-    component: OrderOnlineStoreComponent, // Wrapper for store section
-    canActivate: [MenuNavGuard], // Guard applied to "store"
+    component: OrderOnlineStoreComponent,
+    canActivate: [MenuNavGuard],
   },
   {
-    path: 'store/:id',
+    path: 'store/details/:id',
     component: ProductDetailsComponent
   },
   {
     path: 'coffee',
     component: OrderOnlineCoffeeComponent,
-    canActivate: [MenuNavGuard], // Guard applied to "coffee"
   },
   {
     path: 'cakes',
     component: OrderOnlineCakesComponent,
-    canActivate: [MenuNavGuard], // Guard applied to "cakes"
   },
   {
     path: 'merch',
     component: OrderOnlineMerchComponent,
-    canActivate: [MenuNavGuard], // Guard applied to "merch"
+    canActivate: [MenuNavGuard],
+  },
+  {
+    path: 'merch/details/:id',
+    component: ProductDetailsComponent
   },
   {
     path: 'bakery',
     component: OrderOnlineBakeryComponent,
-    canActivate: [MenuNavGuard], // Guard applied to "bakery"
   },
 ];
 @NgModule({

@@ -1,9 +1,9 @@
 .menu-item-container {
   display: block;
-  width: 100%;
+  width: 300px;
   text-align: center;
   margin-bottom: 1rem;
-  border: 1px solid #b8e6e3;
+  border: 1px solid var(--accent-color);
   padding: 3rem 1rem;
 }
 
@@ -14,8 +14,15 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .title, .price {
+
+  .title,
+  .price {
     font-size: 1.8rem;
   }
+}
 
+@media screen and (min-width: 1440px) {
+  .menu-item-container {
+    width: 500px;
+  }
 }

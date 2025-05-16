@@ -1,7 +1,7 @@
-<app-banner-giftcard #giftCard></app-banner-giftcard>
+<app-banner-giftcard #giftCard  *ngIf="giftBannerVisible" (showBanner)="updateGiftBanner($event)"></app-banner-giftcard>
 
-<site-header-desktop *ngIf="isDesktop; else mobile" [giftBannerShowed]="giftCard.showBanner" ></site-header-desktop>
-
+<site-header-desktop *ngIf="isDesktop; else mobile" [giftBannerShowed]="giftBannerVisible"></site-header-desktop>
+  
 <ng-template #mobile>
-  <site-header-mobile [giftBannerShowed]="giftCard.showBanner"></site-header-mobile>
+  <site-header-mobile [giftBannerShowed]="giftBannerVisible"></site-header-mobile>
 </ng-template>

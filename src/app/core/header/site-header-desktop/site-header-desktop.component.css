@@ -1,17 +1,31 @@
-.logo-menu-wrapper {
+.fixed-logo {
   position: fixed;
-  top: 110px;
-  right: 30px;
-  left: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  text-wrap: nowrap;
   opacity: 0.9;
   z-index: 50;
 }
 
-.banner-removed {
-  top: 65px;
+.fixed-nav {
+  position: fixed;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  text-wrap: nowrap;
+  opacity: 0.9;
+  z-index: 50;
+}
+
+.banner-removed-logo {
+  top: 56px;
+}
+
+.banner-removed-nav {
+  top: 176px;
 }
 
 .site-logo {
@@ -19,39 +33,34 @@
   height: auto;
 }
 
-/* nav bar */
-.site-nav .site-nav-menu a {
+.site-nav-menu {
+  display: flex;
+  gap: 1em;
+  padding: 0.2rem 0.6rem;
+}
+
+.site-nav-menu a {
   font-size: 0.8rem;
   color: white;
   letter-spacing: 1px;
 }
 
-/* link hovered or linked clicked */
-.site-nav .site-nav-menu a:hover,
-.site-nav .site-nav-menu .activeLink {
-  color: #b8e6e3;
+.site-nav-menu a:hover,
+.site-nav-menu .activeLink {
+  color: var(--accent-color);
   font-size: 0.9rem;
 }
 
-/* nav bar when scrolled */
 .scrolled {
   background-color: rgba(253, 250, 235, 0.9);
 }
 
-/* link color when scrolled */
-.scrolled .site-nav-menu a {
+.scrolled a {
   color: black;
 }
 
-/* the ul */
-.site-nav-menu {
-  display: flex;
-  gap: 1em;
-}
-
-/* the ul, when scrolled */
-.site-nav-menu {
-  padding: 0.3rem 1.6rem;
+.black-header a {
+  color: black;
 }
 
 .site-nav-submenu {
@@ -74,14 +83,23 @@
 }
 
 @media screen and (min-width:1130px) {
-  .logo-menu-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: st;
+  .fixed-logo {
+    left: 100px;
   }
 
-  .site-logo {
-    width: 160px;
+  .fixed-nav {
+    top: 100px;
+    right: 30px;
+    left: unset;
+    transform: unset;
+  }
+
+  .banner-removed-logo {
+    top: 56px;
+  }
+
+  .banner-removed-nav {
+    top: 56px;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class MenuComponent {
   isClickedD: boolean = true;
   isClickedB: boolean = false;
-
+  previousScrollY = window.scrollY; // Store the last scroll position
   toggleClickedDrinks() {
     this.isClickedD = true;
     this.isClickedB = false;

@@ -25,9 +25,8 @@ i {
 .popup-content-wrapper {
   height: 100%;
   max-width: 640px;
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
   margin: 2rem auto;
-  /* change */
   padding: 2.5rem 0.8rem;
   position: relative;
 }
@@ -108,14 +107,14 @@ i {
   background: white;
   border: 1px solid rgb(225, 221, 221);
   border-radius: 0.7rem;
-  width: fit-content;
+  /* width: fit-content; */
   padding: 0rem 1rem;
   margin: 0.12rem 0.5rem;
   max-height: 32px;
 }
 
-.typing-container i {
-  font-size: 0.3rem;
+.typing-container i::before {
+  font-size: 0.4rem;
 }
 
 /* FRIEND TEXT */
@@ -126,7 +125,6 @@ i {
   max-width: 10rem;
 }
 .friend-text {
-  background: white;
   border: 1px solid rgb(225, 221, 221);
   border-radius: 0.5rem;
   padding: 0.5rem 0.5rem;
@@ -178,23 +176,8 @@ i {
   background: rgb(238, 238, 238);
   color: black;
   border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
-  height: fit-content;
-  width: fit-content;
   padding: 0.5rem 0.5rem;
   margin: 0.12rem 0.5rem;
-}
-
-.my-text-container > div:first-child {
-  border-radius: 0.5rem 1rem 0.2rem 0.5rem;
-}
-.my-text-container > div:last-child {
-  border-radius: 0.5rem 0.2rem 1rem 0.5rem;
-}
-.friend-text-container > div:first-child {
-  border-radius: 1rem 0.5rem 0.2rem 0.5rem;
-}
-.friend-text-container > div:last-child {
-  border-radius: 0.5rem 0.2rem 0.5rem 1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -208,59 +191,7 @@ i {
     max-width: 800px;
   }
 }
-@media screen and (min-width: 1200px) {
-  .popup-content-wrapper {
-    max-width: 950px;
-  }
-  .device-container {
-    width: 400px;
-    height: 750px;
-    border: 1.3rem solid black;
-    border-radius: 50px;
-  }
-  .device-content {
-    /* if typing */
-    padding-bottom: calc(1.3rem + 51px);
-    border-radius: 35px;
-  }
-  .device-content-pad {
-    padding-bottom: 1.3rem;
-  }
 
-  .black-box {
-    /* the width - the width of the box / 2 */
-    margin-left: 4.8rem;
-    margin-right: 4.8rem;
-    height: 30px;
-    width: 180px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  p {
-    font-size: 1.3rem;
-  }
-  img {
-    height: 2.5rem;
-  }
-  .typing-container i {
-    font-size: 0.7rem;
-  }
-  .friend-text-div {
-    display: flex;
-    margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
-    max-width: 15rem;
-  }
-  .typing-container {
-    padding: 0rem 1.3rem;
-    margin: 0.2rem 0.5rem;
-    max-height: 72px;
-  }
-  .friend-text,
-  .my-text {
-    padding: 0.7rem 0.9rem;
-  }
-  .close-icon i {
-    font-size: 2rem;
-  }
-}
+
+
+

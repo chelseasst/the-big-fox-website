@@ -6,7 +6,7 @@
   width: 100%;
   text-align: center;
   padding: 0.4rem 0.9rem;
-  background-color: #c65234;
+  background-color:var(--secondary-color);
   outline: 1px solid #fff;
   outline-offset: -3px;
 }
@@ -37,12 +37,12 @@
 }
 
 .socials-wrapper {
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
   padding: 0.73rem;
 }
 
 .navigation-wrapper {
-  background-color: #fdfaeb;
+  background-color: var(--primary-color);
   padding: 0.45rem;
 }
 

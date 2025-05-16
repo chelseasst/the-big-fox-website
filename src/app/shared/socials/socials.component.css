@@ -19,5 +19,5 @@ i::before {
 }
 
 .bl-box:hover {
-  background-color: #c65234;
+  background-color: var(--secondary-color);
 }

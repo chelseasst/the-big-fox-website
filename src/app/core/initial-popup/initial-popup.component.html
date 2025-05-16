@@ -7,42 +7,29 @@
         </button>
       </div>
       <div class="device-container">
-        <div
-          class="device-content"
-          [ngClass]="{ 'device-content-pad': !isTyping }"
-        >
+        <div class="device-content" [ngClass]="{ 'device-content-pad': !isTyping }">
           <div class="black-box">
             <div class="circle-camera"></div>
           </div>
           <div class="messages-container">
             <ng-container *ngFor="let message of chat1; let i = index">
-              <div
-                [ngClass]="{
+              <div [ngClass]="{
                   'friend-text-div': message.sender == 'friend',
                   'my-text-div': message.sender == 'me',
                   'last-message': i == 4
-                }"
-                [@messageAnimation]
-              >
+                }" [@messageAnimation]>
                 <img
                   src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-                  *ngIf="message.sender === 'friend'"
-                />
-                <div
-                  [ngClass]="{
+                  *ngIf="message.sender === 'friend'" />
+                <div [ngClass]="{
                     'friend-text': message.sender == 'friend',
                     'my-text': message.sender == 'me'
-                  }"
-                >
+                  }">
                   <p class="text" *ngIf="i !== 4; else lastMessage">
                     {{ message.text }}
                   </p>
                   <ng-template #lastMessage>
-                    <p
-                      class="text"
-                      routerLink="events-and-specials"
-                      (click)="closePopup()"
-                    >
+                    <p class="text" routerLink="events-and-specials" (click)="closePopup()">
                       {{ message.text }}
                     </p>
                   </ng-template>
@@ -53,18 +40,14 @@
         </div>
         <div class="typing" *ngIf="isTyping" [@messageAnimationTyping]>
           <img
-            src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-          />
+            src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light" />
           <div class="typing-container">
-            <span class="dot-1" [@typingState]="typingState[0]"
-              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
-            ></span>
-            <span class="dot-2" [@typingState]="typingState[1]"
-              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
-            ></span>
-            <span class="dot-3" [@typingState]="typingState[2]"
-              ><i class="fa-solid fa-circle" style="color: #cac9c9"></i
-            ></span>
+            <span class="dot-1" [@typingState]="typingState[0]"><i class="fa-solid fa-circle"
+                style="color: #cac9c9"></i></span>
+            <span class="dot-2" [@typingState]="typingState[1]"><i class="fa-solid fa-circle"
+                style="color: #cac9c9"></i></span>
+            <span class="dot-3" [@typingState]="typingState[2]"><i class="fa-solid fa-circle"
+                style="color: #cac9c9"></i></span>
           </div>
         </div>
       </div>

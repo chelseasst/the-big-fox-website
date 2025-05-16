@@ -1,25 +1,27 @@
 .button-container{
-  text-align: center;
- 
+  display: inline-block;
 }
 .btn {
-  margin: 1rem;
   padding: 0.5rem 0.9rem;
-  background-color: #c65234;
+  background-color: var(--secondary-color);
   color: #fff;
   font-family: "Lato";
   text-transform: uppercase;
-  outline: 1px solid #fdfaeb;
+  outline: 1px solid var(--primary-color);
   outline-offset: -3px;
   font-weight: 700;
   letter-spacing: 1px;
+  word-wrap: break-word;
+  text-align: center;
 }
-.button-container:hover .btn{
+
+.button-container:hover .btn {
   outline: 1px solid #ac472d;
   outline-offset: 3px;
   background-color: #ac472d;
 }
-.btn[active="true"]{
+
+.btn[active="true"] {
   outline: 0;
   background-color: #ac472d;
 }

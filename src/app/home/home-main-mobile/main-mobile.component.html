@@ -1,12 +1,16 @@
 <div class="home-section-mobile">
   <section class="section-images">
+    <!-- TODO fetch from DB -->
+    <!-- <div class="images-wrapper">
+      <img *ngFor="image of images" #fadeImg src="{{image.url}}" alt="Food Image" />
+    </div> -->
     <div class="images-wrapper">
-      <img src="../../../assets/home/food/img-1.JPG" alt="" />
-      <img src="../../../assets/home/food/img-2.JPG" alt="" />
-      <img src="../../../assets/home/food/img-3.JPG" alt="" />
+      <img #fadeImg src="../../../assets/home/food/img-1.JPG" alt="Food Image" />
+      <img #fadeImg src="../../../assets/home/food/img-2.JPG" alt="Food Image" />
+      <img #fadeImg src="../../../assets/home/food/img-3.JPG" alt="Food Image" />
     </div>
     <div class="content-wrapper">
-      <div class="content">
+      <div #contentCont class="content">
         <h2>Coffee Club</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
@@ -14,20 +18,22 @@
           numquam, ut tempore iusto obcaecati provident atque. Iste inventore
           officia soluta quam?
         </p>
-        <app-button class="button" text="Join the club"></app-button>
+        <button class="submit-btn" [routerLink]="'/signup'">
+          Join the club
+        </button>
       </div>
     </div>
   </section>
 
   <section class="section-images">
-    <div class="images-wrapper-drinks">
-      <img src="../../../assets/home/drinks/image-1.JPG" alt="" />
-      <img src="../../../assets/home/drinks/image-2.JPG" alt="" />
-      <img src="../../../assets/home/drinks/image-3.JPG" alt="" />
-      <img src="../../../assets/home/drinks/image-4.JPG" alt="" />
+    <!-- TODO fetch from DB -->
+    <div class="images-wrapper">
+      <img #fadeImg src="../../../assets/home/drinks/image-1.JPG" alt="Drinks Image" />
+      <img #fadeImg src="../../../assets/home/drinks/image-3.JPG" alt="Drinks Image" />
+      <img #fadeImg src="../../../assets/home/drinks/image-4.JPG" alt="Drinks Image" />
     </div>
     <div class="content-wrapper content-drinks">
-      <div class="content">
+      <div #contentCont class="content">
         <h2>Your Favourites</h2>
         <p>Soft Cappucino prepared by our friendly barista.</p>
         <p>Iced matcha for your hot girl walk, or daily refreshment.</p>
@@ -38,11 +44,9 @@
         <p>
           All time favourite Iced Latte, you can hear the ice cubs trumbling.
         </p>
-        <app-button
-          class="button"
-          [navigateTo]="'/menu'"
-          text="Other cool things"
-        ></app-button>
+        <button class="submit-btn" [routerLink]="'/menu'">
+          Other cool things
+        </button>
       </div>
     </div>
   </section>

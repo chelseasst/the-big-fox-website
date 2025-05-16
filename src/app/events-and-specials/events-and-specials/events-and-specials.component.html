@@ -1,25 +1,10 @@
 <div class="events-and-specials-wrapper">
   <main>
-    <app-initial-section
-      [heading]="'Events & Specials'"
-      [url]="'../assets/events-and-specials/IMG_5505.JPG'"
-    ></app-initial-section>
+    <app-initial-section [heading]="'Events & Specials'"
+      [url]="'../assets/events-and-specials/IMG_5505.JPG'"></app-initial-section>
     <div class="events-wrapper">
-      <app-event
-        [url]="'../assets/events-and-specials/IMG_5506.JPG'"
-        [title]="'Coffee Date And Polaroid Pictures'"
-        [eventDate]="'06-08-2024'"
-        [days]="'Friday/Saturday/Sunday'"
-        [time]="'9h - 19h'"
-      ></app-event>
-      <app-event
-        [url]="'../assets/events-and-specials/IMG_5506.JPG'"
-        [title]="'Coffee Date And Polaroid Pictures'"
-        [eventDate]="'06-08-2024'"
-        [days]="'Friday/Saturday/Sunday'"
-        [time]="'9h - 19h'"
-      ></app-event>
-      <!-- <app-event></app-event> -->
+      <app-event [eventData]="eventData"></app-event>
+      <app-event [eventData]="eventData"></app-event>
     </div>
   </main>
 </div>
