@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MenuNavService } from '../site-header-mobile/menu-nav.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { UserService } from 'src/app/shared/user.service';
 
 
 @Component({
@@ -8,12 +9,13 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   templateUrl: 'site-header-desktop.component.html',
   styleUrls: ['site-header-desktop.component.css'],
 })
-export class SiteHeaderDesktopComponent implements AfterViewInit {
+export class SiteHeaderDesktopComponent implements OnInit {
   isSubMenuShown: boolean = false;
+  userName: string | null = null;
   @Input() giftBannerShowed!: boolean;
   @ViewChild('nav') nav!: ElementRef;
-  constructor(private renderer: Renderer2, private el: ElementRef, private menuNavService: MenuNavService, private router: Router) { }
-  ngAfterViewInit(): void {
+  constructor(private renderer: Renderer2, private el: ElementRef, private menuNavService: MenuNavService, private userService: UserService, private router: Router) { }
+  ngOnInit(): void {
     //header color change - signup&details -> black
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -22,6 +24,9 @@ export class SiteHeaderDesktopComponent implements AfterViewInit {
     });
     this.menuNavService.menuStateObs$.subscribe((state) => {
       this.isSubMenuShown = state === 'down' ? true : false;
+    });
+    this.userService.user$.subscribe((user) => {
+      this.userName = user?.userName || null;
     });
   }
   ngOnChanges() {
@@ -42,13 +47,12 @@ export class SiteHeaderDesktopComponent implements AfterViewInit {
       this.menuNavService.openMenu();
     }
   }
-  // TODO understand why is that needed 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.updateHeaderColor(this.router.url);  // Reapply the header color logic on window resize
   }
   updateHeaderColor(url: string) {
-    if (url.includes('signup') || url.includes('details')) {
+    if (url.includes('details') || url.includes('signup') || url.includes('checkout') || url.includes('admin-dashboard')) {
       this.renderer.addClass(this.nav.nativeElement, 'black-header');
     } else {
       this.renderer.removeClass(this.nav.nativeElement, 'black-header');
@@ -64,5 +68,8 @@ export class SiteHeaderDesktopComponent implements AfterViewInit {
       this.renderer.removeClass(navEl, 'banner-removed-nav');
       this.renderer.removeClass(logoEl, 'banner-removed-logo');
     }
+  }
+  logout(): void {
+    this.userService.logout();
   }
 }

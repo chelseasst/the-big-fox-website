@@ -3,6 +3,7 @@
   <app-header></app-header>
   <router-outlet class="router-outlet"></router-outlet>
   <app-footer></app-footer>
+  <app-initial-popup *ngIf="showInitPopup" (close)="closePopup()"></app-initial-popup>
   <ng-container *ngIf="isCartPopupOpen$ | async">
     <app-products-popup class="product-popup"></app-products-popup>
   </ng-container>

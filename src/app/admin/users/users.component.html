@@ -1,0 +1,45 @@
+<div class="users-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="filter-container">
+            <p class="heading">Registered Users</p>
+            <p class="sub-heading">Select date range below</p>
+            <form class="filter-users-form" #filterUsersForm="ngForm"
+                (ngSubmit)="filterUsers(startDateInput.value, endDateInput.value)">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" max="{{ today }}" #startDateInput>
+
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" max="{{ today }}" #endDateInput>
+
+                <button class="submit-btn">Filter</button>
+            </form>
+        </div>
+        <div class="users-wrapper">
+            <h4 class="h4">Filtered Users</h4>
+            <div class="count"><span>{{users.length}}</span></div>
+            <table class="table">
+                <thead class="table-head">
+                    <tr>
+                        <th></th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr *ngFor="let user of users; let i = index">
+                        <th>{{i+1}}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.createdAt | date:'shortDate'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>

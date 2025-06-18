@@ -19,6 +19,12 @@ input {
   margin-bottom: 1rem;
 }
 
+input:focus {
+  outline: none;
+  border: 1px solid #7b7676;
+  border-radius: 4px;
+}
+
 #register-heading {
   font-size: 1.5rem;
   text-align: center;
@@ -45,12 +51,19 @@ input {
   font-size: 0.8rem;
 }
 
+.message {
+  margin-top: 20px;
+  text-align: center;
+  color: #d9534f;
+}
+
 .error {
   color: #d9534f;
   font-style: italic;
   display: block;
   font-size: 0.8rem;
 }
+
 
 @media screen and (min-width:768px) {
   .submit-btn {

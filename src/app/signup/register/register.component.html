@@ -3,19 +3,20 @@
   <form class="form" #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
     <div class="form-ui">
       <!-- FIRST NAME -->
-      <label for="firstName">First Name
+      <label for="firstName">Name
         <span class="required">- Required</span>
       </label>
-      <ng-container *ngIf="firstName.touched">
-        <i class="error" *ngIf="firstName.errors?.['required']">First Name is required</i>
-        <i class="error" *ngIf="firstName.errors?.['minlength']">
+      <ng-container *ngIf="name.touched">
+        <i class="error" *ngIf="name.errors?.['required']">First Name is required</i>
+        <i class="error" *ngIf="name.errors?.['minlength']">
           First Name must be at least 4 characters long
         </i>
       </ng-container>
-      <input type="text" id="first-name" name="firstName" placeholder="First Name" ngModel #firstName="ngModel" required
+      <input type="text" id="first-name" name="firstName" placeholder="First Name" ngModel #name="ngModel" required
         minlength="2" />
       <!-- LAST NAME -->
-      <label for="lastName">Last Name
+       <!-- Only if last name is needed TODO -->
+      <!-- <label for="lastName">Last Name
         <span class="required">- Required</span>
       </label>
       <ng-container *ngIf="lastName.touched">
@@ -25,7 +26,7 @@
         </i>
       </ng-container>
       <input type="text" id="last-name" name="lastName" placeholder="Last Name" ngModel #lastName="ngModel" required
-        minlength="2" />
+        minlength="2" /> -->
       <!-- EMAIL -->
       <label for="email">Email
         <span class="required">- Required</span>
@@ -52,7 +53,7 @@
           <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one Uppercase
             letter</i>
         </ng-container>
-        <input type="text" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
+        <input type="password" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
           minlength="8" required appPassword />
         <!-- RE PASSWORD -->
         <label for="rePassword">Repeat Password
@@ -66,12 +67,13 @@
           </i>
           <i class="error" *ngIf="rePassword.errors?.['appPassMatching']">Passwords not matching</i>
         </ng-container>
-        <input type="text" id="rep-password" name="rePassword" placeholder="Repeat Password" ngModel
+        <input type="password" id="rep-password" name="rePassword" placeholder="Repeat Password" ngModel
           #rePassword="ngModel" required minlength appPassword appPassMatching />
       </div>
     </div>
     <div class="form-actions">
       <button class="submit-btn" [disabled]="registerForm.invalid">Send</button>
+    <p class="message">{{message}}</p>
     </div>
     <p class="login-p">
       Already have an account? <a routerLink="../login">Login</a>

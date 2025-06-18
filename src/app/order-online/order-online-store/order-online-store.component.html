@@ -11,7 +11,7 @@
           All your limited-time offers, cake-adjacent merch, and back-alley swag
           in one place.
         </p>
-        <p  class="p" appAnimateOnScroll>
+        <p class="p" appAnimateOnScroll>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
           reiciendis veritatis saepe sequi ratione, numquam dolores quis error a
           earum illo corporis? Mollitia, praesentium. Vel odio cum recusandae
@@ -20,10 +20,15 @@
       </section>
     </div>
     <section class="cards-container">
-      <!-- TODO set *ngFor and loop through the items from the database -->
-      <div class="card-list">
-        <app-item-list class="card" *ngFor="let item of items" [item]="item"></app-item-list>
+      <div class="message" *ngIf="message; else list">
+        <p class="error">{{message}}</p>
       </div>
+      <ng-template #list>
+        <div class="card-list">
+          <app-item-list class="card" *ngFor="let item of items" [item]="item"></app-item-list>
+        </div>
+      </ng-template>
+      <button class="submit-btn" (click)="addItem()">Add Item</button>
     </section>
   </main>
 </div>

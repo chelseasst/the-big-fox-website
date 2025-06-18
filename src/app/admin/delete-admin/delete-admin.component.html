@@ -1,0 +1,64 @@
+<div class="delete-admin-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="form-container">
+            <p class="heading">Delete Admin</p>
+            <p class="sub-heading">The Admin will be removed as Admin only, but will remain as a User.</p>
+            <form class="delete-admin-form" #deleteAdminForm="ngForm" (ngSubmit)="deleteAdmin(deleteAdminForm)">
+                <div class="form-ui">
+                    <!-- EMAIL -->
+                    <label for="email">Your Email
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="email.touched">
+                        <i class="error" *ngIf="email.errors?.['required']">Your Email is required</i>
+                        <i class="error" *ngIf="email.errors?.['email']">
+                            Please, enter a valid email</i>
+                        <i class="error" *ngIf="email.errors?.['invalidExtension']">
+                            The email must end with 'bg' or 'com' extension</i>
+                    </ng-container>
+                    <input type="text" id="email" name="email" placeholder="Email" ngModel #email="ngModel" required
+                        email emailValidator />
+                    <!-- PASSWORD -->
+                    <label for="password">Your Password
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="password.touched">
+                        <i class="error" *ngIf="password.errors?.['required']">Your Password is required</i>
+                        <i class="error" *ngIf="password.errors?.['minlength']">
+                            Password must contain at least 8 characters
+                        </i>
+                        <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one
+                            Uppercase
+                            letter</i>
+                    </ng-container>
+                    <input type="text" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
+                        minlength="8" required appPassword />
+                    <!-- CANDIDAD ADMIN EMAIL -->
+                    <label for="delAdminEmail">Admin to be Deleted - Email
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="delAdminEmail.touched">
+                        <i class="error" *ngIf="delAdminEmail.errors?.['required']">Admin to be deleted Email is required</i>
+                        <i class="error" *ngIf="delAdminEmail.errors?.['email']">
+                            Please, enter a valid email</i>
+                        <i class="error" *ngIf="delAdminEmail.errors?.['invalidExtension']">
+                            The email must end with 'bg' or 'com' extension</i>
+                    </ng-container>
+                    <input type="text" id="admin-email" name="delAdminEmail" placeholder="Email" ngModel #delAdminEmail="ngModel"
+                        required email emailValidator />
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-btn" [disabled]="deleteAdminForm.invalid">Delete</button>
+                    <p class="message">{{message}}</p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>

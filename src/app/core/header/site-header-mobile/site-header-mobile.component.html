@@ -71,9 +71,15 @@
         <li>
           <a routerLink="events-and-specials" routerLinkActive="activeLink">Our Events & Specials</a>
         </li>
-        <li>
-          <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
+        <li *ngIf="userName; else guest">
+          <a routerLink="signup" routerLinkActive="activeLink">Hi, {{userName}} / </a>
+          <a (click)="logout()">Logout</a>
         </li>
+        <ng-template #guest>
+          <li>
+            <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
+          </li>
+        </ng-template>
       </ul>
     </nav>
     <app-site-socials class="socials"></app-site-socials>

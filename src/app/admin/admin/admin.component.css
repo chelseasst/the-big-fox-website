@@ -1,0 +1,130 @@
+.admin-dashboard-container {
+    margin-bottom: 50px;
+}
+
+.admin-dashboard-wrapper {
+    margin-top: 50px
+}
+
+.statistics-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.statistic {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    height: 155px;
+    margin: 5px;
+    border-radius: 10px;
+    font-family: "Playfair Display", serif;
+    padding: 1rem;
+    flex: 0 0 45%;
+    cursor: pointer;
+}
+
+.statistic:hover {
+    opacity: 0.9;
+}
+.center{
+    align-items: center;
+    justify-content: center;
+}
+.statistic:nth-child(1) {
+    background-color: rgba(211, 138, 86, 0.812);
+}
+
+.statistic:nth-child(2) {
+    background-color: rgba(213, 200, 193, 0.812);
+}
+
+.statistic:nth-child(3) {
+    background-color: rgba(226, 204, 139, 0.812);
+}
+
+.statistic:nth-child(4) {
+    background-color: rgba(146, 194, 233, 0.812);
+}
+
+.statistic:nth-child(5) {
+    background-color: rgba(233, 146, 146, 0.812);
+}
+
+.statistic:nth-child(6) {
+    background-color: rgba(159, 220, 160, 0.812);
+}
+
+.statistic:nth-child(7) {
+    background-color: rgba(255, 231, 133, 0.812);
+}
+
+.title {
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+.amount {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.increase {
+    font-size: 0.6rem;
+}
+
+.error-section {
+    text-align: center;
+    height: 200px;
+}
+
+.error-section p {
+    color: #d9534f;
+    padding-bottom: 1rem;
+}
+.submit-btn{
+    max-width: 500px;
+}
+
+@media screen and (min-width: 768px) {
+    .statistic {
+        margin: 10px;
+        padding: 1.3rem;
+        height: 185px;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .amount {
+        font-size: 2.5rem;
+    }
+
+    .increase {
+        font-size: 0.8rem;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .statistic {
+        margin: 10px;
+        padding: 1.3rem;
+        height: 230px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .amount {
+        font-size: 3.5rem;
+    }
+
+    .increase {
+        font-size: 1.1rem;
+    }
+
+}

@@ -9,6 +9,7 @@
 .signup-intro {
   padding-bottom: 3rem;
   margin: 0 auto;
+  margin-bottom: 2rem;
   max-width: 500px;
 }
 
@@ -59,6 +60,7 @@
 }
 
 .signup-nav {
+  text-align: center;
   margin: 0 auto;
   max-width: 300px;
 }
@@ -66,7 +68,10 @@
 .submit-btn {
   margin-top: 1rem;
 }
-
+.hi{
+  padding: 0.5rem;
+  background-color: var(--primary-color)
+}
 @media screen and (min-width: 1000px) {
   .signup-container {
     margin-top: 220px;

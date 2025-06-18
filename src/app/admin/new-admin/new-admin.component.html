@@ -1,0 +1,64 @@
+<div class="new-admin-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="form-container">
+            <p class="heading">Add New Admins</p>
+            <p class="sub-heading">In order to add a new admin, he must be registered as a user first.</p>
+            <form class="add-admin-form" #addAdminForm="ngForm" (ngSubmit)="addAdmin(addAdminForm)">
+                <div class="form-ui">
+                    <!-- EMAIL -->
+                    <label for="email">Your Email
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="email.touched">
+                        <i class="error" *ngIf="email.errors?.['required']">Your Email is required</i>
+                        <i class="error" *ngIf="email.errors?.['email']">
+                            Please, enter a valid email</i>
+                        <i class="error" *ngIf="email.errors?.['invalidExtension']">
+                            The email must end with 'bg' or 'com' extension</i>
+                    </ng-container>
+                    <input type="text" id="email" name="email" placeholder="Email" ngModel #email="ngModel" required
+                        email emailValidator />
+                    <!-- PASSWORD -->
+                    <label for="password">Your Password
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="password.touched">
+                        <i class="error" *ngIf="password.errors?.['required']">Your Password is required</i>
+                        <i class="error" *ngIf="password.errors?.['minlength']">
+                            Password must contain at least 8 characters
+                        </i>
+                        <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one
+                            Uppercase
+                            letter</i>
+                    </ng-container>
+                    <input type="password" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
+                        minlength="8" required appPassword />
+                    <!-- CANDIDAD ADMIN EMAIL -->
+                    <label for="newAdminEmail">New Admin Email
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="newAdminEmail.touched">
+                        <i class="error" *ngIf="newAdminEmail.errors?.['required']">New Admin Email is required</i>
+                        <i class="error" *ngIf="newAdminEmail.errors?.['email']">
+                            Please, enter a valid email</i>
+                        <i class="error" *ngIf="newAdminEmail.errors?.['invalidExtension']">
+                            The email must end with 'bg' or 'com' extension</i>
+                    </ng-container>
+                    <input type="text" id="admin-email" name="newAdminEmail" placeholder="Email" ngModel #newAdminEmail="ngModel"
+                        required email emailValidator />
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-btn" [disabled]="addAdminForm.invalid">Add</button>
+                    <p class="message">{{message}}</p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>

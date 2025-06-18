@@ -20,6 +20,7 @@ export class EmailValidatorDirective implements Validator {
   @Input('emailValidator') customValidator: string | undefined;
 
   validate(control: AbstractControl): ValidationErrors | null {
+    // TODO add more email options
     const isValid =
       control.value?.endsWith('.com') || control.value?.endsWith('.bg');
     if (!isValid) {

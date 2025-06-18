@@ -6,7 +6,7 @@ import { OrderOnlineCoffeeComponent } from './order-online-coffee/order-online-c
 import { OrderOnlineCakesComponent } from './order-online-cakes/order-online-cakes.component';
 import { OrderOnlineMerchComponent } from './merch/order-online-merch/order-online-merch.component';
 import { OrderOnlineBakeryComponent } from './order-online-bakery/order-online-bakery.component';
-import { MenuNavGuard } from '../core/header/site-header-mobile/can-activate.guard';
+import { MenuNavGuard } from '../utilis/can-activate.guard';
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [MenuNavGuard],
   },
   {
-    path: 'store/details/:id',
+    path: 'store/details/:slug',
     component: ProductDetailsComponent
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
     canActivate: [MenuNavGuard],
   },
   {
-    path: 'merch/details/:id',
+    path: 'merch/details/:slug',
     component: ProductDetailsComponent
   },
   {

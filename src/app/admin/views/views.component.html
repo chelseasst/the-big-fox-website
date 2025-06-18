@@ -1,0 +1,35 @@
+<div class="views-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="filter-container">
+            <p class="heading">Website Views</p>
+            <p class="sub-heading">Select date range below</p>
+            <form class="filter-views-form" #filterUsersForm="ngForm"
+                (ngSubmit)="filterViews(startDateInput.value, endDateInput.value)">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" max="{{ today }}" #startDateInput>
+
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" max="{{ today }}" #endDateInput>
+
+                <button class="submit-btn">Filter</button>
+            </form>
+        </div>
+        <div class="views-wrapper">
+            <h4 class="h4">Filtered Views</h4>
+            <ol class="statistics-wrapper">
+                <li class="user" *ngFor="let views of viewsPeriods">
+                    <span class="start-period">{{views.startDate | date:'shortDate'}}</span>-
+                    <span class="end-period">{{views.endDate | date:'shortDate'}}</span>
+                    <span class="views">{{views.viewsCount}}</span>
+                </li>
+            </ol>
+            <section class="orders">
+            </section>
+        </div>
+    </main>
+</div>

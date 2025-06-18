@@ -25,8 +25,7 @@
         <a routerLink="hours-and-location" routerLinkActive="activeLink">Hours & Location</a>
       </li>
       <li class="site-nav-submenu">
-        <a class="submenu-button" routerLink="order-online" routerLinkActive="activeLink"
-          (click)="toggleSubmenu()">
+        <a class="submenu-button" routerLink="order-online" routerLinkActive="activeLink" (click)="toggleSubmenu()">
           Order Online
           <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>
           <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>
@@ -56,9 +55,15 @@
       <li>
         <a routerLink="events-and-specials" routerLinkActive="activeLink">Our Events & Specials</a>
       </li>
-      <li>
-        <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
+      <li *ngIf="userName; else guest">
+        <a routerLink="signup" routerLinkActive="activeLink">Hi, {{userName}} / </a>
+        <a (click)="logout()">Logout</a>
       </li>
+      <ng-template #guest>
+        <li>
+          <a routerLink="signup" routerLinkActive="activeLink">Sign Up / Login</a>
+        </li>
+      </ng-template>
     </ul>
   </nav>
 </div>

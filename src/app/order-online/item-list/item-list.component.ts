@@ -9,6 +9,5 @@ import { itemDetails } from 'src/app/types/itemDetails';
 export class ItemListComponent implements OnInit{
   @Input('item') item!: itemDetails;
   ngOnInit(){
-    console.log('Item',this.item)
   }
 }

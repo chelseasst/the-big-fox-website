@@ -55,7 +55,7 @@
         <input class="input" type="text" name="recipName" id="recipient-name" placeholder="Recipient's Name"
           #recipNameInput="ngModel" ngModel required minlength="4" />
         <!-- RECIPIENTS EMAIL -->
-        <label for="recipEmail" *ngIf="!isChecked">
+        <label for="recipEmail" *ngIf="!checkbox.value">
           <span>Recipient's Email <span class="required"> - Required </span></span>
           <ng-container *ngIf="recipEmail.touched">
             <i class="error" *ngIf="recipEmail.errors?.['required']">Recipient's Email is required</i>
@@ -70,7 +70,7 @@
         <label for="emailCheckbox">
         </label>
         <input class="input-checkbox" type="checkbox" id="email-checkbox" name="emailCheckbox" ngModel
-          [(ngModel)]="isChecked">
+          #checkbox="ngModel">
         <p class="email-checkbox">
           Email the gift to me so I can print it and give it in-person.
         </p>

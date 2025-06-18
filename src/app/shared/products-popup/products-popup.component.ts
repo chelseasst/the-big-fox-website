@@ -8,7 +8,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { Subscription } from 'rxjs';
-import { itemDetails } from 'src/app/types/itemDetails';
 import { basketItem } from 'src/app/types/basketItem';
 
 @Component({
@@ -45,7 +44,6 @@ export class ProductsPopupComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.orderOnlineService.currItem$.subscribe((item) => {
-      console.log(item);
        this.currItem = item;
     })
     this.subsc = this.orderOnlineService.isCartPopupOpen$.subscribe((isOpen) => {

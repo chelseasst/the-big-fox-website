@@ -1,0 +1,45 @@
+<div class="admin-dashboard-container">
+    <main>
+        <app-initial-section [heading]="'Admin Dashboard'"
+            [url]="'../assets/admin/coffee-loading.JPG'"></app-initial-section>
+
+        <div class="admin-dashboard-wrapper">
+            <section class="statistics-wrapper" *ngIf="!message; else error">
+                <div class="statistic" routerLink="income">
+                    <p class="title">Total Income</p>
+                    <p class="amount">$1500</p>
+                    <p class="increase">Increase: <span>10</span>%</p>
+                </div>
+                <div class="statistic" routerLink="views">
+                    <p class="title">Total Views</p>
+                    <p class="amount">1000</p>
+                    <p class="increase">Increase: <span>25</span>%</p>
+                </div>
+                <div class="statistic" routerLink="users">
+                    <p class="title">Total Users</p>
+                    <p class="amount">{{totalUsersCount}}</p>
+                    <p class="increase">New users: <span>{{monthlyUsersCount}}</span></p>
+                </div>
+                <div class="statistic center" routerLink="new-admin">
+                    <p class="title">Add new Admin</p>
+                </div>
+                <div class="statistic center" routerLink="delete-admin">
+                    <p class="title">Delete Admin</p>
+                </div>
+                <div class="statistic center" routerLink="orders">
+                    <p class="title">All orders</p>
+                </div>
+                <div class="statistic center" routerLink="add-product">
+                    <p class="title">Add product</p>
+                </div>
+            </section>
+            <ng-template #error>
+                <section class="error-section">
+                    <p>{{message}}</p>
+                    <button class="submit-btn" routerLink="/signup/login">Login</button>
+                </section>
+            </ng-template>
+
+        </div>
+    </main>
+</div>

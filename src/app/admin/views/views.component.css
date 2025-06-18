@@ -1,0 +1,130 @@
+.views-container {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.heading {
+    font-size: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.sub-heading {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.back-btn {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.back-button-container {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.filter-views-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 750px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: var(--primary-color);
+    padding: 0.7rem;
+    color: #7b7676;
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    width: 100px;
+}
+
+/* The users */
+.h4 {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.statistics-wrapper {
+    margin: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.user {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    background-color: var(--accent-color);
+    text-align: center;
+    border-radius: 15px;
+}
+
+.remove-icon {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.remove-icon:hover span {
+    color: rgba(0, 0, 0, 0.573)
+}
+
+.user>span {
+    padding: 0 0.5rem;
+    font-family: "Playfair Display", serif;
+}
+
+.views {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.user p span {
+    padding-right: 0.5rem;
+}
+
+@media screen and (min-width:768px) {
+    .filter-views-form {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .views-container {
+        margin-top: 230px;
+    }
+
+}

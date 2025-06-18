@@ -1,5 +1,5 @@
 <section class="login-form">
-  <p id="login-heading">Login</p>
+  <p class="login-heading">Login</p>
   <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
     <div class="form-ui">
       <!-- EMAIL -->
@@ -21,15 +21,18 @@
       </label>
       <ng-container *ngIf="password.touched">
         <i class="error" *ngIf="password.errors?.['required']">Password is required</i>
-        <i class="error" *ngIf="password.errors?.['passNotValid']">
-          Password must contain at least 7 characters including one capital
-          letter and two digits</i>
+        <i class="error" *ngIf="password.errors?.['minlength']">
+          Password must contain at least 8 characters
+        </i>
+        <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one Uppercase
+          letter</i>
       </ng-container>
-      <input type="text" id="password" name="password" placeholder="Password" ngModel #password="ngModel" required
-        passCheck />
+      <input type="password" id="password" name="password" placeholder="Password" ngModel #password="ngModel" minlength="8"
+        required appPassword />
     </div>
     <div class="form-actions">
       <button class="submit-btn" [disabled]="loginForm.invalid">Send</button>
+      <p class="message">{{message}}</p>
     </div>
     <p class="register-p">
       Don't have an account? <a routerLink="../register">Register</a>

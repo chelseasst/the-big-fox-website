@@ -1,0 +1,149 @@
+.users-container {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.heading {
+    font-size: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.sub-heading {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.back-btn {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.back-button-container {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.filter-users-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 750px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: var(--primary-color);
+    padding: 0.7rem;
+    color: #7b7676;
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    width: 100px;
+}
+
+.h4,
+.count {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.count span {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+.table th,
+.table td {
+    border: 1px solid var(--secondary-color);
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.table th {
+    font-size: 15px;
+}
+
+.table td {
+    font-size: 0.7rem;
+}
+
+.table tbody td:hover {
+    background-color: #ded3c2;
+    cursor: pointer;
+}
+
+@media screen and (min-width:768px) {
+    .filter-users-form {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .table {
+        width: 80%;
+        margin: 2rem auto;
+
+    }
+
+    .table th {
+        font-size: 1rem
+    }
+
+    .table td {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+    .users-container {
+        margin-top: 230px;
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+    .users-container {
+        margin-top: 230px;
+    }
+
+    .table th, label, input {
+        font-size: 1.2rem
+    }
+
+    .table td {
+        font-size: 1rem;
+    }
+
+}

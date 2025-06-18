@@ -12,7 +12,6 @@ export class FormDigitalCardComponent {
     { title: 'Coffee mood', images: ['assets/gift-cards/design-color-front.jpg', 'assets/gift-cards/design-color-back.jpg'] }
   ]
   constructor() { }
-  isChecked:boolean = false;
   addToCart(form: NgForm) {
 
   }

@@ -20,7 +20,6 @@ export class FormPhysicalCardComponent {
   addToCart(form: NgForm) {
     const formData = form.value;
     const selectedDesign = this.cardDesigns.find(design => design.title === formData.design);
-    console.log('Selected design',selectedDesign)
     const item = {
       id: `gift-card-${formData.design}`,
       title: `Gift Card ${formData.design}`,
@@ -50,3 +49,11 @@ export class FormPhysicalCardComponent {
     this.orderOnlineService.addItemToCart(item, '1');
   }
 }
+
+
+
+
+
+
+
+

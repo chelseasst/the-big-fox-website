@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OrderOnlineService } from 'src/app/order-online/order-online.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { OrderOnlineService } from 'src/app/order-online/order-online.service';
 export class CheckoutComponent {
   itemsCount$ = this.orderOnlineService.itemsCount$;
   cartItems$ = this.orderOnlineService.cartItems$;
-  constructor(private orderOnlineService: OrderOnlineService) { }
+  constructor(private orderOnlineService: OrderOnlineService,private route: ActivatedRoute) {
+   
+      this.route.url.subscribe(url => console.log('Current route:', url));
+    
+   }
 
   increment(itemId: string) {
     this.orderOnlineService.incrementQuantity(itemId);

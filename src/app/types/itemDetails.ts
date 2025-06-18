@@ -1,14 +1,14 @@
 export interface itemDetails {
-  id: string;
-   title: string;
+  slug: string;
+  title: string;
   description: string;
-  excessiveDescription: string;
+  fullDescription: string;
   ingredients?: string;
   price: number;
   pieces?: number;
-  link: string;
+  materials?: string;
   images: string[];
-  color?: string,
-  size?: string
+  color?: string;
+  quantity?: number;
 }
 

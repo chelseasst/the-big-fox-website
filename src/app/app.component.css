@@ -1,8 +1,8 @@
 .popupShown {
-  opacity: 1;
-  overflow: hidden;
+  opacity: 0.2;
 }
 
 .cartPopupShown .popup-background {
-  opacity: 0.2;
+  opacity: 1;
+  overflow: hidden;
 }

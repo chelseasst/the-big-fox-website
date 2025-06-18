@@ -9,6 +9,8 @@ import { itemDetails } from '../types/itemDetails';
 export class OrderOnlineService {
   readonly MIN_VALUE: number = 1;
   readonly MAX_VALUE: number = 5;
+  foodItems: itemDetails[] = [];
+  merchItems: itemDetails[] = [];
   private popupOpenStateSubject = new BehaviorSubject<boolean>(false);
   isCartPopupOpen$ = this.popupOpenStateSubject.asObservable();
 
@@ -29,6 +31,49 @@ export class OrderOnlineService {
   }
   closePopup() {
     this.popupOpenStateSubject.next(false);
+  }
+  async getFoodItems(): Promise<itemDetails[] | { message: string }> {
+    if (this.foodItems.length > 0) {
+      console.log('Items got from the Service');
+      return this.foodItems;
+    }
+    try {
+      console.log('Items fetched again');
+      const response = await fetch("http://localhost:3000/api/food", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to fetch items.");
+      }
+      const products = await response.json();
+      this.foodItems = products;
+      return products
+    } catch (error) {
+      return error instanceof Error ? { message: error.message } : { message: "An unexpected error occurred." };
+    }
+  }
+  async getItemById(slug: string): Promise<itemDetails | { message: string }> {
+    if (!slug) {
+      return { message: "Invalid slug provided." };
+    }
+    try {
+      const response = await fetch(`http://localhost:3000/api/food/${slug}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to fetch item.");
+      }
+
+      const item = await response.json();
+      return item
+    } catch (error) {
+      console.error("Error fetching item:", error);
+      return error instanceof Error ? { message: error.message } : { message: "An unexpected error occurred." };
+    }
   }
   addItemToCart(product: basketItem, quantity: string) {
     this.currItemSubject.next(product);
@@ -83,24 +128,10 @@ export class OrderOnlineService {
       this.cartItemsSubject.next(currCart);
     }
   }
-  fetchStoreItems(){
+  fetchStoreItems() {
 
   }
-  fetchMerchItems(){
+  fetchMerchItems() {
 
-  }
-  getItemById(id:string):itemDetails{
-    return  {
-      id: '1',
-      title: 'Picnic Cookies Box',
-      description: 'Set of 6 Chocolate Chips Cookies',
-      excessiveDescription:
-        'Our signiture cookies ar emade in the early hours of the morning, when our baker is still asleep, but knowing he makes the best cookies in town, he is waking up early every morning to prepare the ingredients and mix this portion of sweet magic. In the cookies is inserted the best Belgium milk chocolate, not toocrispy, also but not melting, I told you - magic.',
-      ingredients: 'favour, sugar, Belgium milk chocolate, heat',
-      price: 15,
-      pieces: 6,
-      link: '',
-      images: ['../assets/order-online/cookies.JPG', '../assets/order-online/cookies.JPG', '../assets/order-online/cookies.JPG'],
-    };
   }
 }

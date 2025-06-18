@@ -1,21 +1,19 @@
 import {
   animate,
-  keyframes,
   state,
   style,
   transition,
   trigger,
 } from '@angular/animations';
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
   EventEmitter,
   OnInit,
   Output,
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ChatMessage } from 'src/app/types/chat';
+
 @Component({
   selector: 'app-initial-popup',
   templateUrl: './initial-popup.component.html',
@@ -67,7 +65,7 @@ export class InitialPopupComponent implements OnInit, AfterViewInit {
   pageState: 'visible' | 'hidden' = 'hidden';
   isTyping: boolean = true;
   typingState: ('up' | 'down')[] = ['down', 'down', 'down'];
-  @Output() close = new EventEmitter<void>();
+  @Output() close = new EventEmitter<boolean>(false);
 
   chat1: ChatMessage[] = [];
   chat2: ChatMessage[] = [
@@ -116,7 +114,7 @@ export class InitialPopupComponent implements OnInit, AfterViewInit {
   closePopup() {
     this.pageState = 'hidden';
     setTimeout(() => {
-      this.close.emit();
+      this.close.emit(true);
     }, 500);
   }
   displayMessages() {

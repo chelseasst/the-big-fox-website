@@ -15,12 +15,28 @@
     </p>
     <div class="beans-back" aria-hidden="true"></div>
   </section>
-
-  <section class="signup-nav">
-    <button class="submit-btn" id="login-btn" routerLink="login">Login</button>
-    <button class="submit-btn" id="register-btn" routerLink="register">
-      Register
+  <!-- USER -->
+  <section class="signup-nav" *ngIf="userName; else guest">
+    <h3 class="hi">Hi, {{userName}} ☕️</h3>
+    <button class="submit-btn" routerLink="/events-and-specials">
+      Events & Specials
     </button>
+    <button class="submit-btn" routerLink="/checkout">
+      Your Shopping Cart
+    </button>
+    <button *ngIf="isAdmin" class="submit-btn" routerLink="/admin-dashboard">
+      Admin Dashboard
+    </button>
+    <button class="submit-btn" (click)="logout()">Logout</button>
   </section>
+  <!-- GUEST -->
+  <ng-template #guest>
+    <section class="signup-nav">
+      <button class="submit-btn" id="login-btn" routerLink="login">Login</button>
+      <button class="submit-btn" id="register-btn" routerLink="register">
+        Register
+      </button>
+    </section>
+  </ng-template>
 </div>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!userName"></router-outlet>

@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Renderer2 } from '@angular/core';
 import { MenuNavService } from './menu-nav.service';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'site-header-mobile',
@@ -31,35 +32,22 @@ import { MenuNavService } from './menu-nav.service';
       transition('down <=> up', [animate('0.5s ease-out')]),
       //the seconds that the sliding will last
     ]),
-    // trigger('btnVisibleState', [
-    //   state(
-    //     'hidden',
-    //     style({
-    //       opacity: 0,
-    //       backgroundColor: 'transparent',
-    //     })
-    //   ),
-    //   state(
-    //     'visible',
-    //     style({
-    //       opacity: 1,
-    //       color: '#c65234',
-    //     })
-    //   ),
-    //   transition('hidden <=> visible', [animate('1s ease')])
-    // ]),
   ],
 })
 export class SiteHeaderMobileComponent implements OnInit {
   menuState: string = 'up';
   isSubMenuShown: boolean = false;
+  userName: string | null = null;
   @Input() giftBannerShowed!: boolean;
 
-  constructor(private menuNavService: MenuNavService, private renderer: Renderer2, private el: ElementRef) { }
+  constructor(private menuNavService: MenuNavService, private userService: UserService, private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
     this.menuNavService.menuStateObs$.subscribe((state) => {
       this.menuState = state;
+    });
+    this.userService.user$.subscribe((user) => {
+      this.userName = user?.userName || null;
     });
   }
   ngOnChanges() {
@@ -90,5 +78,8 @@ export class SiteHeaderMobileComponent implements OnInit {
       this.renderer.removeClass(navEl, 'banner-removed-nav');
       this.renderer.removeClass(logoEl, 'banner-removed-logo');
     }
+  }
+  logout(): void {
+    this.userService.logout();
   }
 }
