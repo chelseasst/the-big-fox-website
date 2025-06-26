@@ -70,17 +70,6 @@ a {
   font-style: normal;
 }
 
-.h2.animated {
-  transform: translateX(90%);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 0.8s ease-out;
-}
-
-.h2.animated.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 #time-p {
   color: var(--accent-color);
   font-style: italic;

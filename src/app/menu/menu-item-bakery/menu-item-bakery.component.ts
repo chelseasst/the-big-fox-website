@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { bakeryItem, ItemsBakery } from 'src/app/types/bakery';
+import { menuFoodItem } from 'src/app/types/menu';
 
 @Component({
   selector: 'app-menu-item-bakery',
@@ -7,6 +7,6 @@ import { bakeryItem, ItemsBakery } from 'src/app/types/bakery';
   styleUrls: ['./menu-item-bakery.component.css'],
 })
 export class MenuItemBakeryComponent {
-  @Input('item') item!: bakeryItem;
+  @Input('item') item!: menuFoodItem;
 
 }

@@ -1,19 +1,18 @@
-<div class="popup-wrapper">
+<div class="popup-wrapper" *ngIf="item">
   <aside class="popup-box" [@popupAnimation]="isPopupOpen ? 'visible' : 'hidden'">
     <div class="details">
       <div class="col">
-        <img [src]="currItem.images?.[0]" alt="" />
+        <img [src]="item.images[0]" alt="Item image" />
       </div>
       <div class="col col-2">
         <button class="close" (click)="closePopup()">
           <i data-icon="font-awesome" class="fa-solid fa-x"></i>
         </button>
-        <h2>{{currItem.title}}</h2>
-        <p class="quantity">Items: {{currItem.quantity}}</p>
-        <p class="price">{{currItem.price * currItem.quantity}}$</p>
+        <h2>{{item.title}}</h2>
+        <p class="quantity">Items: {{quantity}}</p>
+        <p class="price">{{quantity ? item.price * quantity : 0}}$</p>
       </div>
     </div>
-
     <div class="actions">
       <button class="submit-btn" (click)="closePopup()">Continue shopping</button>
       <a class="submit-btn" routerLink="/checkout" (click)="closePopup()">Checkout</a>

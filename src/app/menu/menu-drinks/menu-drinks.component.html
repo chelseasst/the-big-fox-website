@@ -1,9 +1,10 @@
 <div class="drinks-container">
   <ul class="drinks-wrapper">
-    <app-menu-item
-      *ngFor="let drink of items.drinks"
-      class="item"
-      [drink]="drink"
-    ></app-menu-item>
+    <div class="message" *ngIf="message; else list">
+      <p class="error">{{message}}</p>
+    </div>
+    <ng-template #list>
+      <app-menu-item *ngFor="let drink of items" class="item" [drink]="drink"></app-menu-item>
+    </ng-template>
   </ul>
 </div>

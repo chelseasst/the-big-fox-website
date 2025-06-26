@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { OrderOnlineService } from 'src/app/order-online/order-online.service';
 
@@ -21,14 +21,14 @@ export class FormPhysicalCardComponent {
     const formData = form.value;
     const selectedDesign = this.cardDesigns.find(design => design.title === formData.design);
     const item = {
-      id: `gift-card-${formData.design}`,
+      slug: `gift-card-${formData.design}`,
       title: `Gift Card ${formData.design}`,
       price: formData.amount,
       pieces: 1,
       quantity: 1,
+      description:'',
+      fullDescription:'',
       images: selectedDesign ? selectedDesign.images : [],
-
-      // color:formData.color //TODO Add two choices of Gift Card Designs
       giftCard: {
         design: formData.design,
         amount: formData.amount,
@@ -46,7 +46,7 @@ export class FormPhysicalCardComponent {
         message: formData.email,
       }
     }
-    this.orderOnlineService.addItemToCart(item, '1');
+    this.orderOnlineService.addItemToCart(item, 1);
   }
 }
 

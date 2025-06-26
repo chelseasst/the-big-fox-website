@@ -1,8 +1,13 @@
 <div class="bakery-container">
   <ul class="bakery-wrapper">
+    <div class="message" *ngIf="message; else list">
+      <p class="error">{{message}}</p>
+    </div>
+    <ng-template #list>
     <app-menu-item-bakery
-      *ngFor="let item of items.bakery"
+      *ngFor="let item of items"
       [item]="item"
     ></app-menu-item-bakery>
+  </ng-template>
   </ul>
 </div>

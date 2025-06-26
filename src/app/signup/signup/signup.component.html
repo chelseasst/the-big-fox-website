@@ -1,7 +1,7 @@
 <div class="signup-container">
   <section class="signup-intro">
-    <h1 class="h1" appAnimateOnScroll>Email Signup</h1>
-    <p appAnimateOnScroll class="expl">
+    <h1 class="h1 animate" appAnimateOnScroll>Email Signup</h1>
+    <p appAnimateOnScroll class="expl animateR">
       Enter the family.
       Here, coffee isn’t just a drink—it’s a ritual, a conversation starter, a reason to slow down and share a moment.
       Whether you’re grabbing your usual, trying something new, or just stopping by to soak in the aroma, you belong
@@ -18,13 +18,13 @@
   <!-- USER -->
   <section class="signup-nav" *ngIf="userName; else guest">
     <h3 class="hi">Hi, {{userName}} ☕️</h3>
-    <button class="submit-btn" routerLink="/events-and-specials">
+    <button class="submit-btn animateR" appAnimateOnScroll routerLink="/events-and-specials">
       Events & Specials
     </button>
     <button class="submit-btn" routerLink="/checkout">
       Your Shopping Cart
     </button>
-    <button *ngIf="isAdmin" class="submit-btn" routerLink="/admin-dashboard">
+    <button *ngIf="isAdmin" appAnimateOnScroll class="submit-btn animate" routerLink="/admin-dashboard">
       Admin Dashboard
     </button>
     <button class="submit-btn" (click)="logout()">Logout</button>

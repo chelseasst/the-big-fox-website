@@ -19,6 +19,9 @@ export class NewAdminComponent {
       }
       const messageObj = await this.adminService.addAdmin(data);
       this.message = messageObj.message;
+      form.resetForm();
+    } else {
+      this.message = 'Missing Fields'
     }
   }
 }

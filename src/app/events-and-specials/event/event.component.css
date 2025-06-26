@@ -12,11 +12,9 @@
 .flip-card {
   width: inherit;
   height: inherit;
-
   position: relative;
   transform-style: preserve-3d;
   transition: 1s .1s;
-  /* Controls how and when the animation happens when a CSS property changes. */
 }
 
 .card-container:hover .flip-card {
@@ -77,9 +75,10 @@
 }
 
 img {
-  object-fit: contain;
+  object-fit: cover;
   overflow: hidden;
   width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 768px) {

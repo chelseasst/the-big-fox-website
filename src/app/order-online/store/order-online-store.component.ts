@@ -8,7 +8,7 @@ import { OrderOnlineService } from '../order-online.service';
   styleUrls: ['./order-online-store.component.css'],
 })
 export class OrderOnlineStoreComponent implements OnInit {
-  items!: itemDetails[] | undefined;
+  items: itemDetails[] | undefined;
   message: string = '';
   constructor(private orderOnlineService: OrderOnlineService) { }
   ngOnInit(): void {
@@ -23,9 +23,6 @@ export class OrderOnlineStoreComponent implements OnInit {
     } else {
       this.message = "Unexpected response format.";
     }
-  }
-  addItem() {
-    // this.orderOnlineService.getAllItems();
   }
 
 }

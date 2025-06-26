@@ -30,8 +30,7 @@ export class AdminComponent implements OnInit {
     return { startDate, endDate }
   }
   async getUsersCount() {
-    const { startDate, endDate } = this.getDates();
-    const usersObj = await this.adminService.getAllUsers(startDate, endDate);
+    const usersObj = await this.adminService.getAllUsers();
     if (!usersObj) {
       this.message = 'User token has expired, Please log in'
       return

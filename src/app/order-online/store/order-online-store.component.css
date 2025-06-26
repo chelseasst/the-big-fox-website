@@ -18,13 +18,13 @@
   max-width: 800px;
 }
 
-.p.animated {
+.animate.animated {
   transform: translateX(90%);
   opacity: 0;
   transition: transform 1s ease-out, opacity 0.8s ease-out;
 }
 
-.p.animated.visible {
+.animate.animated.visible {
   transform: translateX(0);
   opacity: 1;
 }

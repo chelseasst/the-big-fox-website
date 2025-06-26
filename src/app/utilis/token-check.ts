@@ -3,19 +3,16 @@ export async function handleToken() {
     if (token) {
         try {
             const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decode JWT payload
-          //  {id: '48292775f866e587', email: 'izana@gmail.com', iat: 1750239778, exp: 1750844578}
+            //  {id: '48292775f866e587', email: 'izana@gmail.com', iat: 1750239778, exp: 1750844578}
             const isExpired = decodedToken.exp * 1000 < Date.now(); // Check expiration
 
             if (isExpired) {
-                console.log('TOKEN EXPIRED')
                 token = await renewToken(token);
                 if (!token) return
-                console.log('Refreshed token', token)
                 localStorage.setItem('userToken', token);
             }
             return token
         } catch (error) {
-            console.log('Token expired, logging out...');
             localStorage.removeItem('userToken');
             localStorage.removeItem('userName');
             window.location.href = '/login';

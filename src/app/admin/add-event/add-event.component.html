@@ -1,0 +1,93 @@
+<div class="add-event-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="form-container">
+            <p class="heading">Add A New Event</p>
+            <p class="sub-heading">Greatness coming</p>
+            <form class="add-event-form" #addEventForm="ngForm" (ngSubmit)="addEvent(addEventForm)"
+                enctype="multipart/form-data">
+                <div class="form-ui">
+                    <div class="images-container">
+                        <h4 class="h4">Event Image</h4>
+                        <!-- Images -->
+                        <label for="images">Event Image
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="images.touched">
+                            <i class="error" *ngIf="images.errors?.['required']">Product Type is required</i>
+                        </ng-container>
+                        <div class="preview-container">
+                            <img *ngFor="let img of imagesArray" [src]="img" class="preview-img">
+                        </div>
+                        <input id="image-input" type="file" name="images" accept="image" ngModel #images="ngModel"
+                            required (change)="previewImage($event)" />
+                        <button class="delete-btn" (click)="removeSelectedFiles()">Delete selected File</button>
+                    </div>
+
+
+                    <div class="info-container">
+                        <h4 class="h4">Product Information</h4>
+                        <!-- Event Name -->
+                        <label for="eventName">Event Name
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="eventName.touched">
+                            <i class="error" *ngIf="eventName.errors?.['required']">Event Name is required</i>
+                        </ng-container>
+                        <input type="text" id="eventName" name="eventName" placeholder="Event Name" ngModel
+                            #eventName="ngModel" required />
+                        <!-- Slug -->
+                        <label for="slug">Slug
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="slug.touched">
+                            <i class="error" *ngIf="slug.errors?.['required']">Slug is required</i>
+                        </ng-container>
+                        <input type="text" id="slug" name="slug" placeholder="Slug" ngModel #slug="ngModel" required />
+                        <!-- Event Info -->
+                        <label for="eventInfo">Event Info
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="eventInfo.touched">
+                            <i class="error" *ngIf="eventInfo.errors?.['required']">Event Info is
+                                required</i>
+                        </ng-container>
+
+                        <input type="text" id="eventInfo" name="eventInfo" placeholder="Event Info" ngModel
+                            #eventInfo="ngModel" required />
+
+                        <!-- Date -->
+                        <label for="date">Date
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="date.touched">
+                            <i class="error" *ngIf="date.errors?.['required']">Product Materials are
+                                required</i>
+                        </ng-container>
+                        <input type="date" id="date" name="date" placeholder="Date" ngModel #date="ngModel" required />
+                        <!-- Time -->
+                        <label for="time">Time
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="time.touched">
+                            <i class="error" *ngIf="time.errors?.['required']">Product Materials are
+                                required</i>
+                        </ng-container>
+                        <input type="text" id="time" name="time" placeholder="19h-22h" ngModel #time="ngModel"
+                            required />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-btn" [disabled]="addEventForm.invalid">Add</button>
+                    <p class="message">{{message}}</p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>

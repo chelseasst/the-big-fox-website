@@ -1,5 +1,4 @@
 export interface giftCard {
-    amount: number,
     recipName: string,
     recipEmail?: string,
     recipAdress?: string,
@@ -12,4 +11,6 @@ export interface giftCard {
     senderName: string,
     senderEmail?: string,
     message?: string,
+    design:string,
+    images?:string[]
 }

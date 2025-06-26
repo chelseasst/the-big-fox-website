@@ -1,3 +1,5 @@
+import { giftCard } from "./giftCard";
+
 export interface itemDetails {
   slug: string;
   title: string;
@@ -8,7 +10,9 @@ export interface itemDetails {
   pieces?: number;
   materials?: string;
   images: string[];
+  size?:string;
   color?: string;
   quantity?: number;
+  giftCard?:giftCard
 }
 

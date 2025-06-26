@@ -11,10 +11,10 @@ export class SignupComponent implements OnInit {
   isAdmin: boolean = false;
   constructor(private userService: UserService) { }
   async ngOnInit() {
-    this.userService.user$.subscribe((user) => {
+    this.userService.user$.subscribe(async (user) => {
       this.userName = user?.userName || null;
+      this.isAdmin = !!user ? await this.userService.isAdmin() : false;
     });
-    this.isAdmin = await this.userService.isAdmin();
   }
   logout(): void {
     this.userService.logout();

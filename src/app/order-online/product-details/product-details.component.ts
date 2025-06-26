@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { itemDetails } from 'src/app/types/itemDetails';
 import { OrderOnlineService } from '../order-online.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   quantityValue: number = 1;
   itemDetails!: itemDetails | undefined;
   imgId: number = 0;
-  // isPopupOpen$ = this.orderOnlineService.isPopupOpen$;
+  isPopupOpen$ = this.orderOnlineService.isCartPopupOpen$;
   showQuantRange: boolean = false;
   message: string = '';
   readonly MIN_VALUE: number = 1;
@@ -21,22 +22,33 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private orderOnlineService: OrderOnlineService
   ) { }
 
   ngOnInit(): void {
     const slug = this.activatedRoute.snapshot.params['slug'];
-    // this.getItem(slug);
-    console.log('Slug', slug)
+    const url = this.router.url;
+    if (url.includes('store')) {
+      this.getItem(slug, 'food');
+    } else {
+      this.getItem(slug, 'merch');
+    }
   }
-  async getItem(slug: string) {
-    const data = await this.orderOnlineService.getItemById(slug);
+  async getItem(slug: string, collection: string) {
+    const data = await this.orderOnlineService.getItemById(slug, collection);
     if (data && "message" in data) {
       this.message = data.message;
     } else if (data) {
       this.itemDetails = data;
     } else {
       this.message = "Unexpected response format.";
+    }
+  }
+  addToCart(quantity: string) {
+    console.log('item details',JSON.stringify(this.itemDetails));
+    if (this.itemDetails) {
+      this.orderOnlineService.addItemToCart(this.itemDetails, parseInt(quantity));
     }
   }
   increment() {
@@ -59,17 +71,5 @@ export class ProductDetailsComponent implements OnInit {
     if (!isNaN(id)) {
       this.imgId = id;
     }
-  }
-  addToCart(quantity: string) {
-    // const item = {
-    //   slug: this.itemDetails.slug,
-    //   title: this.itemDetails.title,
-    //   price: this.itemDetails.price,
-    //   pieces: this.itemDetails.pieces,
-    //   color: this.itemDetails.color || undefined,
-    //   quantity: parseInt(quantity),
-    //   images: this.itemDetails.images
-    // }
-    // this.orderOnlineService.addItemToCart(item, quantity);
   }
 }

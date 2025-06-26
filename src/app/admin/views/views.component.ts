@@ -7,7 +7,7 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./views.component.css']
 })
 export class ViewsComponent implements OnInit {
-  viewsPeriods: { viewsCount: number, startDate: Date, endDate: Date }[] = [{ viewsCount: 10, startDate: new Date(), endDate: new Date() }, { viewsCount: 20, startDate: new Date(), endDate: new Date() }, { viewsCount: 100, startDate: new Date(), endDate: new Date() }];
+  viewsPeriods: { viewsCount: number, startDate: string, endDate: string }[] = []
   data!: string;
   message: string = '';
   today!: string;
@@ -27,7 +27,7 @@ export class ViewsComponent implements OnInit {
     }
     //  TODO fetch real views
     const viewsCount = await this.adminService.getAllViews(startDate, endDate);
-    // this.viewsPeriods.push({ viewsCount: viewsCount, startDate, endDate })
+    this.viewsPeriods.push({ viewsCount: viewsCount, startDate, endDate })
   }
   removePeriod(index: number) {
     this.viewsPeriods.splice(index, 1);

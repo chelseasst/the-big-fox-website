@@ -8,6 +8,8 @@ import { NewAdminComponent } from './new-admin/new-admin.component';
 import { DeleteAdminComponent } from './delete-admin/delete-admin.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AddEventComponent } from './add-event/add-event.component';
+import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
 
 const routes: Routes = [
     {
@@ -41,6 +43,14 @@ const routes: Routes = [
     {
         path: 'add-product',
         component: AddProductComponent
+    },
+    {
+        path: 'add-event',
+        component: AddEventComponent
+    },
+    {
+        path:'add-menu-item',
+        component:AddMenuItemComponent
     }
 ];
 @NgModule({

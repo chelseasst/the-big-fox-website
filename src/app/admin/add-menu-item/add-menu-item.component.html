@@ -1,0 +1,94 @@
+<div class="add-product-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="form-container">
+            <p class="heading">Add A New Product</p>
+            <p class="sub-heading">First select the type of the product</p>
+            <form class="add-product-form" #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)"
+                enctype="multipart/form-data">
+                <div class="form-ui">
+                    <div class="info-container">
+                        <h4 class="h4">Product Information</h4>
+                        <!-- Type -->
+                        <label for="productType">
+                            Select the Product Type
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="productType.touched">
+                            <i class="error" *ngIf="productType.errors?.['required']">Product Type is required</i>
+                        </ng-container>
+                        <select name="productType" id="productType" ngModel #productType="ngModel" required>
+                            <option value="" disabled selected hidden>Select product type</option>
+                            <option value="food">Food</option>
+                            <option value="drink">Drink</option>
+                        </select>
+                        <!-- Title -->
+                        <label for="title">Product Title
+                            <span class="required">- Required</span>
+                        </label>
+                        <ng-container *ngIf="title.touched">
+                            <i class="error" *ngIf="title.errors?.['required']">Product Title is required</i>
+                        </ng-container>
+                        <input type="text" id="title" name="title" placeholder="Product Title" ngModel #title="ngModel"
+                            required />
+
+                        <!-- SPECIFIC FOR FOOD -->
+                        <div class="food-specific" *ngIf="productType.value === 'food'">
+                            <!-- Description -->
+                            <label for="details">Product Details
+                                <span class="required">- Required</span>
+                            </label>
+                            <ng-container *ngIf="details.touched">
+                                <i class="error" *ngIf="details.errors?.['required']">Product Details are
+                                    required</i>
+                            </ng-container>
+                            <input type="text" id="details" name="details" placeholder="Details" ngModel
+                                #details="ngModel" required />
+                            <!-- Price -->
+                            <label for="price">Price
+                                <span class="required">- Required</span>
+                            </label>
+                            <ng-container *ngIf="price.touched">
+                                <i class="error" *ngIf="price.errors?.['required']">Product Price is required</i>
+                            </ng-container>
+                            <input type="number" id="price" name="price" placeholder="10.99" ngModel #price="ngModel"
+                                required />
+                        </div>
+                        <!-- SPECIFIC FOR DRINKS -->
+                        <div class="drinks-specific" *ngIf="productType.value === 'drink'">
+                            <!-- Price Small -->
+                            <label for="priceS">Price Small
+                                <span class="required">- Required</span>
+                            </label>
+                            <ng-container *ngIf="priceS.touched">
+                                <i class="error" *ngIf="priceS.errors?.['required']">Product Price Small is required</i>
+                            </ng-container>
+                            <input type="number" id="priceS" name="priceS" placeholder="10.99" ngModel #priceS="ngModel"
+                                required />
+                            <!-- Price Large-->
+                            <label for="priceL">Price Large
+                                <span class="required">- Required</span>
+                            </label>
+                            <ng-container *ngIf="priceL.touched">
+                                <i class="error" *ngIf="priceL.errors?.['required']">Product Price Large is required</i>
+                            </ng-container>
+                            <input type="number" id="priceL" name="priceL" placeholder="10.99" ngModel #priceL="ngModel"
+                                required />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-btn" [disabled]="addProductForm.invalid">Add</button>
+                    <p class="message">{{message}}</p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>

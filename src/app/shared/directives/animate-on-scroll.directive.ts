@@ -1,11 +1,12 @@
-import { AfterViewInit, Directive, ElementRef, OnDestroy, OnInit, Renderer2 } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, OnDestroy, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[appAnimateOnScroll]'
 })
 export class AnimateOnScrollDirective implements AfterViewInit, OnDestroy {
     private observer!: IntersectionObserver
-    constructor(private renderer: Renderer2, private el: ElementRef) {}
+    constructor(private renderer: Renderer2, private el: ElementRef) { }
+    // Renderer2 is safer !
     ngAfterViewInit(): void {
         this.renderer.addClass(this.el.nativeElement, 'animated');
         this.observer = new IntersectionObserver(([entry]) => {

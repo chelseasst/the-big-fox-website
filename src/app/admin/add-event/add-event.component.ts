@@ -3,34 +3,35 @@ import { NgForm } from '@angular/forms';
 import { AdminService } from '../admin.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  selector: 'app-add-event',
+  templateUrl: './add-event.component.html',
+  styleUrls: ['./add-event.component.css']
 })
-export class AddProductComponent {
-  //we can add functionality for more files later
-  imagesArray: string[] = [];
+export class AddEventComponent {
+  imagesArray: String[] = [];
   selectedFiles: File[] = [];
   message: string = '';
   constructor(private adminService: AdminService) { }
-  async addProduct(form: NgForm) {
-    console.log('Add product function')
+
+  async addEvent(form: NgForm) {
     if (form.valid) {
-      const messageObj = await this.adminService.addProduct(form, this.selectedFiles);
+      console.log('form', form);
+      const messageObj = await this.adminService.addEvent(form, this.selectedFiles);
       this.message = messageObj.message;
       form.resetForm();
-      this.removeSelectedFiles()
-    }else{
+      this.removeSelectedFiles();
+    } else {
       this.message = 'Missing Fields'
     }
   }
-  previewImages(event: Event): void {
+  previewImage(event: Event): void {
     const target = event.target as HTMLInputElement;
     const files = target.files;
     if (files) {
       Array.from(files).forEach(file => {
         this.selectedFiles.push(file); //we store the real file object, not base64 format
         const reader = new FileReader();
+        //FileReader is part of the browser API
 
         //when the file finishes loading, this event is triggered
         reader.onload = (event: any) => {

@@ -1,4 +1,5 @@
 import { Component, Input, Renderer2 } from '@angular/core';
+import { EventDetails } from 'src/app/types/event';
 
 @Component({
   selector: 'app-event',
@@ -6,7 +7,7 @@ import { Component, Input, Renderer2 } from '@angular/core';
   styleUrls: ['./event.component.css'],
 })
 export class EventComponent {
-  @Input('eventData') eventData!: any;
+  @Input('eventData') eventData!: EventDetails;
   constructor(private render: Renderer2) { }
   toggleFlip(event: TouchEvent) {
     const target = event.target;

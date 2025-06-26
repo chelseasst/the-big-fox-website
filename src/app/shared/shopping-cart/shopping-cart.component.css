@@ -1,12 +1,12 @@
 .shopping-cart {
     position: fixed;
     z-index: 100;
-    left: 50%;
+    left: 45%;
     top: 40px;
     width: 110px;
     height: 36px;
     background-color: var(--secondary-color);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     text-align: center;
     cursor: pointer;
 }
@@ -16,14 +16,25 @@
     color: white;
 }
 
- i:before {
+i:before {
     width: 15px;
     padding-right: 5px;
     color: white !important;
 }
 
-@media screen and (min-width:768px) {
+
+@media screen and (min-width:1024px) {
     .shopping-cart {
-        right: 40px;
+        left: unset;
+        right: 25px;
+        top: 50px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .shopping-cart {
+        left: 175px;
+        right: unset;
+        top: 100px;
     }
 }

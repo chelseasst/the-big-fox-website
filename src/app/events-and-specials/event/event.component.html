@@ -1,17 +1,17 @@
 <div class="card-container" (touchstart)="toggleFlip($event)" (touchend)="toggleFlip($event)">
   <div class="flip-card">
-  <div class="card-front">
-    <div class="front-photo">
-        <img [src]="eventData.url" alt="Event Image" />
+    <div class="card-front">
+      <div class="front-photo">
+        <img *ngFor="let image of eventData.images" [src]="image" alt="Event Image" />
+      </div>
+      <div class="front-text">
+        <p>{{eventData.eventName }}</p>
+        <p>{{eventData.date | date : "dd/MMM/yyyy" }}</p>
+        <p>{{ eventData.time }}</p>
+      </div>
     </div>
-    <div class="front-text">
-      <p>{{eventData.title }}</p>
-      <p>{{eventData.eventDate | date : "dd/MMM/yyyy" }}</p>
-      <p><br />{{ eventData.days }}<br />{{ eventData.time }}</p>
+    <div class="card-back">
+      <p class="details">{{eventData.eventInfo}}</p>
     </div>
   </div>
-  <div class="card-back">
-    <p class="details">{{eventData.details}}</p>
-  </div>
-</div>
 </div>

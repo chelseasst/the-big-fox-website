@@ -8,11 +8,13 @@ span {
   padding: 0.9rem;
   position: relative;
 }
-.images-browser{
+
+.images-browser {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .back-btn {
   text-decoration: underline;
 }
@@ -32,7 +34,8 @@ span {
 .option-images {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .option-image {
@@ -85,13 +88,12 @@ h2.type {
   top: 0;
   bottom: 0;
   background-color: var(--secondary-color);
-  opacity: 0.8;
   width: 40px;
 }
 
 .btn-left:hover,
 .btn-right:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .btn-right {
@@ -105,11 +107,15 @@ h2.type {
 }
 
 .quantity-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
   text-align: center;
   padding: 0.7rem;
   border: 1px solid #ddd;
   background-color: var(--primary-color);
 }
+
 
 .popupShown {
   opacity: 0.2;
@@ -126,11 +132,6 @@ h2.type {
     flex: 0 1 30%;
   }
 
-  .quantity-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
 
   .details-header p {
     margin-bottom: 2rem;

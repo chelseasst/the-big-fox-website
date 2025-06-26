@@ -60,6 +60,12 @@
     background-color: rgba(255, 231, 133, 0.812);
 }
 
+.statistic:nth-child(8) {
+    background-color: rgba(187, 150, 176, 0.812);
+}
+.statistic:nth-child(9) {
+    background-color: rgba(151, 220, 247, 0.841);
+}
 .title {
     font-size: 0.7rem;
     font-weight: 900;

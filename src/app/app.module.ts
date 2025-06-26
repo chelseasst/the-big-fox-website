@@ -15,8 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { MenuModule } from './menu/menu.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModule } from './admin/admin.module';
+import { AddEventComponent } from './admin/add-event/add-event.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AddEventComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

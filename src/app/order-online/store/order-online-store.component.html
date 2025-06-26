@@ -7,16 +7,18 @@
         <p class="img-cafe-container">
           <img src="../assets/order-online/coffee-shop.png" alt="" />
         </p>
-        <p class="p" appAnimateOnScroll>
+        <div class="animate" appAnimateOnScroll>
+        <p>
           All your limited-time offers, cake-adjacent merch, and back-alley swag
           in one place.
         </p>
-        <p class="p" appAnimateOnScroll>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-          reiciendis veritatis saepe sequi ratione, numquam dolores quis error a
-          earum illo corporis? Mollitia, praesentium. Vel odio cum recusandae
-          quis laboriosam.
+        <p>
+          Planning a sunny day out? We’ve got your picnic basket cravings covered. From freshly baked cakes to our
+          signature cookies box, from hand-stacked sandwich selections to delightful little extras—Big Fox Coffee brings
+          the goodness straight to your blanket.
         </p>
+        <p>We have everything you need for a wholesome picnic 🌿🥪🍰</p>
+      </div>
       </section>
     </div>
     <section class="cards-container">
@@ -28,7 +30,6 @@
           <app-item-list class="card" *ngFor="let item of items" [item]="item"></app-item-list>
         </div>
       </ng-template>
-      <button class="submit-btn" (click)="addItem()">Add Item</button>
     </section>
   </main>
 </div>

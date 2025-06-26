@@ -11,6 +11,7 @@ import { OrderOnlineService } from '../../order-online.service';
 export class OrderOnlineMerchComponent implements OnInit {
   isDesktop: boolean = false;
   items!: itemDetails[];
+  message: string = '';
   constructor(private breakpointObserver: BreakpointObserver, private orderOnlineService: OrderOnlineService) { }
   ngOnInit() {
     this.breakpointObserver
@@ -18,7 +19,18 @@ export class OrderOnlineMerchComponent implements OnInit {
       .subscribe((result) => {
         this.isDesktop = !result.matches;
       });
-
+    this.getItems();
     //fetch data TODO
+  }
+
+  async getItems() {
+    const data = await this.orderOnlineService.getMerchItems();
+    if (Array.isArray(data)) {
+      this.items = data;
+    } else if (data && "message" in data) {
+      this.message = data.message;
+    } else {
+      this.message = "Unexpected response format.";
+    }
   }
 }

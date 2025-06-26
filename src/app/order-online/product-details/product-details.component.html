@@ -38,7 +38,7 @@
                 <span class="increment btn-left" (click)="decrement()">
                   <i class="icon">-</i>
                 </span>
-                <input type="text" class="quantity-input" inputmode="numeric" min="1" max="5" #quantityInput readonly
+                <input type="number" class="quantity-input" inputmode="numeric" min="1" max="5" #quantityInput readonly
                   [value]="quantityValue" />
                 <span class="decrement btn-right" (click)="increment()">
                   <i class="icon">+</i>
@@ -59,7 +59,7 @@
     </div>
   </main>
 </div>
-<!-- 
+
 <ng-container *ngIf="isPopupOpen$ | async">
   <app-products-popup class="product-popup" [item]="itemDetails" [quantity]="quantityValue"></app-products-popup>
-</ng-container> -->
+</ng-container>

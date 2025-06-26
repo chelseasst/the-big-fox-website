@@ -3,8 +3,7 @@
     <app-initial-section [heading]="'Events & Specials'"
       [url]="'../assets/events-and-specials/IMG_5505.JPG'"></app-initial-section>
     <div class="events-wrapper">
-      <app-event [eventData]="eventData"></app-event>
-      <app-event [eventData]="eventData"></app-event>
+      <app-event *ngFor="let event of events" [eventData]="event"></app-event>
     </div>
   </main>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ItemsBakery } from 'src/app/types/bakery';
+import { OrderOnlineService } from 'src/app/order-online/order-online.service';
+import { menuFoodItem } from 'src/app/types/menu';
 
 @Component({
   selector: 'app-menu-bakery',
@@ -7,23 +8,24 @@ import { ItemsBakery } from 'src/app/types/bakery';
   styleUrls: ['./menu-bakery.component.css'],
 })
 export class MenuBakeryComponent {
-  items: ItemsBakery = {
-    bakery: [
-      {
-        title: 'Bagel',
-        description: 'The best in town',
-        price: 3.5,
-      },
-      {
-        title: 'Croissant',
-        description: 'Butter',
-        price: 3,
-      },
-      {
-        title: 'Chocolate Croissant',
-        description: 'Nutella',
-        price: 4,
-      }
-    ],
-  };
+  constructor(private orderOnlineService: OrderOnlineService) { }
+  items: menuFoodItem[] | undefined = [];
+  message: string = '';
+  ngOnInit(): void {
+    console.log('in ng on init')
+    this.getItems();
+  }
+  async getItems() {
+    console.log('in get items')
+
+    const data = await this.orderOnlineService.getMenuFood();
+    if (Array.isArray(data)) {
+      this.items = data;
+    } else if (data && "message" in data) {
+      this.message = data.message;
+    } else {
+      this.message = "Unexpected response format.";
+    }
+
+  }
 }

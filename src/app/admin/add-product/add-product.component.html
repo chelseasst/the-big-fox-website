@@ -8,7 +8,8 @@
         <div class="form-container">
             <p class="heading">Add A New Product</p>
             <p class="sub-heading">First select the type of the product</p>
-            <form class="add-product-form" #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)" enctype="multipart/form-data">
+            <form class="add-product-form" #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)"
+                enctype="multipart/form-data">
                 <div class="form-ui">
                     <div class="images-container">
                         <h4 class="h4">Product Images</h4>
@@ -65,11 +66,12 @@
                             <span class="required">- Required</span>
                         </label>
                         <ng-container *ngIf="description.touched">
-                            <i class="error" *ngIf="description.errors?.['required']">Product Description is required</i>
+                            <i class="error" *ngIf="description.errors?.['required']">Product Description is
+                                required</i>
                         </ng-container>
 
-                        <input type="text" id="description" name="description" placeholder="Description" ngModel #description="ngModel"
-                            required />
+                        <input type="text" id="description" name="description" placeholder="Description" ngModel
+                            #description="ngModel" required />
                         <!-- Full Description -->
                         <label for="fullDescription">Product Full Description
                             <span class="required">- Required</span>
@@ -78,8 +80,8 @@
                             <i class="error" *ngIf="fullDescription.errors?.['required']">Product Full Description is
                                 required</i>
                         </ng-container>
-                        <input type="text" id="fullDescription" name="fullDescription" placeholder="Full Description" ngModel
-                            #fullDescription="ngModel" required />
+                        <input type="text" id="fullDescription" name="fullDescription" placeholder="Full Description"
+                            ngModel #fullDescription="ngModel" required />
 
                         <!-- Price -->
                         <label for="price">Price
@@ -101,7 +103,7 @@
                                 <i class="error" *ngIf="materials.errors?.['required']">Product Materials are
                                     required</i>
                             </ng-container>
-                            <input type="text" id="materials" name="materials" placeholder="Description" ngModel
+                            <input type="text" id="materials" name="materials" placeholder="Material" ngModel
                                 #materials="ngModel" required />
                             <!-- Size -->
                             <label for="size">Size
@@ -133,13 +135,22 @@
                             </ng-container>
                             <input type="text" id="ingredients" name="ingredients" placeholder="Ingredients" ngModel
                                 #ingredients="ngModel" required />
+                            <!-- Pieces -->
+                            <label for="pieces">Pieces
+                                <span class="required">- Required</span>
+                            </label>
+                            <ng-container *ngIf="pieces.touched">
+                                <i class="error" *ngIf="pieces.errors?.['required']">Ingredients are required</i>
+                            </ng-container>
+                            <input type="number" id="pieces" name="pieces" placeholder="Pieces" ngModel
+                                #pieces="ngModel" required />
                         </div>
                     </div>
 
                 </div>
 
                 <div class="form-actions">
-                    <button class="submit-btn" [disabled]="addProductForm.invalid">Add</button>
+                    <button class="submit-btn">Add</button>
                     <p class="message">{{message}}</p>
                 </div>
 

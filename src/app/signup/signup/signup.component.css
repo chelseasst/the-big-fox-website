@@ -29,31 +29,10 @@
   margin-bottom: 1.5rem;
 }
 
-.h1.animated {
-  transform: translateX(90%);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 0.8s ease-out;
-}
-
-.h1.animated.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 .expl {
   background-color: #fdfaebbc;
 }
 
-.expl.animated {
-  transform: translateX(-90%);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 0.8s ease-out;
-}
-
-.expl.animated.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
 
 .signup-intro p {
   text-align: center;
@@ -68,10 +47,12 @@
 .submit-btn {
   margin-top: 1rem;
 }
-.hi{
+
+.hi {
   padding: 0.5rem;
   background-color: var(--primary-color)
 }
+
 @media screen and (min-width: 1000px) {
   .signup-container {
     margin-top: 220px;

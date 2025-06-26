@@ -11,6 +11,7 @@ export class LoginComponent {
   message: string = '';
   constructor(private userService: UserService) { }
   async loginHandler(form: NgForm) {
+    console.log('FORM',form);
     if (form.valid) {
       const data = {
         email: form.value.email,

@@ -7,10 +7,6 @@
         url="'../assets/order-online/merch/merch-mobile.jpeg'"></app-initial-section>
     </ng-template>
     <section class="products-section">
-      <!-- TODO decide which card item -->
-      <!-- <ul class="cards-wrapper">
-        <app-product-card class="card-item" *ngFor="let item of items" [item]="item"></app-product-card>
-      </ul> -->
       <ul class="card-list">
         <app-item-list class="card" *ngFor="let item of items" [item]="item"></app-item-list>
       </ul>
@@ -18,15 +14,13 @@
     <section class="img-coll">
       <div class="img-c">
         <img src="../assets/order-online/merch/interior.JPG" alt="Interior Cafe">
-        <p class="capt capt1">Coffee break</p>
       </div>
       <div class="img-c">
         <img src="../assets/order-online/merch/exterior.JPG" alt="Exterior Cafe">
-        <p class="capt capt2">Dive into the atmospere</p>
       </div>
     </section>
     <section class="quote-wr">
-      <blockquote>
+      <blockquote class="animateR" appAnimateOnScroll>
         <p><strong>If this is coffee,</strong> please bring me some tea; <strong>but if this is tea,</strong> please
           bring me some coffee.</p>
         <cite>Abraham Lincoln</cite>

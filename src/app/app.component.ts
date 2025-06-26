@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   showInitPopup!: boolean;
   isCartVisible$ = this.orderOnlineService.isCartVisible$;
 
-  isCartPopupOpen$ = this.orderOnlineService.isCartPopupOpen$;
   quantityValue: number = 1;
   itemDetails!: itemDetails;
   private routerSubsc!: Subscription;
@@ -30,24 +29,21 @@ export class AppComponent implements OnInit {
           (window as any).ga('set', 'page', event.urlAfterRedirects);
           (window as any).ga('send', 'pageview');
         }
-
-        //AND send Google Analytics views 
         const excl = ['menu-drinks', 'menu-bakery', 'physical-card', 'digital-card', 'login', 'register'];
         const currUrl = event.urlAfterRedirects;
         if (excl.some(route => currUrl.includes(route))) {
           return
         }
         window.scrollTo(0, 0);
-      }
+      }   
     });
-
     const hasVisited = sessionStorage.getItem('hasVisited'); //'true', 'false';
     if (!hasVisited) {
       this.showInitPopup = true;
       sessionStorage.setItem('hasVisited', 'true');
       this.noScrollClass();
     }
-
+    this.orderOnlineService.initCartState(); //fires the observables for Cart 
   }
   noScrollClass() {
     if (this.showInitPopup) {

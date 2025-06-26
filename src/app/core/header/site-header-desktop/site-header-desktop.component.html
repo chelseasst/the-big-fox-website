@@ -25,30 +25,19 @@
         <a routerLink="hours-and-location" routerLinkActive="activeLink">Hours & Location</a>
       </li>
       <li class="site-nav-submenu">
-        <a class="submenu-button" routerLink="order-online" routerLinkActive="activeLink" (click)="toggleSubmenu()">
+        <a class="submenu-button" (click)="toggleSubmenu()">
           Order Online
           <i data-icon="font-awesome" class="fa-solid fa-arrow-down" *ngIf="!isSubMenuShown"></i>
           <i class="fa-solid fa-arrow-up" *ngIf="isSubMenuShown"></i>
         </a>
         <div class="sub-menu" *ngIf="isSubMenuShown">
           <ul>
-            <ul>
-              <li>
-                <a routerLink="order-online/store" routerLinkActive="activeLink">Store</a>
-              </li>
-              <li>
-                <a routerLink="order-online/coffee" routerLinkActive="activeLink">Signiture Coffee</a>
-              </li>
-              <li>
-                <a routerLink="order-online/bakery" routerLinkActive="activeLink">Signiture Baked Goods</a>
-              </li>
-              <li>
-                <a routerLink="order-online/cakes" routerLinkActive="activeLink">The Coffee Cake</a>
-              </li>
-              <li>
-                <a routerLink="order-online/merch" routerLinkActive="activeLink">Merch</a>
-              </li>
-            </ul>
+            <li>
+              <a routerLink="order-online/store" routerLinkActive="activeLink" (click)="toggleSubmenu()">Store</a>
+            </li>
+            <li>
+              <a routerLink="order-online/merch" routerLinkActive="activeLink" (click)="toggleSubmenu()">Merch</a>
+            </li>
           </ul>
         </div>
       </li>

@@ -36,6 +36,39 @@ body {
 [data-icon="font-awesome"]::before {
   font-family: "FontAwesome";
 }
+/* Animations */
+.animate.animated {
+  transform: translateX(90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
+.animate.animated.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.animateR.animated {
+  transform: translateX(-90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
+.animateR.animated.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.popIn.animated {
+  transform: scale(0.1);
+
+  transition: transform 1s ease-out;
+}
+
+.popIn.animated.visible {
+  transform: scale(1);
+  transition: transform 1s ease-out;
+}
 
 img {
   max-width: 100%;

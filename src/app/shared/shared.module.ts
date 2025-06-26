@@ -11,7 +11,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { ProductsPopupComponent } from './products-popup/products-popup.component';
 import { AnimateOnScrollDirective } from './directives/animate-on-scroll.directive';
-
 @NgModule({
   declarations: [BannerGiftCardComponent, SocialsComponent, SiteLocationComponent, PoweredByComponent, ButtonComponent, ShoppingCartComponent, CheckoutComponent, ProductsPopupComponent, AnimateOnScrollDirective],
   imports: [CommonModule, RouterModule, SharedRoutingModule],

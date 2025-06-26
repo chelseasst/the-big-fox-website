@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Drink } from 'src/app/types/drinks';
+import { menuDrinkItem } from 'src/app/types/menu';
 
 @Component({
   selector: 'app-menu-item',
@@ -7,6 +7,6 @@ import { Drink } from 'src/app/types/drinks';
   styleUrls: ['./menu-item.component.css'],
 })
 export class MenuItemComponent {
-  @Input('drink') drink!: Drink;
+  @Input('drink') drink!: menuDrinkItem;
 
 }
