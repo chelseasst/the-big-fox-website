@@ -44,6 +44,7 @@ export class OrderOnlineService {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
+      console.log('🌍 Using API URL:', environment.apiUrl);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to fetch items.");
