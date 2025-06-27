@@ -40,11 +40,11 @@ export class OrderOnlineService {
       return this.foodItems;
     }
     try {
+      console.log('🌍 Using API URL:', environment.apiUrl);
       const response = await fetch(`${environment.apiUrl}/food`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      console.log('🌍 Using API URL:', environment.apiUrl);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to fetch items.");
