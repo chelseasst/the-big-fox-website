@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { itemDetails } from '../types/itemDetails';
 import { menuDrinkItem, menuFoodItem } from '../types/menu';
 import { NgForm } from '@angular/forms';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

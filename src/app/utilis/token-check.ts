@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 export async function handleToken() {
     let token = localStorage.getItem('userToken');
     if (token) {

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { handleToken } from '../utilis/token-check';
 import { EventDetails } from '../types/event';
 import { User } from '../types/user';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
