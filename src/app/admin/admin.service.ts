@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { handleToken } from '../utilis/token-check';
 import { EventDetails } from '../types/event';
 import { User } from '../types/user';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class AdminService {
       return { total: this.allUsers, monthly: this.monthlyUsers }
     }
     try {
-      const response = await fetch(`http://localhost:3000/api/user/all-users`, {
+      const response = await fetch(`${environment.apiUrl}/user/all-users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +43,7 @@ export class AdminService {
     const token = await handleToken();
     if (!token) { return false }
     try {
-      const response = await fetch(`http://localhost:3000/api/user/filter-users?start=${startDate}&end=${endDate}`, {
+      const response = await fetch(`${environment.apiUrl}/user/filter-users?start=${startDate}&end=${endDate}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +65,7 @@ export class AdminService {
     const token = await handleToken();
     if (!token) { return false }
     try {
-      const response = await fetch(`http://localhost:3000/api/analytics/views?startDate${startDate}&endDate=${endDate}`, {
+      const response = await fetch(`${environment.apiUrl}/analytics/views?startDate${startDate}&endDate=${endDate}`, {
         method: "GET",
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -83,7 +84,7 @@ export class AdminService {
       return this.events;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/events", {
+      const response = await fetch(`${environment.apiUrl}/events`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -103,7 +104,7 @@ export class AdminService {
     const token = await handleToken();
     if (!token) { return 'Token invalid, please log in again' }
     try {
-      const response = await fetch("http://localhost:3000/api/user/add-admin", {
+      const response = await fetch(`${environment.apiUrl}/user/add-admin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +129,7 @@ export class AdminService {
     const token = await handleToken();
     if (!token) { return 'Token invalid, please log in again' }
     try {
-      const response = await fetch(`http://localhost:3000/api/user/delete-admin?delAdminEmail=${data.delAdminEmail}`, {
+      const response = await fetch(`${environment.apiUrl}/user/delete-admin?delAdminEmail=${data.delAdminEmail}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
         body: JSON.stringify({ email: data.email, password: data.password }),
@@ -151,9 +152,9 @@ export class AdminService {
 
     let url;
     if (form.value.productType === 'food') {
-      url = 'http://localhost:3000/api/add-product/food'
+      url = `${environment.apiUrl}/add-product/food`
     } else if (form.value.productType === 'merch') {
-      url = 'http://localhost:3000/api/add-product/merch'
+      url = `${environment.apiUrl}/add-product/merch`
     } else { //change to the form from Inspect
       { return { message: 'Invalid product type provided.' } }
     }
@@ -195,14 +196,14 @@ export class AdminService {
     let url;
     let formData;
     if (form.value.productType === 'food') {
-      url = 'http://localhost:3000/api/menu/add-food';
+      url = `${environment.apiUrl}/menu/add-food`;
       formData = {
         title: form.value.title,
         details: form.value.details,
         price: form.value.price,
       };
     } else if (form.value.productType === 'drink') {
-      url = 'http://localhost:3000/api/menu/add-drink';
+      url = `${environment.apiUrl}/menu/add-drink`;
       formData = {
         title: form.value.title,
         small: form.value.priceS,
@@ -214,10 +215,10 @@ export class AdminService {
     try {
       const response = await fetch(url, {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
-         },
+        },
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
@@ -250,7 +251,7 @@ export class AdminService {
     });
 
     try {
-      const response = await fetch('http://localhost:3000/api/events/add-event', {
+      const response = await fetch(`${environment.apiUrl}/events/add-event`, {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` },
         body: formData, //content type becomes multipart/form-data.

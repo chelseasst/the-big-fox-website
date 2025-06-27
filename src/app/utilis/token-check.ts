@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environments';
 export async function handleToken() {
     let token = localStorage.getItem('userToken');
     if (token) {
@@ -24,7 +25,7 @@ export async function handleToken() {
 }
 async function renewToken(token: string) {
     try {
-        const response = await fetch("http://localhost:3000/api/user/refresh-token", {
+        const response = await fetch(`${environment.apiUrl}/user/refresh-token`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { itemDetails } from '../types/itemDetails';
 import { menuDrinkItem, menuFoodItem } from '../types/menu';
 import { NgForm } from '@angular/forms';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,7 @@ export class OrderOnlineService {
       return this.foodItems;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/food", {
+      const response = await fetch(`${environment.apiUrl}/food`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -59,7 +60,7 @@ export class OrderOnlineService {
       return this.merchItems;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/merch", {
+      const response = await fetch(`${environment.apiUrl}/merch`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -80,7 +81,7 @@ export class OrderOnlineService {
       return this.menuDrinks;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/menu/drinks", {
+      const response = await fetch(`${environment.apiUrl}/menu/drinks`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -100,7 +101,7 @@ export class OrderOnlineService {
       return this.menuFood;
     }
     try {
-      const response = await fetch("http://localhost:3000/api/menu/food", {
+      const response = await fetch(`${environment.apiUrl}/menu/food`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -137,7 +138,7 @@ export class OrderOnlineService {
 
   async getFoodById(slug: string) {
     try {
-      const response = await fetch(`http://localhost:3000/api/food/${slug}`, {
+      const response = await fetch(`${environment.apiUrl}/food/${slug}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -157,7 +158,7 @@ export class OrderOnlineService {
 
   async getMerchById(slug: string) {
     try {
-      const response = await fetch(`http://localhost:3000/api/merch/${slug}`, {
+      const response = await fetch(`${environment.apiUrl}/merch/${slug}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });

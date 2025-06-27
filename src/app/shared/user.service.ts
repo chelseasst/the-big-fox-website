@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { handleToken } from '../utilis/token-check';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class UserService {
     const token = await handleToken();
     if (!token) { return false}
     try {
-      const response = await fetch("http://localhost:3000/api/user/check-admin", {
+      const response = await fetch(`${environment.apiUrl}/user/check-admin`, {
         method: "GET",
         headers: { "Authorization": `Bearer ${token}` } 
       });
@@ -49,7 +50,7 @@ export class UserService {
   async login(data: { email: string, password: string }) {
     if (!data) { return 'Missing data' }
     try {
-      const response = await fetch("http://localhost:3000/api/user/login", {
+      const response = await fetch(`${environment.apiUrl}/user/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -72,7 +73,7 @@ export class UserService {
   async register(data: { firstName: string, email: string, password: string, rePassword: string }) {
     if (!data) { return 'Missing data' }
     try {
-      const response = await fetch("http://localhost:3000/api/user/register", {
+      const response = await fetch(`${environment.apiUrl}/user/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
