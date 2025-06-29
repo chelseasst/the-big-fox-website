@@ -65,6 +65,7 @@ export class OrderOnlineService {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
+      console.log('Response', response)
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to fetch items.");
