@@ -9,8 +9,11 @@ import { NgForm } from '@angular/forms';
 })
 export class DeleteAdminComponent {
   message: string = '';
+  isSubmitting: boolean = false;
   constructor(private adminService: AdminService) { }
   async deleteAdmin(form: NgForm) {
+    if (this.isSubmitting) return
+    this.isSubmitting = true;
     if (form.valid) {
       const data = {
         email: form.value.email,
@@ -19,6 +22,7 @@ export class DeleteAdminComponent {
       }
       const messageObj = await this.adminService.deleteAdmin(data);
       this.message = messageObj.message;
+      this.isSubmitting = false;
     }
   }
 }

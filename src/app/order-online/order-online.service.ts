@@ -192,8 +192,7 @@ export class OrderOnlineService {
 
     this.openPopup();
   }
-  async addGiftCardToCart(form: NgForm, image: string) {
-    console.log('form values', form.value)
+   addGiftCardToCart(form: NgForm, image: string) {
     const productObj: itemDetails = {
       slug: form.value.recipName,
       title: `Gift Card - ${form.value.recipName}`,

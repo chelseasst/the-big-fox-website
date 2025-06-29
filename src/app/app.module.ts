@@ -7,7 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { OurStoryModule } from './our-story/our-story.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HoursAndLocationModule } from './hours-and-location/hours-and-location.module';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GiftCardsModule } from './gift-cards/gift-cards.module';

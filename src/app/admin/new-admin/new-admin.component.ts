@@ -9,8 +9,11 @@ import { AdminService } from '../admin.service';
 })
 export class NewAdminComponent {
   message: string = '';
+  isSubmitting: boolean = false;
   constructor(private adminService: AdminService) { }
   async addAdmin(form: NgForm) {
+    if (this.isSubmitting) return
+    this.isSubmitting = true;
     if (form.valid) {
       const data = {
         email: form.value.email,
@@ -20,6 +23,7 @@ export class NewAdminComponent {
       const messageObj = await this.adminService.addAdmin(data);
       this.message = messageObj.message;
       form.resetForm();
+      this.isSubmitting = false;
     } else {
       this.message = 'Missing Fields'
     }

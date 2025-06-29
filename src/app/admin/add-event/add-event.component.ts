@@ -11,15 +11,17 @@ export class AddEventComponent {
   imagesArray: String[] = [];
   selectedFiles: File[] = [];
   message: string = '';
+  isSubmitting: boolean = false;
   constructor(private adminService: AdminService) { }
 
   async addEvent(form: NgForm) {
+
     if (form.valid) {
-      console.log('form', form);
       const messageObj = await this.adminService.addEvent(form, this.selectedFiles);
       this.message = messageObj.message;
       form.resetForm();
       this.removeSelectedFiles();
+      this.isSubmitting = false;
     } else {
       this.message = 'Missing Fields'
     }

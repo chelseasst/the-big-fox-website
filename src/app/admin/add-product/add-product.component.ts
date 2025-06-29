@@ -12,15 +12,18 @@ export class AddProductComponent {
   imagesArray: string[] = [];
   selectedFiles: File[] = [];
   message: string = '';
+  isSubmitting: boolean = false;
   constructor(private adminService: AdminService) { }
   async addProduct(form: NgForm) {
-    console.log('Add product function')
+    if (this.isSubmitting) return
+    this.isSubmitting = true;
     if (form.valid) {
       const messageObj = await this.adminService.addProduct(form, this.selectedFiles);
       this.message = messageObj.message;
       form.resetForm();
-      this.removeSelectedFiles()
-    }else{
+      this.removeSelectedFiles();
+      this.isSubmitting = false;
+    } else {
       this.message = 'Missing Fields'
     }
   }

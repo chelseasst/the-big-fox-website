@@ -5,16 +5,16 @@
       <h2>Physical Gift Cards</h2>
     </div>
     <div class="cards-design-wrap">
-      <div class="design" *ngFor="let design of cardDesigns">
-        <label for="design"> {{design.title}}</label>
+      <div class="design" *ngFor="let designObj of cardDesigns">
+        <label for="design"> {{designObj.design}}</label>
         <div class="design-img-wrap">
-          <img [src]="design.images[0]" alt="Card Design">
-          <img [src]="design.images[1]" alt="Card Design">
+          <img [src]="designObj.images[0]" alt="Card Design">
+          <img [src]="designObj.images[1]" alt="Card Design">
         </div>
         <i class="error" *ngIf="cardDesign.errors?.['required']">
           Please, select a design
         </i>
-        <input class="radio-input" type="radio" name="design" [value]="design.title" ngModel #cardDesign="ngModel"
+        <input class="radio-input" type="radio" name="design" [value]="designObj.design" ngModel #cardDesign="ngModel"
           required>
       </div>
     </div>

@@ -16,26 +16,28 @@ export class AppComponent implements OnInit {
 
   quantityValue: number = 1;
   itemDetails!: itemDetails;
+  currUrl: string = '';
   private routerSubsc!: Subscription;
   constructor(private renderer: Renderer2, private orderOnlineService: OrderOnlineService, private router: Router, private analyticsService: AnalyticsService) { }
   ngOnInit(): void {
     //Google Analytics
     this.analyticsService.init();
-
-    //Scroll to top, excluding Menu Gift Cards and Signup components
+    const excl = ['menu-drinks', 'menu-bakery', 'physical-card', 'digital-card', 'login', 'register'];
+    //Scroll to top, excluding some components
     this.routerSubsc = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event instanceof NavigationEnd) {
           (window as any).ga('set', 'page', event.urlAfterRedirects);
           (window as any).ga('send', 'pageview');
         }
-        const excl = ['menu-drinks', 'menu-bakery', 'physical-card', 'digital-card', 'login', 'register'];
-        const currUrl = event.urlAfterRedirects;
-        if (excl.some(route => currUrl.includes(route))) {
+        const prevUrl = this.currUrl;
+        this.currUrl = event.urlAfterRedirects;
+        const isInitialMenuNav = this.currUrl.startsWith('/menu') && !prevUrl.startsWith('/menu');
+        if (excl.some(route => this.currUrl.includes(route)) && !isInitialMenuNav) {
           return
         }
         window.scrollTo(0, 0);
-      }   
+      }
     });
     const hasVisited = sessionStorage.getItem('hasVisited'); //'true', 'false';
     if (!hasVisited) {
