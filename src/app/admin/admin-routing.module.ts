@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
 
 const routes: Routes = [
     {
@@ -45,12 +46,16 @@ const routes: Routes = [
         component: AddProductComponent
     },
     {
+        path: 'delete-product',
+        component: DeleteProductComponent
+    },
+    {
         path: 'add-event',
         component: AddEventComponent
     },
     {
-        path:'add-menu-item',
-        component:AddMenuItemComponent
+        path: 'add-menu-item',
+        component: AddMenuItemComponent
     }
 ];
 @NgModule({

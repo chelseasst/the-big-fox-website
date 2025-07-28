@@ -40,7 +40,6 @@ export class OrderOnlineService {
       return this.foodItems;
     }
     try {
-      console.log('🌍 Using API URL:', environment.apiUrl);
       const response = await fetch(`${environment.apiUrl}/food`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +64,6 @@ export class OrderOnlineService {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      console.log('Response', response)
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to fetch items.");
@@ -192,7 +190,7 @@ export class OrderOnlineService {
 
     this.openPopup();
   }
-   addGiftCardToCart(form: NgForm, image: string) {
+  addGiftCardToCart(form: NgForm, image: string) {
     const productObj: itemDetails = {
       slug: form.value.recipName,
       title: `Gift Card - ${form.value.recipName}`,

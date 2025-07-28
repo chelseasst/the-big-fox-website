@@ -14,6 +14,7 @@ import { UtilisModule } from '../utilis/utilis.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddMenuItemComponent } from './add-menu-item/add-menu-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
 
 
 
@@ -28,6 +29,7 @@ import { SharedModule } from '../shared/shared.module';
     OrdersComponent,
     AddProductComponent,
     AddMenuItemComponent,
+    DeleteProductComponent,
   ],
   imports: [
     CommonModule,

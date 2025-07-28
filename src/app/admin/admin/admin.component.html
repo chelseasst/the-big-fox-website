@@ -5,37 +5,30 @@
 
         <div class="admin-dashboard-wrapper">
             <section class="statistics-wrapper" *ngIf="!message; else error">
-                <!-- <div class="statistic popIn" appAnimateOnScroll routerLink="income">
-                    <p class="title">Total Income</p>
-                    <p class="amount">$1500</p>
-                    <p class="increase">Increase: <span>10</span>%</p>
-                </div>
-                <div class="statistic" routerLink="views">
-                    <p class="title">Total Views</p>
-                    <p class="amount">1000</p>
-                    <p class="increase">Increase: <span>25</span>%</p>
-                </div> -->
                 <div class="statistic popIn" appAnimateOnScroll routerLink="users">
                     <p class="title">Total Users</p>
                     <p class="amount">{{totalUsersCount}}</p>
                     <p class="increase">New users: <span>{{monthlyUsersCount}}</span></p>
                 </div>
-                <div class="statistic center" routerLink="new-admin">
+                <div class="statistic" routerLink="new-admin">
                     <p class="title">Add new Admin</p>
                 </div>
-                <div class="statistic center" routerLink="delete-admin">
+                <div class="statistic popIn" appAnimateOnScroll routerLink="delete-admin">
                     <p class="title">Delete Admin</p>
                 </div>
-                <div class="statistic center" routerLink="orders">
+                <div class="statistic" routerLink="orders">
                     <p class="title">All orders</p>
                 </div>
-                <div class="statistic center" routerLink="add-product">
+                <div class="statistic popIn" appAnimateOnScroll routerLink="add-product">
                     <p class="title">Add product</p>
                 </div>
-                <div class="statistic center popIn" appAnimateOnScroll routerLink="add-event">
+                <div class="statistic" routerLink="delete-product">
+                    <p class="title">Delete product</p>
+                </div>
+                <div class="statistic popIn" appAnimateOnScroll routerLink="add-event">
                     <p class="title">Add event</p>
                 </div>
-                <div class="statistic center" routerLink="add-menu-item">
+                <div class="statistic" routerLink="add-menu-item">
                     <p class="title">Add menu item</p>
                 </div>
             </section>

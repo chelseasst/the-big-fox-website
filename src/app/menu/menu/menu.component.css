@@ -111,7 +111,7 @@ a {
   transition: all 1.2s ease-out, opacity 0.8s ease-out;
 }
 
-.coffee-img-cont.visible {
+.coffee-img-cont.animated {
   scale: 1;
   left: -80px;
   opacity: 1;
@@ -164,7 +164,7 @@ a {
     left: 0;
   }
 
-  .coffee-img-cont.visible {
+  .coffee-img-cont.animated {
     left: 30px;
     top: 0;
     width: 500px;
@@ -180,7 +180,7 @@ a {
     left: 500px;
   }
 
-  .coffee-img-cont.visible {
+  .coffee-img-cont.animated {
     left: 200px;
   }
 

@@ -8,10 +8,9 @@ export class AnimateOnScrollDirective implements AfterViewInit, OnDestroy {
     constructor(private renderer: Renderer2, private el: ElementRef) { }
     // Renderer2 is safer !
     ngAfterViewInit(): void {
-        this.renderer.addClass(this.el.nativeElement, 'animated');
         this.observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
-                this.renderer.addClass(this.el.nativeElement, 'visible');
+                this.renderer.addClass(this.el.nativeElement, 'animated');
                 this.observer.disconnect();
             }
         }, {

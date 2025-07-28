@@ -1,0 +1,72 @@
+<div class="delete-product-container">
+    <main>
+        <div class="back-button-container">
+            <p>
+                <a class="back-btn" routerLink="/admin-dashboard">Back to Dashboard</a>
+            </p>
+        </div>
+        <div class="form-container">
+            <p class="heading">Delete Product</p>
+            <p class="sub-heading">Enter the slug of the product and it will be deleted from the Order Online section
+            </p>
+            <form class="delete-product-form" #deleteProductForm="ngForm" (ngSubmit)="deleteProduct(deleteProductForm)">
+                <div class="form-ui">
+                    <!-- Type -->
+                    <label for="productType">
+                        Select the Product Type
+                        <span class="required">- Required</span>
+                    </label>
+                    <i class="error" *ngIf="productType.errors?.['required']">Product Type is required</i>
+                    <select name="productType" id="productType" ngModel #productType="ngModel" required>
+                        <option value="" disabled selected hidden>Select product type</option>
+                        <option value="merch">Merch</option>
+                        <option value="food">Food/Drink</option>
+                    </select>
+                    <!-- EMAIL -->
+                    <label for="email">Your Email
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="email.touched">
+                        <i class="error" *ngIf="email.errors?.['required']">Your Email is required</i>
+                        <i class="error" *ngIf="email.errors?.['email']">
+                            Please, enter a valid email</i>
+                        <i class="error" *ngIf="email.errors?.['invalidExtension']">
+                            The email must end with 'bg' or 'com' extension</i>
+                    </ng-container>
+                    <input type="text" id="email" name="email" placeholder="Email" ngModel #email="ngModel" required
+                        email emailValidator />
+                    <!-- PASSWORD -->
+                    <label for="password">Your Password
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="password.touched">
+                        <i class="error" *ngIf="password.errors?.['required']">Your Password is required</i>
+                        <i class="error" *ngIf="password.errors?.['minlength']">
+                            Password must contain at least 8 characters
+                        </i>
+                        <i class="error" *ngIf="password.errors?.['appPassword']">Password must contain at least one
+                            Uppercase
+                            letter</i>
+                    </ng-container>
+                    <input type="text" id="password" name="password" placeholder="Password" ngModel #password="ngModel"
+                        minlength="8" required appPassword />
+                    <!-- PRODUCT SLUG -->
+                    <label for="delAdminEmail">Slug of the product
+                        <span class="required">- Required</span>
+                    </label>
+                    <ng-container *ngIf="slug.touched">
+                        <i class="error" *ngIf="slug.errors?.['required']">Slug of the product is
+                            required</i>
+                    </ng-container>
+                    <input type="text" id="slug" name="slug" placeholder="slug" ngModel #slug="ngModel" required />
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-btn" [disabled]="deleteProductForm.invalid">Delete</button>
+                    <p class="message">{{message}}</p>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>

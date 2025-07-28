@@ -116,9 +116,8 @@ export class AdminService {
         const errorData = await response.json();
         return errorData.message;
       }
-      const message = await response.json(); //{message: 'Succesfully added}
-
-      return message;
+      const messageObj = await response.json(); //{message: 'Succesfully added}
+      return messageObj.message;
 
     } catch (error) {
       return 'Server error'
@@ -129,10 +128,10 @@ export class AdminService {
     const token = await handleToken();
     if (!token) { return 'Token invalid, please log in again' }
     try {
-      const response = await fetch(`${environment.apiUrl}/user/delete-admin?delAdminEmail=${data.delAdminEmail}`, {
+      const response = await fetch(`${environment.apiUrl}/user/delete-admin`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-        body: JSON.stringify({ email: data.email, password: data.password }),
+        body: JSON.stringify({ email: data.email, password: data.password, delAdminEmail: data.delAdminEmail }),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -141,6 +140,26 @@ export class AdminService {
       const message = await response.json(); //{message: 'SUccesfully added}
 
       return message;
+
+    } catch (error) {
+      return 'Server error'
+    }
+  }
+  async deleteProduct(data: { email: string, password: string, slug: string, productType: string }) {
+    if (!data) { return 'Missing data' }
+    const token = await handleToken();
+    if (!token) { return 'Token invalid, please log in again' }
+    try {
+      const response = await fetch(`${environment.apiUrl}/delete/product`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ email: data.email, password: data.password, slug: data.slug, productType: data.productType }),
+      });
+      const message = await response.json();
+      if (!response.ok) {
+        return message.message;
+      }
+      return message.message;
 
     } catch (error) {
       return 'Server error'

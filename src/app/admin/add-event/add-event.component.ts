@@ -15,11 +15,10 @@ export class AddEventComponent {
   constructor(private adminService: AdminService) { }
 
   async addEvent(form: NgForm) {
-
     if (form.valid) {
+      form.resetForm();
       const messageObj = await this.adminService.addEvent(form, this.selectedFiles);
       this.message = messageObj.message;
-      form.resetForm();
       this.removeSelectedFiles();
       this.isSubmitting = false;
     } else {

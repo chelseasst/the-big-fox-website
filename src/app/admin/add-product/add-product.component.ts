@@ -8,7 +8,6 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
-  //we can add functionality for more files later
   imagesArray: string[] = [];
   selectedFiles: File[] = [];
   message: string = '';

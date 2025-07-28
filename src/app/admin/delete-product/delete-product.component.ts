@@ -1,31 +1,30 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { AdminService } from '../admin.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-new-admin',
-  templateUrl: './new-admin.component.html',
-  styleUrls: ['./new-admin.component.css']
+  selector: 'app-delete-product',
+  templateUrl: './delete-product.component.html',
+  styleUrls: ['./delete-product.component.css']
 })
-export class NewAdminComponent {
+export class DeleteProductComponent {
   message: string = '';
   isSubmitting: boolean = false;
   constructor(private adminService: AdminService) { }
-  async addAdmin(form: NgForm) {
+  async deleteProduct(form: NgForm) {
     if (this.isSubmitting) return
     this.isSubmitting = true;
     if (form.valid) {
+      form.resetForm();
       const data = {
         email: form.value.email,
         password: form.value.password,
-        newAdminEmail: form.value.newAdminEmail
+        slug: form.value.slug,
+        productType: form.value.productType
       }
-      const messageObj = await this.adminService.addAdmin(data);
+      const messageObj = await this.adminService.deleteProduct(data);
       this.message = messageObj;
-      form.resetForm();
       this.isSubmitting = false;
-    } else {
-      return
     }
   }
 }
