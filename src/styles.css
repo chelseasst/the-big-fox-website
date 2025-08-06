@@ -55,7 +55,18 @@ body {
   transition: transform 1s ease-out, opacity 0.8s ease-out;
 }
 
+.animateL {
+  transform: translateX(90%);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 0.8s ease-out;
+}
+
 .animateR.animated {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.animateL.animated {
   transform: translateX(0);
   opacity: 1;
 }

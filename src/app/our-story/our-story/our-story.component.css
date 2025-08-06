@@ -15,17 +15,6 @@
   border-bottom: 1px solid #222;
 }
 
-.h2.animated {
-  transform: translateX(90%);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 0.8s ease-out;
-}
-
-.h2.animated.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 .section-1 {
   margin: 0 auto;
   max-width: 800px;
@@ -38,17 +27,6 @@
 
 .align-right {
   text-align: right;
-}
-
-.align-right.animated {
-  transform: translateX(90%);
-  opacity: 0;
-  transition: transform 1s ease-out, opacity 0.8s ease-out;
-}
-
-.align-right.animated.visible {
-  transform: translateX(0);
-  opacity: 1;
 }
 
 .icon-image {
