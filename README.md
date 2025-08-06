@@ -2,6 +2,10 @@
 
 This is a fully responsive, modern Angular web application for a coffee shop, designed and developed by me. The project demonstrates a real-world, production-ready architecture with both user and admin experiences, a secure authentication system, and a feature-rich UI/UX.
 I haven't used any AI agent for this project, except some help from ChatGPT for basic questions I had.
+
+## 🌐 Live Demo
+Visit the deployed application: [https://the-big-fox-website.vercel.app/home](https://the-big-fox-website.vercel.app/home)
+
 ---
 
 ## Features
@@ -47,7 +51,6 @@ I haven't used any AI agent for this project, except some help from ChatGPT for 
 ### ⚙️ Backend Integration
 - **RESTful API:** All data operations (add product, add admin, etc.) are handled by a backend server also fully developed by me.
 - **Cloudinary Image Uploads:** When a new product or menu item is added, the backend first calls a Cloudinary middleware to upload the photo to the cloud. Cloudinary returns a URL, which is then used in the app to display the image.
-- **Token Validation:** Backend validates and renews tokens for secure, persistent sessions.
 
 ### 🧩 Other Notable Features
 - **Initial Popups & Animations:** Engaging popups and smooth animations throughout the site.
@@ -74,7 +77,7 @@ npm install
 ### Running the App
 
 ```bash
-ng serve
+npm run start
 ```
 Visit [http://localhost:4200](http://localhost:4200) in your browser.
 
