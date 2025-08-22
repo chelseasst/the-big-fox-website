@@ -7,7 +7,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { itemDetails } from 'src/app/types/itemDetails';
 
 @Component({
@@ -36,20 +36,22 @@ import { itemDetails } from 'src/app/types/itemDetails';
 })
 export class ProductsPopupComponent implements OnInit, OnDestroy {
   isPopupOpen: boolean = false;
-  subsc!: Subscription;
   currItem!: itemDetails;
   @Input('quantity') quantity: number = 0;
   @Input('item') item!: itemDetails | undefined;
 
+  private destroy$ = new Subject<void>();
 
   constructor(private orderOnlineService: OrderOnlineService) { }
 
   ngOnInit(): void {
     console.log('quantity', this.quantity);
     console.log('item', this.item);
-    this.subsc = this.orderOnlineService.isCartPopupOpen$.subscribe((isOpen) => {
-      this.isPopupOpen = isOpen;
-    });
+    this.orderOnlineService.isCartPopupOpen$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((isOpen) => {
+        this.isPopupOpen = isOpen; //for the animations to work
+      });
   }
   closePopup() {
     this.isPopupOpen = false;
@@ -57,9 +59,10 @@ export class ProductsPopupComponent implements OnInit, OnDestroy {
     // before the parent removes the component
     setTimeout(() => {
       this.orderOnlineService.closePopup();
-    }, 400); //for the parent component
+    }, 400); //for the parent component 
   }
-  ngOnDestroy() {
-    this.subsc.unsubscribe();
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

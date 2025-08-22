@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   QueryList,
   ViewChildren,
 } from '@angular/core';
@@ -11,13 +12,14 @@ import {
   templateUrl: 'main-desktop.component.html',
   styleUrls: ['main-desktop.component.css'],
 })
-export class MainDesktopComponent implements AfterViewInit {
+export class MainDesktopComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('fadeImg') fadeImgs!: QueryList<ElementRef>;
   @ViewChildren('contentCont') contentCont!: QueryList<ElementRef>;
+  private observer!: IntersectionObserver;
 
-  constructor() {}
+  constructor() { }
   ngAfterViewInit() {
-    const observer = new IntersectionObserver((entries) => {
+    this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           //if the el is intersecting with the viewport
@@ -28,10 +30,15 @@ export class MainDesktopComponent implements AfterViewInit {
       });
     });
     this.fadeImgs.forEach((el) => {
-      observer.observe(el.nativeElement);
+      this.observer.observe(el.nativeElement);
     });
     this.contentCont.forEach((el) => {
-      observer.observe(el.nativeElement);
+      this.observer.observe(el.nativeElement);
     });
+  }
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 }

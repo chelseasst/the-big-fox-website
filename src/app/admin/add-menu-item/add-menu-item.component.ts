@@ -10,7 +10,9 @@ import { NgForm } from '@angular/forms';
 export class AddMenuItemComponent {
   message: string = '';
   isSubmitting: boolean = false;
+  
   constructor(private adminService: AdminService) { }
+
   async addProduct(form: NgForm) {
     if (this.isSubmitting) return
     this.isSubmitting = true;

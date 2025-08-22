@@ -8,7 +8,9 @@ import { EventDetails } from 'src/app/types/event';
 })
 export class EventComponent {
   @Input('eventData') eventData!: EventDetails;
+
   constructor(private render: Renderer2) { }
+  
   toggleFlip(event: TouchEvent) {
     const target = event.target;
     if (target) {

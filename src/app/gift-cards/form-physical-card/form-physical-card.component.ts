@@ -13,13 +13,15 @@ export class FormPhysicalCardComponent {
     { design: 'Simplistic', images: ['assets/gift-cards/design-simple-front.jpg', 'assets/gift-cards/design-simple-back.jpg'] },
     { design: 'Coffee-mood', images: ['assets/gift-cards/design-color-front.jpg', 'assets/gift-cards/design-color-back.jpg'] }
   ];
+
   constructor(private orderOnlineService: OrderOnlineService) { }
+  
   toggleSelect(selectEl: HTMLSelectElement) {
     selectEl.focus();
   }
   addToCart(form: NgForm) {
     if (this.isSubmitting) return
-    console.log('Enteredddd')
+
     this.isSubmitting = true;
     const image = this.cardDesigns.find(designObj => designObj.design === form.value.design)?.images[0] ?? '';
     this.orderOnlineService.addGiftCardToCart(form, image);

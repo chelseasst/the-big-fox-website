@@ -7,5 +7,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HoursAndLocationComponent  {
   constructor() {}
-//AIzaSyDebTNhKG8x56QK42RcRndncPTV6pyqH7k
 }

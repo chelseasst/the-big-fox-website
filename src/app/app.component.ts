@@ -1,7 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { OrderOnlineService } from './order-online/order-online.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { itemDetails } from './types/itemDetails';
 import { AnalyticsService } from './shared/analytics-service';
 
@@ -10,21 +10,24 @@ import { AnalyticsService } from './shared/analytics-service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   showInitPopup!: boolean;
   isCartVisible$ = this.orderOnlineService.isCartVisible$;
 
   quantityValue: number = 1;
   itemDetails!: itemDetails;
   currUrl: string = '';
-  private routerSubsc!: Subscription;
+
+  private destroy$ = new Subject<void>();
+
   constructor(private renderer: Renderer2, private orderOnlineService: OrderOnlineService, private router: Router, private analyticsService: AnalyticsService) { }
+
   ngOnInit(): void {
     //Google Analytics
     this.analyticsService.init();
     const excl = ['menu-drinks', 'menu-bakery', 'physical-card', 'digital-card', 'login', 'register'];
     //Scroll to top, excluding some components
-    this.routerSubsc = this.router.events.subscribe(event => {
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event instanceof NavigationEnd) {
           (window as any).ga('set', 'page', event.urlAfterRedirects);
@@ -39,13 +42,18 @@ export class AppComponent implements OnInit {
         window.scrollTo(0, 0);
       }
     });
-    const hasVisited = sessionStorage.getItem('hasVisited'); //'true', 'false';
+    const hasVisited = sessionStorage.getItem('hasVisited');
     if (!hasVisited) {
       this.showInitPopup = true;
       sessionStorage.setItem('hasVisited', 'true');
       this.noScrollClass();
     }
     this.orderOnlineService.initCartState(); //fires the observables for Cart 
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   noScrollClass() {
     if (this.showInitPopup) {
@@ -57,8 +65,5 @@ export class AppComponent implements OnInit {
   closePopup() {
     this.showInitPopup = false;
     this.noScrollClass();
-  }
-  ngOnDestroy() {
-    this.routerSubsc.unsubscribe();
   }
 }

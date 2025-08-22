@@ -5,9 +5,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MenuNavService } from './menu-nav.service';
 import { UserService } from 'src/app/shared/user.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'site-header-mobile',
@@ -34,21 +35,32 @@ import { UserService } from 'src/app/shared/user.service';
     ]),
   ],
 })
-export class SiteHeaderMobileComponent implements OnInit {
+export class SiteHeaderMobileComponent implements OnInit, OnDestroy {
   menuState: string = 'up';
   isSubMenuShown: boolean = false;
   userName: string | null = null;
   @Input() giftBannerShowed!: boolean;
 
+  private destroy$ = new Subject<void>();
+
   constructor(private menuNavService: MenuNavService, private userService: UserService, private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
-    this.menuNavService.menuStateObs$.subscribe((state) => {
-      this.menuState = state;
-    });
-    this.userService.user$.subscribe((user) => {
-      this.userName = user?.userName || null;
-    });
+    this.menuNavService.menuStateObs$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((state) => {
+        this.menuState = state;
+      });
+    this.userService.user$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((user) => {
+        this.userName = user?.userName || null;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   ngOnChanges() {
     this.updateBanner(this.giftBannerShowed);

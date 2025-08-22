@@ -14,7 +14,9 @@ export class FormDigitalCardComponent {
     { design: 'Simplistic', images: ['assets/gift-cards/design-simple-front.jpg', 'assets/gift-cards/design-simple-back.jpg'] },
     { design: 'Coffee-mood', images: ['assets/gift-cards/design-color-front.jpg', 'assets/gift-cards/design-color-back.jpg'] }
   ];
+
   constructor(private orderOnlineService: OrderOnlineService) { }
+
   addToCart(form: NgForm) {
     if (this.isSubmitting) return
 

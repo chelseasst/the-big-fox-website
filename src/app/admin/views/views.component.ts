@@ -25,7 +25,6 @@ export class ViewsComponent implements OnInit {
       alert("Dates cannot be in the future!");
       return;
     }
-    //  TODO fetch real views
     const viewsCount = await this.adminService.getAllViews(startDate, endDate);
     this.viewsPeriods.push({ viewsCount: viewsCount, startDate, endDate })
   }

@@ -12,6 +12,7 @@ export class AddEventComponent {
   selectedFiles: File[] = [];
   message: string = '';
   isSubmitting: boolean = false;
+  
   constructor(private adminService: AdminService) { }
 
   async addEvent(form: NgForm) {

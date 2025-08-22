@@ -1,16 +1,17 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'home-main-mobile',
   templateUrl: 'main-mobile.component.html',
   styleUrls: ['main-mobile.component.css'],
 })
-export class MainMobileComponent implements AfterViewInit {
+export class MainMobileComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('fadeImg') fadeImgs!: QueryList<ElementRef>; //just a wrapper around the actual DOM el
   @ViewChildren('contentCont') contentCont!: QueryList<ElementRef>;
+  private observer!: IntersectionObserver;
 
   ngAfterViewInit(): void {
-    const observer = new IntersectionObserver((entries) => {
+    this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -20,10 +21,15 @@ export class MainMobileComponent implements AfterViewInit {
       })
     });
     this.fadeImgs.forEach((el) => {
-      observer.observe(el.nativeElement);
+      this.observer.observe(el.nativeElement);
     });
     this.contentCont.forEach((el) => {
-      observer.observe(el.nativeElement);
+      this.observer.observe(el.nativeElement);
     });
+  }
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 }

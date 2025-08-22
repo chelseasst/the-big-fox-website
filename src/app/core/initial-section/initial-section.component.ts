@@ -36,6 +36,7 @@ export class InitialSectionComponent implements OnInit {
   @Input('url') url: string = ''; //for the background image
   @Input('isHome') isHome: boolean = false;
   pageState: string = 'hidden';
+  
   ngOnInit() {
     setTimeout(() => {
       this.pageState = 'visible';
