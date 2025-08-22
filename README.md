@@ -1,4 +1,4 @@
-# The Big Fox Coffee Shop Website
+# The Big Fox Coffee Shop Website 🦊
 
 This is a fully responsive, modern Angular web application for a coffee shop, designed and developed by me. The project demonstrates a real-world, production-ready architecture with both user and admin experiences, a secure authentication system, and a feature-rich UI/UX.
 I haven't used any AI agent for this project, except some help from ChatGPT for basic questions I had.
